@@ -1,7 +1,7 @@
 
 export default function Footer() {
     return (
-        <footer className="w-full flex flex-col justify-center items-center border-t border-brand-default">
+        <footer className="w-full flex flex-col justify-center items-center border-t border-brand-border">
             <div className="footer-items w-[90%] flex justify-center items-center py-8 max-lg:flex-col max-lg:gap-8">
                 <div className="flex flex-col justify-center items-start w-1/2 max-lg:w-full gap-5">
                     <span className="font-fraunces font-semibold text-xl">WargaReport</span>
@@ -13,7 +13,7 @@ export default function Footer() {
                     </p>
                 </div>
 
-                <div className="flex justify-around items-start w-1/2 max-lg:w-full max-lg:flex-col">
+                <div className="flex justify-around items-start w-1/2 max-lg:w-full">
                     <div className="w-1/3 max-lg:w-full flex flex-col justify-start items-center max-lg:items-start gap-2">
                         <span className="font-ibm-plex-mono font-medium w-full uppercase">Citizens</span>
                         <ul className="flex flex-col justify-center items-start gap-2 w-full">
@@ -41,7 +41,7 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="w-[90%] font-public-sans font-normal text-brand-default text-base border-t border-brand-default py-8 flex justify-between items-center max-lg:flex-col max-lg:gap-4 max-lg:text-center">
+            <div className="w-[90%] font-public-sans font-normal text-brand-default text-base border-t border-brand-border py-8 flex justify-between items-center max-lg:flex-col max-lg:gap-4 max-lg:text-center">
                 <span>&copy; 2026 WargaReport. All rights reserved.</span>
                 <span>UU No. 25/2009 Compliant</span>
             </div>
