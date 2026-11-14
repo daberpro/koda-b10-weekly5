@@ -84,9 +84,9 @@ function svgIcon(viewBox, children = [], extraAttr = {}) {
 function strokePath(d, strokeWidth) {
     return createElement("path", {
         d,
-        "stroke-width": strokeWidth,
-        "stroke-linecap": "round",
-        "stroke-linejoin": "round",
+        "strokeWidth": strokeWidth,
+        "strokeLinecap": "round",
+        "strokeLinejoin": "round",
         stroke: "currentColor",
     });
 }
@@ -253,7 +253,7 @@ function UserDropdownSubmenu({ fullname = "", email = "" } = {}) {
                         "",
                         [
                             svgIcon("0 0 12 12", [
-                                createElement("g", { "clip-path": "url(#clip0_601_272)" }, "", [
+                                createElement("g", { "clipPath": "url(#clip0_601_272)" }, "", [
                                     strokePath(
                                         "M10 10.5V9.5C10 8.96957 9.78929 8.46086 9.41421 8.08579C9.03914 7.71071 8.53043 7.5 8 7.5H4C3.46957 7.5 2.96086 7.71071 2.58579 8.08579C2.21071 8.46086 2 8.96957 2 9.5V10.5",
                                         "1",
@@ -292,7 +292,7 @@ function UserDropdownSubmenu({ fullname = "", email = "" } = {}) {
                             svgIcon(
                                 "0 0 12 12",
                                 [
-                                    createElement("g", { "clip-path": "url(#clip0_601_279)" }, "", [
+                                    createElement("g", { "clipPath": "url(#clip0_601_279)" }, "", [
                                         strokePath(
                                             "M4.5 10.5H2.5C2.23478 10.5 1.98043 10.3946 1.79289 10.2071C1.60536 10.0196 1.5 9.76522 1.5 9.5V2.5C1.5 2.23478 1.60536 1.98043 1.79289 1.79289C1.98043 1.60536 2.23478 1.5 2.5 1.5H4.5",
                                             "1",
@@ -373,11 +373,11 @@ function UserDropdownMenuComponent({ fullname = "", email = "" } = {}) {
                     svgIcon(
                         "0 0 12 12",
                         [
-                            createElement("g", { "clip-path": "url(#clip0_214_711)" }, "", [
+                            createElement("g", { "clipPath": "url(#clip0_214_711)" }, "", [
                                 createElement("path", {
                                     d: "M3 4.5L6 7.5L9 4.5",
-                                    "stroke-linecap": "round",
-                                    "stroke-linejoin": "round",
+                                    "strokeLinecap": "round",
+                                    "strokeLinejoin": "round",
                                     stroke: "#84928A",
                                 }),
                             ]),
@@ -484,7 +484,7 @@ function FormSigninComponent() {
                             svgIcon(
                                 "0 0 14 14",
                                 [
-                                    createElement("g", { "clip-path": "url(#clip0_199_241)" }, "", [
+                                    createElement("g", { "clipPath": "url(#clip0_199_241)" }, "", [
                                         strokePath(
                                             "M2.91667 6.41669H11.0833C11.7277 6.41669 12.25 6.93902 12.25 7.58335V11.6667C12.25 12.311 11.7277 12.8334 11.0833 12.8334H2.91667C2.27233 12.8334 1.75 12.311 1.75 11.6667V7.58335C1.75 6.93902 2.27233 6.41669 2.91667 6.41669Z",
                                             "1.16667",
@@ -782,7 +782,7 @@ function FormRegisterComponent() {
                             svgIcon(
                                 "0 0 14 14",
                                 [
-                                    createElement("g", { "clip-path": "url(#clip0_199_241)" }, "", [
+                                    createElement("g", { "clipPath": "url(#clip0_199_241)" }, "", [
                                         strokePath(
                                             "M2.91667 6.41669H11.0833C11.7277 6.41669 12.25 6.93902 12.25 7.58335V11.6667C12.25 12.311 11.7277 12.8334 11.0833 12.8334H2.91667C2.27233 12.8334 1.75 12.311 1.75 11.6667V7.58335C1.75 6.93902 2.27233 6.41669 2.91667 6.41669Z",
                                             "1.16667",
@@ -850,7 +850,7 @@ function FormRegisterComponent() {
                 "",
                 [
                     svgIcon("0 0 13 13", [
-                        createElement("g", { "clip-path": "url(#clip0_199_513)" }, "", [
+                        createElement("g", { "clipPath": "url(#clip0_199_513)" }, "", [
                             strokePath(
                                 "M11.9167 6.0017V6.50003C11.916 7.66809 11.5378 8.80464 10.8384 9.74018C10.139 10.6757 9.15599 11.3601 8.03586 11.6913C6.91573 12.0225 5.71856 11.9827 4.62288 11.5779C3.5272 11.1731 2.59173 10.425 1.95598 9.44511C1.32023 8.46521 1.01826 7.30606 1.09512 6.14053C1.17197 4.975 1.62353 3.86554 2.38244 2.97761C3.14136 2.08968 4.16697 1.47086 5.30631 1.21344C6.44565 0.956021 7.63769 1.07379 8.70463 1.5492",
                                 "1.08333",
