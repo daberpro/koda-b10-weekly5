@@ -1,0 +1,39 @@
+@import url(https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap);
+
+@theme {
+  --color-brand-primary: #0F6B4F;
+  --color-brand-third: #fffdf8;
+  --color-brand-secondary: #E6F2EB;
+  --color-brand-main: #F7F2E7;
+  --color-brand-border: #D7CBB6;
+  --color-brand-second-border: #0F6B4F40;
+  --color-brand-default: #4C5B52;
+  --color-brand-light-default: #84928A;
+  --color-brand-orange: #96680F;
+  --color-brand-orange-secondary: #FBF1D8;
+  --color-brand-orange-third: #96680F40;
+  --color-brand-blue: #2F607E;
+  --color-brand-blue-secondary: #E8F1F5;
+  --color-brand-blue-third: #2F607E40;
+  --color-brand-light-orange-secondary: #F4EFE4;
+  --color-brand-light-orange-third: #E8E0D1;
+  --color-brand-red: #A33F31;
+  --color-brand-red-secondary: #F9EAE5;
+  --color-brand-red-third: #A33F3147;
+  --color-videp-placeholder: #13231B;
+  --font-fraunces: "Fraunces", serif;
+  --font-public-sans: "Public Sans", sans-serif;
+  --font-ibm-plex-mono: "IBM Plex Mono", monospace;
+}
+
+
+body,html{
+    width:100%;
+    height:100%;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:sans-serif;
+}

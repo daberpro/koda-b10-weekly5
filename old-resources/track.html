@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warga Report</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <nav id="navbar"
+        class="navbar flex navbar-overflow-y-hidden h-20 justify-center items-center flex-row w-full border-b border-b-brand-default">
+        <div class="w-[90%] flex justify-between items-center h-full">
+            <div class="w-fit brand-container h-20 flex justify-start items-center">
+                <a href="index.html"
+                    class="w-fit text-black no-underline h-full flex justify-start items-center flex-row gap-4">
+                    <img src="assets/icons/logo.svg" alt="logo" />
+                    <span class="font-fraunces font-700 text-base">Warga Report</span>
+                </a>
+
+                <button id="nav-burger-btn" class="outline-none hidden burger-btn border-0 bg-transparent">
+                    <svg class="text-xl" width="1em" height="1em" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H20" stroke="#000000" stroke-width="2" stroke-linecap="round" />
+                        <path d="M5 17H20" stroke="#000000" stroke-width="2" stroke-linecap="round" />
+                        <path d="M5 7H20" stroke="#000000" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+            <div class="navbar-menu w-fit h-full flex justify-center items-center flex-row">
+                <div class="flex justify-center items-center gap-4">
+                    <a class="no-underline text-brand-default text-base py-2 px-6"
+                        href="live-feed.html">Live Feed</a>
+                    <a class="no-underline text-brand-default text-base py-2 px-6"
+                        href="track.html">Track</a>
+                    <a class="no-underline text-brand-default text-base py-2 px-6"
+                        href="how-it-works.html">How it works</a>
+                </div>
+            </div>
+            <div id="nav-btn-container"
+                class="w-fit h-full max-lg:py-4 gap-4 flex justify-end items-center flex-row">
+                <button id="signin"
+                    class="w-fit bg-transparent outline-none border-0 cursor-pointer h-fit text-brand-default no-underline py-2 px-6 gap-2 flex justify-center items-center"
+                    href="signin.html">
+                    <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_2_191)">
+                            <path
+                                d="M7.5 1.5H9.5C9.76522 1.5 10.0196 1.60536 10.2071 1.79289C10.3946 1.98043 10.5 2.23478 10.5 2.5V9.5C10.5 9.76522 10.3946 10.0196 10.2071 10.2071C10.0196 10.3946 9.76522 10.5 9.5 10.5H7.5"
+                                stroke-linecap="round" stroke-linejoin="round" stroke="#4C5B52" />
+                            <path d="M5 8.5L7.5 6L5 3.5" stroke-linecap="round" stroke-linejoin="round"
+                                stroke="#4C5B52" />
+                            <path d="M7.5 6H1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#4C5B52" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_2_191">
+                                <rect width="12" height="12" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+                    <span class="font-public-sans text-base">Signin</span>
+                </button>
+
+                <button
+                    class="py-2 cursor-pointer outline-none border-0 px-6 gap-2 flex justify-center items-center bg-brand-primary rounded-xl">
+                    <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_2_198)">
+                            <path d="M6 2.5V9.5" stroke-linecap="round" stroke-linejoin="round" stroke="white" />
+                            <path d="M2.5 6H9.5" stroke-linecap="round" stroke-linejoin="round" stroke="white" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_2_198">
+                                <rect width="12" height="12" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+                    <span class="font-public-sans text-white text-base">Report</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <script>
+        const navbar = document.getElementById("navbar");
+        const navbarBurgerBtn = document.getElementById("nav-burger-btn");
+        navbarBurgerBtn.onclick = (e) => {
+            navbar.classList.toggle("h-20");
+            navbar.classList.toggle("h-fit");
+
+            navbar.classList.toggle("navbar-overflow-y-visible");
+            navbar.classList.toggle("navbar-overflow-y-hidden");
+        };
+
+        const modalSigninRegister = ModalComponentLoginRegister();
+        document.body.appendChild(modalSigninRegister);
+
+        const signinButton = document.getElementById("signin");
+        signinButton.onclick = (e) => {
+            modalSigninRegister.classList.toggle("flex");
+            modalSigninRegister.classList.toggle("hidden");
+        };
+
+        if (verifyUserCredential({})) {
+            const { email: emailId } = getData(storageKeys.ID);
+            const {
+                [emailId]: { fullname, email },
+            } = getData(storageKeys.PROFILE);
+            signinButton.classList.toggle("flex");
+            signinButton.classList.toggle("hidden");
+            const userDropdownMenu = UserDropdownMenuComponent({
+                fullname,
+                email,
+            });
+            const navBtnContainer =
+                document.getElementById("nav-btn-container");
+            navBtnContainer.insertBefore(userDropdownMenu, signinButton);
+        }
+    </script>
+
+    <main class="flex flex-column justify-center items-center w-full bg-brand-main-color py-12">
+
+        <div class="flex flex-column justify-start items-start w-[90%] gap-4">
+
+            <div class="w-full max-md:flex-col h-fit flex flex-row items-start justify-center">
+
+                <div
+                    class="w-1/2 max-md:w-full bg-brand-third border border-brand-default p-6 rounded-xl flex-column gap-4 items-start justify-center flex-column flex">
+                    <span class="uppercase text-brand-default text-base">Citizen Portal</span>
+                    <h1 class="font-fraunces text-[3.5rem]">Track your complaint</h1>
+                    <p class="font-public-sans text-lg line-h-8 font-400 text-brand-default">
+                        Enter your official case reference number to view real-time triage progress,<br />
+                        inspector assignment, and official replies.
+                    </p>
+                    <div class="flex justify-start items-center flex-column gap-4 w-full">
+                        <label class="font-ibm-plex-mono w-full font-600 text-base" for="complain-id">Complaint
+                            Reference ID *</label>
+                        <input placeholder="e.g. CMP-2026-8841" id="complain-id" type="text"
+                            class="bg-brand-third w-full border border-brand-default rounded-xl p-4 text-brand-default text-base font-public-sans font-400 outline-none">
+                    </div>
+                    <div class="flex justify-start items-center flex-column gap-4 w-full">
+                        <label class="font-ibm-plex-mono w-full font-600 text-base" for="complain-id">Email
+                            address or phone (optional verification)</label>
+                        <input placeholder="citizen@example.com" id="complain-id" type="text"
+                            class="bg-brand-third w-full border border-brand-default rounded-xl p-4 text-brand-default text-base font-public-sans font-400 outline-none">
+                    </div>
+                    <div>
+                        Try a sample record: <span
+                            class="font-ibm-plex-mono font-600 text-brand-primary">CMP-2026-8841 &dot; CMP-2026-8794
+                            (Resolved)</span>
+                    </div>
+                </div>
+
+                <div
+                    class="w-1/2 max-md:w-full flex items-start flex-column justify-start h-fit p-6">
+                    <div
+                        class="flex items-start justify-start w-full flex-row gap-2 p-6 border-b border-b-brand-default">
+                        <svg class="text-xl text-brand-default" width="1em" height="1em" viewBox="0 0 20 20"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_2_713)">
+                                <path
+                                    d="M17.5 10C17.5 14.1421 14.1421 17.5 10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5C14.1421 2.5 17.5 5.85786 17.5 10Z"
+                                    stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke="currentColor" />
+                                <path
+                                    d="M7.58325 7.5C7.79055 6.95969 8.17887 6.50804 8.68198 6.22207C9.18509 5.9361 9.77183 5.83354 10.3421 5.93186C10.9124 6.03019 11.4309 6.32332 11.8092 6.76125C12.1875 7.19919 12.4022 7.7548 12.4166 8.33333C12.4166 10 9.91658 10.8333 9.91658 10.8333"
+                                    stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke="currentColor" />
+                                <path d="M10 14.1667H10.0083" stroke-width="1.66667" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke="currentColor" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_2_713">
+                                    <rect width="20" height="20" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                        <p class="text-base font-public-sans font-400 line-h-8 text-brand-default">
+                            Your tracking ID was displayed on your confirmation receipt and <br />
+                            sent to your registered email address immediately upon intake.<br />
+                            <br />
+                            Reports filed anonymously can only be tracked using this unique<br />
+                            key; officers cannot retrieve records by name without it.
+                        </p>
+                    </div>
+                    <a class="no-underline text-base text-brand-primary font-public-sans p-6 font-600"
+                        href="#">Lost your tracking ID? Search recent reports by location →</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="w-full flex justify-center items-center flex-column border-t border-t-brand-default">
+        <div class="footer-items w-[90%] flex justify-center items-center flex-row py-8">
+
+            <div class="flex justify-center items-start flex-column w-1/2 gap-4fourth">
+                <span class="font-fraunces font-600 text-xl">WargaReport</span>
+                <p class="font-public-sans font-400 text-brand-default text-base leading-6">
+                    WargaReport is an independent civic reporting platform for
+                    municipal infrastructure issues across Indonesia. Residents
+                    submit evidence, follow SLA countdowns, and track resolution
+                    updates from the responsible agencies.
+                </p>
+                <p class="font-public-sans font-400 text-base leading-6 text-brand-red">
+                    Not for life-threatening emergencies — call 112 (National
+                    Emergency Call Center) or BPBD DKI directly.
+                </p>
+            </div>
+
+            <div class="flex justify-around items-start flex-row w-1/2 py-8 h-full">
+                <div class="w-1/3 flex justify-start items-center flex-column gap-2">
+                    <span class="font-ibm-plex-mono font-500 w-full uppercase">Citizens</span>
+                    <ul class="flex justify-center items-start flex-column gap-2 w-full">
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">File a
+                            report</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Track
+                            complaint</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Public
+                            reports registry</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">My filing
+                            history</li>
+                    </ul>
+                </div>
+                <div class="w-1/3 flex justify-start items-center flex-column gap-2">
+                    <span class="font-ibm-plex-mono font-500 w-full uppercase">Agencies</span>
+                    <ul class="flex justify-center items-start flex-column gap-2 w-full">
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">
+                            Participating bureaus</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Officer
+                            triage queue</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">SLA
+                            benchmarks</li>
+                    </ul>
+                </div>
+                <div class="w-1/3 flex justify-start items-center flex-column gap-2">
+                    <span class="font-ibm-plex-mono font-500 w-full uppercase">Civic Trust</span>
+                    <ul class="flex justify-center items-start flex-column gap-2 w-full">
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Help &
+                            FAQs</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Evidence
+                            guidelines</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">PII &
+                            redaction policy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div
+            class="w-[90%] font-public-sans font-400 text-brand-default text-base border-t border-t-brand-default py-8 flex justify-between items-center flex-row">
+            <span>&copy; 2026 WargaReport. All rights reserved.</span>
+            <span>UU No. 25/2009 Compliant</span>
+        </div>
+    </footer>
+
+</body>
+
+</html>

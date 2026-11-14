@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warga Report</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar flex h-16 justify-center items-center flex-row w-full border-b border-b-brand-default">
+        <div class="w-[90%] flex justify-between items-center h-full">
+            <a href="index.html" class="w-fit text-black no-underline h-full flex justify-start items-center flex-row gap-4">
+                <img src="assets/icons/logo.svg" alt="logo">
+                <span class="font-fraunces font-700 text-base">Warga Report</span>
+            </a>
+            <div class="navbar-menu w-fit h-full flex justify-center items-center flex-row">
+                <div class="flex justify-center items-center gap-4">
+                    <a class="no-underline text-brand-default text-base py-2 px-6" href="live-feed.html">Live
+                        Feed</a>
+                    <a class="no-underline text-brand-default text-base py-2 px-6" href="track.html">Track</a>
+                    <a class="no-underline text-brand-default text-base py-2 px-6" href="how-it-works.html">How it
+                        works</a>
+                </div>
+            </div>
+            <div class="w-fit max-md:flex-col max-md:items-start h-full flex justify-end items-center flex-row gap-4">
+
+                <button class="bg-transparent outline-none border-0">
+                    <svg class="text-lg" width="1em" height="1em" viewBox="0 0 17 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_214_700)">
+                            <path
+                                d="M12.75 5.66675C12.75 4.53958 12.3022 3.45857 11.5052 2.66154C10.7082 1.86451 9.62717 1.41675 8.5 1.41675C7.37283 1.41675 6.29183 1.86451 5.4948 2.66154C4.69777 3.45857 4.25 4.53958 4.25 5.66675C4.25 10.6251 2.125 12.0417 2.125 12.0417H14.875C14.875 12.0417 12.75 10.6251 12.75 5.66675Z"
+                                stroke-width="1.41667" stroke-linecap="round" stroke-linejoin="round"
+                                stroke="#4C5B52" />
+                            <path
+                                d="M9.72543 14.875C9.6009 15.0897 9.42215 15.2679 9.20709 15.3918C8.99203 15.5156 8.7482 15.5808 8.50001 15.5808C8.25183 15.5808 8.008 15.5156 7.79294 15.3918C7.57788 15.2679 7.39913 15.0897 7.2746 14.875"
+                                stroke-width="1.41667" stroke-linecap="round" stroke-linejoin="round"
+                                stroke="#4C5B52" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_214_700">
+                                <rect width="17" height="17" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+
+                </button>
+
+                <button
+                    class="border border-brand-default bg-brand-third rounded-3xl p-2 flex items-center justify-center gap-4">
+                    <div
+                        class="bg-brand-secondary font-public-sans font-600 text-base text-brand-primary p-2 rounded-3xl">
+                        AS
+                    </div>
+                    <div class="flex items-start justify-center flex-column">
+                        <span class="font-public-sans font-600 text-base">Ari Susanto</span>
+                        <span class="font-ibm-plex-mono text-brand-primary">Citizen</span>
+                    </div>
+                    <div class="flex items-center h-full justify-center flex-column">
+                        <svg class="text-lg" width="1em" height="1em" viewBox="0 0 12 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_214_711)">
+                                <path d="M3 4.5L6 7.5L9 4.5" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke="#84928A" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_214_711">
+                                    <rect width="12" height="12" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                    </div>
+                </button>
+
+                <a class="w-fit h-fit text-brand-default no-underline" href="">
+                    <div
+                        class="py-2 px-6 gap-2 flex justify-center items-center bg-brand-primary rounded-xl">
+                        <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_2_198)">
+                                <path d="M6 2.5V9.5" stroke-linecap="round" stroke-linejoin="round" stroke="white" />
+                                <path d="M2.5 6H9.5" stroke-linecap="round" stroke-linejoin="round" stroke="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_2_198">
+                                    <rect width="12" height="12" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                        <span class="font-public-sans text-white text-base">Report</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex flex-column justify-center items-center w-full bg-brand-main-color py-12">
+
+        <div class="flex flex-column justify-start items-start w-[90%] gap-4">
+
+            <div class="w-full h-fit flex flex-column items-start justify-center">
+
+                <div class="w-full gap-4 max-lg:flex-col h-fit flex flex-row items-start justify-center">
+
+                    <div
+                        class="w-1/3 max-lg:w-full flex-column gap-4 items-start justify-center flex-column flex">
+                        <span class="uppercase text-brand-default text-base">Community Intake</span>
+                        <h1 class="font-fraunces text-[3.5rem]">Report an Issue</h1>
+                        <p class="font-public-sans line-h-8 font-400 text-brand-default text-lg">
+                            Public civic reporting for Indonesian
+                            municipal services.
+                        </p>
+
+                        <div class="flex flex-column py-6 items-start justify-center gap-4 w-full">
+                            <a class="no-underline bg-brand-primary text-white rounded-3xl w-full text-brand-default p-4 font-public-sans font-400 text-base"
+                                href="#">
+                                <span class="font-ibm-plex-mono text-lg font-400 mr-4">01</span>
+                                <span class="font-public-sans text-lg font-600">Topic</span>
+                            </a>
+                            <a class="no-underline bg-transparent text-brand-default p-4 font-public-sans font-400 text-base"
+                                href="#">
+                                <span class="font-ibm-plex-mono text-lg font-400 mr-4">02</span>
+                                <span class="font-public-sans text-lg font-400">Location</span>
+                            </a>
+                            <a class="no-underline bg-transparent text-brand-default p-4 font-public-sans font-400 text-base"
+                                href="#">
+                                <span class="font-ibm-plex-mono text-lg font-400 mr-4">03</span>
+                                <span class="font-public-sans text-lg font-400">Proof</span>
+                            </a>
+                            <a class="no-underline bg-transparent text-brand-default p-4 font-public-sans font-400 text-base"
+                                href="#">
+                                <span class="font-ibm-plex-mono text-lg font-400 mr-4">04</span>
+                                <span class="font-public-sans text-lg font-400">Riview & Send</span>
+                            </a>
+                        </div>
+
+                        <div
+                            class="w-full bg-brand-third border border-dashed border-brand-default border-4 rounded-xl p-6 flex items-center flex-column justify-center">
+                            <div class="w-full flex items-center justify-start gap-4">
+                                <svg class="font-600 text-lg" width="1em" height="1em" viewBox="0 0 14 14"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_214_639)">
+                                        <g clip-path="url(#clip1_214_639)">
+                                            <path
+                                                d="M6.99999 12.8334C6.99999 12.8334 11.6667 10.5001 11.6667 7.00008V2.91675L6.99999 1.16675L2.33333 2.91675V7.00008C2.33333 10.5001 6.99999 12.8334 6.99999 12.8334Z"
+                                                stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke="currentColor" />
+                                        </g>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_214_639">
+                                            <rect width="14" height="14" fill="white" />
+                                        </clipPath>
+                                        <clipPath id="clip1_214_639">
+                                            <rect width="14" height="14" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+
+                                <span class="font-public-sans font-600 text-lg">Independent
+                                    Verification</span>
+                            </div>
+                            <p
+                                class="py-4 text-brand-default leading-6 text-base font-public-sans font-400">
+                                Our verification desk checks each report and routes it to the municipal agency (Bina
+                                Marga, PAM JAYA, Dishub, DLH, Satpol PP, Citata). Resolution timestamps are tracked
+                                publicly.
+                            </p>
+                        </div>
+
+                        <a class="no-underline text-brand-primary font-public-sans font-600 text-lg mt-4"
+                            href="#">Cancel and return to feed</a>
+
+                    </div>
+
+
+
+                    <div
+                        class="w-[70%] max-lg:w-full flex items-start flex-column justify-start h-fit gap-4">
+
+                        <div
+                            class="w-full flex items-start justify-center flex-column bg-brand-third p-6 rounded-xl border border-brand-default">
+
+                            <div class="flex w-full items-start justify-start flex-column gap-2">
+                                <span class="font-ibm-plex-mono font-400 text-brand-default text-lg">Step 01
+                                    of 04</span>
+                                <span class="font-fraunces font-600 text-[2rem]">What needs fixing?</span>
+                                <span class="font-public-sans font-400 text-brand-default">Select the municipal
+                                    service category that best matches the issue observed.</span>
+                            </div>
+
+                            <div
+                                class="grid gap-4 border-b border-b-brand-default pb-4 items-center justify-center w-full grid-cols-2 mt-8">
+
+                                <div
+                                    class="bg-brand-third border border-brand-default p-6 rounded-xl flex items-center justify-start gap-4 h-full flex-column">
+                                    <div class="w-full flex items-center justify-center gap-4">
+                                        <svg class="text-brand-primary text-lg" width="1em" height="1em"
+                                            viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_214_529)">
+                                                <path
+                                                    d="M6.43125 2.41251L1.1375 11.25C1.02835 11.439 0.970602 11.6533 0.969991 11.8716C0.96938 12.0898 1.02593 12.3045 1.13401 12.4941C1.2421 12.6837 1.39795 12.8417 1.58607 12.9524C1.77418 13.0631 1.988 13.1226 2.20625 13.125H12.7937C13.012 13.1226 13.2258 13.0631 13.4139 12.9524C13.602 12.8417 13.7579 12.6837 13.866 12.4941C13.9741 12.3045 14.0306 12.0898 14.03 11.8716C14.0294 11.6533 13.9716 11.439 13.8625 11.25L8.56875 2.41251C8.45733 2.22882 8.30045 2.07696 8.11325 1.97156C7.92604 1.86616 7.71483 1.81079 7.5 1.81079C7.28516 1.81079 7.07395 1.86616 6.88675 1.97156C6.69955 2.07696 6.54267 2.22882 6.43125 2.41251Z"
+                                                    stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke="currentColor" />
+                                                <path d="M7.5 5.625V8.125" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke="currentColor" />
+                                                <path d="M7.5 10.625H7.50625" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke="currentColor" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_214_529">
+                                                    <rect width="15" height="15" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <span class="font-public-sans font-600 text-lg">Roads &
+                                            Transit</span>
+                                        <div class="grow flex items-center justify-end flex-row">
+                                            <span class="p-4 bg-brand-secondary text-brand-primary rounded-2xl">48h
+                                                SLA</span>
+                                        </div>
+
+                                    </div>
+
+                                    <span class="w-full font-public-sans font-400">Pothole / Sidewalk
+                                        (Trotoar)</span>
+                                    <p class="w-full font-public-sans font-400 text-brand-default">Potholes,
+                                        broken sidewalk slabs, damaged drainage grates</p>
+                                </div>
+
+
+                                <div
+                                    class="bg-brand-third h-full border border-brand-default p-6 rounded-xl flex items-center justify-start gap-4 flex-column">
+                                    <div class="w-full flex items-center justify-center gap-4">
+                                        <svg class="text-brand-primary text-lg" width="1em" height="1em"
+                                            viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_214_539)">
+                                                <path
+                                                    d="M7.5 1.6875L3.5625 5.625C2.98484 6.36312 2.62627 7.24874 2.52772 8.18084C2.42917 9.11293 2.59459 10.054 3.00512 10.8966C3.41566 11.7392 4.05476 12.4494 4.84953 12.9463C5.64429 13.4431 6.56271 13.7066 7.5 13.7066C8.43729 13.7066 9.35571 13.4431 10.1505 12.9463C10.9452 12.4494 11.5843 11.7392 11.9949 10.8966C12.4054 10.054 12.5708 9.11293 12.4723 8.18084C12.3737 7.24874 12.0152 6.36312 11.4375 5.625L7.5 1.6875Z"
+                                                    stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke="currentColor" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_214_539">
+                                                    <rect width="15" height="15" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+
+                                        <span class="font-public-sans font-600 text-lg">Water &
+                                            Sewage</span>
+                                        <div class="grow flex items-center justify-end flex-row">
+                                            <span class="p-4 bg-brand-secondary text-brand-primary rounded-2xl">24h
+                                                SLA</span>
+                                        </div>
+
+                                    </div>
+
+                                    <span class="w-full font-public-sans font-400">Water Burst / Pipa Bocor</span>
+                                    <p class="w-full font-public-sans font-400 text-brand-default">Pipeline
+                                        bursts, flooding tap leaks, dry taps</p>
+                                </div>
+
+
+                                <div
+                                    class="bg-brand-third h-full border border-brand-default p-6 rounded-xl flex items-center justify-start gap-4 flex-column">
+                                    <div class="w-full flex items-center justify-center gap-4">
+                                        <svg class="text-brand-primary text-lg" width="1em" height="1em"
+                                            viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_214_547)">
+                                                <path
+                                                    d="M10 7.5C10 8.88071 8.88071 10 7.5 10C6.11929 10 5 8.88071 5 7.5C5 6.11929 6.11929 5 7.5 5C8.88071 5 10 6.11929 10 7.5Z"
+                                                    stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke="currentColor" />
+                                                <path d="M7.5 1.25V2.5" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke="currentColor" />
+                                                <path d="M7.5 12.5V13.75" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke="currentColor" />
+                                                <path d="M3.0625 3.0625L3.9375 3.9375" stroke-width="1.25"
+                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke="currentColor" />
+                                                <path d="M11.0625 11.0625L11.9375 11.9375" stroke-width="1.25"
+                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke="currentColor" />
+                                                <path d="M1.25 7.5H2.5" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke="currentColor" />
+                                                <path d="M12.5 7.5H13.75" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke="currentColor" />
+                                                <path d="M3.9375 11.0625L3.0625 11.9375" stroke-width="1.25"
+                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke="currentColor" />
+                                                <path d="M11.9375 3.0625L11.0625 3.9375" stroke-width="1.25"
+                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke="currentColor" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_214_547">
+                                                    <rect width="15" height="15" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+
+                                        <span class="font-public-sans font-600 text-lg">Street
+                                            Lighting</span>
+                                        <div class="grow flex items-center justify-end flex-row">
+                                            <span class="p-4 bg-brand-secondary text-brand-primary rounded-2xl">72h
+                                                SLA</span>
+                                        </div>
+
+                                    </div>
+
+                                    <span class="w-full font-public-sans font-400">Dark Street / PJU Padam</span>
+                                    <p class="w-full font-public-sans font-400 text-brand-default">Dark street
+                                        lamps (PJU), damaged base poles, broken traffic signals</p>
+                                </div>
+
+
+                                <div
+                                    class="bg-brand-third h-full border border-brand-default p-6 rounded-xl flex items-center justify-start gap-4 flex-column">
+                                    <div class="w-full flex items-center justify-center gap-4">
+                                        <svg class="text-brand-primary text-lg" width="1rem" height="1rem"
+                                            viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_214_563)">
+                                                <path d="M1.875 3.75H13.125" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke="currentColor" />
+                                                <path
+                                                    d="M11.875 3.75L11.25 12.5C11.25 12.8315 11.1183 13.1495 10.8839 13.3839C10.6495 13.6183 10.3315 13.75 10 13.75H5C4.66848 13.75 4.35054 13.6183 4.11612 13.3839C3.8817 13.1495 3.75 12.8315 3.75 12.5L3.125 3.75"
+                                                    stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke="currentColor" />
+                                                <path d="M6.25 6.875V10.625" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke="currentColor" />
+                                                <path d="M8.75 6.875V10.625" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke="currentColor" />
+                                                <path
+                                                    d="M5.625 3.75V2.5C5.625 2.33424 5.69085 2.17527 5.80806 2.05806C5.92527 1.94085 6.08424 1.875 6.25 1.875H8.75C8.91576 1.875 9.07473 1.94085 9.19194 2.05806C9.30915 2.17527 9.375 2.33424 9.375 2.5V3.75"
+                                                    stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke="currentColor" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_214_563">
+                                                    <rect width="15" height="15" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+
+                                        <span class="font-public-sans font-600 text-lg">Sanitation &
+                                            Waste</span>
+                                        <div class="grow flex items-center justify-end flex-row">
+                                            <span class="p-4 bg-brand-secondary text-brand-primary rounded-2xl">36h
+                                                SLA</span>
+                                        </div>
+
+                                    </div>
+
+                                    <span class="w-full font-public-sans font-400">Trash Pile / Sampah Liar</span>
+                                    <p class="w-full font-public-sans font-400 text-brand-default">Illegal dump
+                                        spots in alleys, overflowing TPS bins, river refuse</p>
+                                </div>
+
+
+                                <div
+                                    class="bg-brand-secondary h-full border border-brand-primary p-6 rounded-xl flex items-center justify-start gap-4 flex-column">
+                                    <div class="w-full flex items-center justify-center gap-4">
+                                        <svg class="text-brand-primary text-lg" width="1em" height="1em"
+                                            viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.5 1.25L4.6875 5.3125H10.3125L7.5 1.25Z" stroke-width="1.25"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" />
+                                            <path d="M7.5 4.375L3.75 9.375H11.25L7.5 4.375Z" stroke-width="1.25"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" />
+                                            <path d="M7.5 9.375V13.75" stroke-width="1.25" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke="currentColor" />
+                                        </svg>
+
+                                        <span class="font-public-sans font-600 text-lg">Public Parks &
+                                            Trees</span>
+                                        <div class="grow flex items-center justify-end flex-row">
+                                            <span class="p-4 bg-brand-secondary text-brand-primary rounded-2xl">48h
+                                                SLA</span>
+                                        </div>
+
+                                    </div>
+
+                                    <span class="w-full font-public-sans font-400">Hazardous Tree / Rawan
+                                        Tumbang</span>
+                                    <p class="w-full font-public-sans font-400 text-brand-default">Falling
+                                        branches (pohon rawan tumbang), RPTRA playground hazards</p>
+                                </div>
+
+
+                                <div
+                                    class="bg-brand-third h-full border border-brand-default p-6 rounded-xl flex items-center justify-start gap-4 flex-column">
+                                    <div class="w-full flex items-center justify-center gap-4">
+                                        <svg class="text-brand-primary text-lg" width="1em" height="1em"
+                                            viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.875 3.125L3.75 5.625H1.25V9.375H3.75L6.875 11.875V3.125Z"
+                                                stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke="currentColor" />
+                                            <path
+                                                d="M9.6875 5.3125C10.0137 5.57614 10.2769 5.90941 10.4576 6.28791C10.6384 6.66641 10.7322 7.08055 10.7322 7.5C10.7322 7.91945 10.6384 8.33359 10.4576 8.71209C10.2769 9.09059 10.0137 9.42386 9.6875 9.6875"
+                                                stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke="currentColor" />
+                                            <path
+                                                d="M11.5625 3.4375C12.1543 3.93618 12.63 4.55813 12.9563 5.25985C13.2827 5.96157 13.4517 6.72611 13.4517 7.5C13.4517 8.27389 13.2827 9.03843 12.9563 9.74015C12.63 10.4419 12.1543 11.0638 11.5625 11.5625"
+                                                stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke="currentColor" />
+                                        </svg>
+
+
+                                        <span class="font-public-sans font-600 text-lg">Noise &
+                                            Disturbance</span>
+                                        <div class="grow flex items-center justify-end flex-row">
+                                            <span class="p-4 bg-brand-secondary text-brand-primary rounded-2xl">48h
+                                                SLA</span>
+                                        </div>
+
+                                    </div>
+
+                                    <span class="w-full font-public-sans font-400">Late-night Noise /
+                                        Ketertiban</span>
+                                    <p class="w-full font-public-sans font-400 text-brand-default">Nocturnal
+                                        construction past 22:00 WIB, sidewalk encroachment</p>
+                                </div>
+
+
+                                <div
+                                    class="bg-brand-third h-full border border-brand-default p-6 rounded-xl flex items-center justify-start gap-4 flex-column">
+                                    <div class="w-full flex items-center justify-center gap-4">
+                                        <svg class="text-brand-primary text-lg" width="1em" height="1em"
+                                            viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1.875 13.125H13.125" stroke-width="1.25" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke="currentColor" />
+                                            <path d="M3.125 13.125V3.75L7.5 1.875V13.125" stroke-width="1.25"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" />
+                                            <path d="M11.875 13.125V6.25L7.5 4.375" stroke-width="1.25"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" />
+                                            <path d="M5 5H5.625" stroke-width="1.25" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke="currentColor" />
+                                            <path d="M5 7.5H5.625" stroke-width="1.25" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke="currentColor" />
+                                            <path d="M5 10H5.625" stroke-width="1.25" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke="currentColor" />
+                                            <path d="M9.375 6.875H10" stroke-width="1.25" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke="currentColor" />
+                                            <path d="M9.375 9.375H10" stroke-width="1.25" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke="currentColor" />
+                                        </svg>
+
+                                        <span class="font-public-sans font-600 text-lg">Building &
+                                            Zoning</span>
+                                        <div class="grow flex items-center justify-end flex-row">
+                                            <span class="p-4 bg-brand-secondary text-brand-primary rounded-2xl">72h
+                                                SLA</span>
+                                        </div>
+
+                                    </div>
+
+                                    <span class="w-full font-public-sans font-400">Unsafe Construction /
+                                        Bangunan</span>
+                                    <p class="w-full font-public-sans font-400 text-brand-default">Unsafe
+                                        scaffolding, structural hazards, building boundary violations</p>
+                                </div>
+
+                            </div>
+
+                            <div class="w-full items-center justify-between flex-row flex py-8">
+                                <button
+                                    class="bg-transparent border-0 outline-none text-brand-primary text-base font-public-sans font-600">Cancel</button>
+                                <a href="#"
+                                    class="bg-brand-primary no-underline text-white font-public-sans font-600 text-base rounded-2xl p-4 border-0 outline-none cursor-pointer flex items-center justify-center gap-2">
+                                    Continue
+                                    <svg width="1em" height="1em" viewBox="0 0 13 13" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_214_614)">
+                                            <path d="M2.70831 6.5H10.2916" stroke-width="1.08333" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke="currentColor" />
+                                            <path d="M6.5 2.70825L10.2917 6.49992L6.5 10.2916" stroke-width="1.08333"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_214_614">
+                                                <rect width="13" height="13" fill="currentColor" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="w-full flex justify-center items-center flex-column border-t border-t-brand-default">
+        <div class="footer-items w-[90%] flex justify-center items-center flex-row py-8">
+
+            <div class="flex justify-center items-start flex-column w-1/2 gap-4fourth">
+                <span class="font-fraunces font-600 text-xl">WargaReport</span>
+                <p class="font-public-sans font-400 text-brand-default text-base leading-6">
+                    WargaReport is an independent civic reporting platform for
+                    municipal infrastructure issues across Indonesia. Residents
+                    submit evidence, follow SLA countdowns, and track resolution
+                    updates from the responsible agencies.
+                </p>
+                <p class="font-public-sans font-400 text-base leading-6 text-brand-red">
+                    Not for life-threatening emergencies — call 112 (National
+                    Emergency Call Center) or BPBD DKI directly.
+                </p>
+            </div>
+
+            <div class="flex justify-around items-start flex-row w-1/2 py-8 h-full">
+                <div class="w-1/3 flex justify-start items-center flex-column gap-2">
+                    <span class="font-ibm-plex-mono font-500 w-full uppercase">Citizens</span>
+                    <ul class="flex justify-center items-start flex-column gap-2 w-full">
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">File a
+                            report</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Track
+                            complaint</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Public
+                            reports registry</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">My filing
+                            history</li>
+                    </ul>
+                </div>
+                <div class="w-1/3 flex justify-start items-center flex-column gap-2">
+                    <span class="font-ibm-plex-mono font-500 w-full uppercase">Agencies</span>
+                    <ul class="flex justify-center items-start flex-column gap-2 w-full">
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">
+                            Participating bureaus</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Officer
+                            triage queue</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">SLA
+                            benchmarks</li>
+                    </ul>
+                </div>
+                <div class="w-1/3 flex justify-start items-center flex-column gap-2">
+                    <span class="font-ibm-plex-mono font-500 w-full uppercase">Civic Trust</span>
+                    <ul class="flex justify-center items-start flex-column gap-2 w-full">
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Help &
+                            FAQs</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Evidence
+                            guidelines</li>
+                        <li class="font-public-sans font-500 text-brand-default list-none text-base">PII &
+                            redaction policy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div
+            class="w-[90%] font-public-sans font-400 text-brand-default text-base border-t border-t-brand-default py-8 flex justify-between items-center flex-row">
+            <span>&copy; 2026 WargaReport. All rights reserved.</span>
+            <span>UU No. 25/2009 Compliant</span>
+        </div>
+    </footer>
+
+</body>
+
+</html>
