@@ -6,6 +6,9 @@ import TrackPage from "./pages/TrackPage";
 import HowItWorksPage from "./pages/HowItWorksPage";
 import ReportingPage from "./pages/ReportingPage";
 import ReportingReceiptPage from "./pages/ReportingReceiptPage";
+import UserNotificationPage from "./pages/UserNotificationPage";
+import UserFlowPage from "./pages/UserFlowPage";
+import DetailReportPage from "./pages/DetailReportPage";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +37,18 @@ const router = createBrowserRouter([
             {
                 path: "/reporting/receipt",
                 element: <ReportingReceiptPage/>
+            },
+            {
+                path: "/user/notification",
+                element: <UserNotificationPage/>
+            },
+            {
+                path: "/user",
+                element: <UserFlowPage/>
+            },
+            {
+                path: "/track/detail",
+                element: <DetailReportPage/>
             }
         ],
     },

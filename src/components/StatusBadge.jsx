@@ -47,7 +47,7 @@ export default function StatusBadge({ status }) {
         </div>
       );
 
-    case "in review":
+    case "in riview":
       return (
         <div className="flex items-center justify-center gap-2 rounded-4xl border border-brand-orange bg-brand-orange-secondary p-2 text-brand-orange">
           <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
