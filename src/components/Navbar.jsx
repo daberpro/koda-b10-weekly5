@@ -31,9 +31,15 @@ export default function Navbar() {
                     </div>
                     <div className="w-full lg:w-fit lg:h-full h-fit flex justify-center items-center">
                         <div className="flex lg:flex-row lg:border-0 flex-col lg:flex-wrap border-y border-y-brand-default w-full justify-center items-start py-4 gap-4">
-                            <NavLink className="no-underline text-brand-default text-base py-2 px-6" to="/live-feed">Live Feed</NavLink>
-                            <NavLink className="no-underline text-brand-default text-base py-2 px-6" to="/track">Track</NavLink>
-                            <NavLink className="no-underline text-brand-default text-base py-2 px-6" to="/how-it-works">How it works</NavLink>
+                            <NavLink className={({ isActive }) => {
+                                 return "no-underline text-brand-default text-base py-2 px-6 rounded-4xl " + (isActive ? "bg-brand-primary text-white font-bold" : "");
+                            }} to="/live-feed">Live Feed</NavLink>
+                            <NavLink className={({ isActive }) => {
+                                 return "no-underline text-brand-default text-base py-2 px-6 rounded-4xl " + (isActive ? "bg-brand-primary text-white font-bold" : "");
+                            }} to="/track">Track</NavLink>
+                            <NavLink className={({ isActive }) => {
+                                 return "no-underline text-brand-default text-base py-2 px-6 rounded-4xl " + (isActive ? "bg-brand-primary text-white font-bold" : "");
+                            }} to="/how-it-works">How it works</NavLink>
                         </div>
                     </div>
                     <div id="nav-btn-container" className="w-fit h-full max-lg:py-4 gap-4 flex justify-end items-center">

@@ -6,7 +6,7 @@ export default function DefaultLayout(){
     return (
         <>
             <Navbar/>
-            <main className="w-full min-h-screen bg-brand-main">
+            <main className="flex flex-col justify-center items-center w-full bg-brand-main py-12">
                 <Outlet />
             </main>
             <Footer/>
