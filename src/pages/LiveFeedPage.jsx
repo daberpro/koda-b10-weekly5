@@ -150,11 +150,11 @@ export default function LiveFeedPage() {
             </div>
 
             <div className="flex-wrap flex justify-start items-center flex-row mt-8 max-lg:w-full gap-2">
-                <div className="p-4 text-base bg-brand-third border border-brand-border text-brand-default rounded-3xl">
+                <div className="px-4 py-2 text-base bg-brand-third border border-brand-border text-brand-default rounded-3xl">
                     All issues (6)
                 </div>
                 <div
-                    className="p-4 flex items-center justify-center gap-2 text-base bg-brand-third border border-brand-border rounded-3xl text-brand-default">
+                    className="px-4 py-2 flex items-center justify-center gap-2 text-base bg-brand-third border border-brand-border rounded-4xl text-brand-default">
                     <svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_2_233)">
                             <path
@@ -176,7 +176,7 @@ export default function LiveFeedPage() {
                     Roads & Transit
                 </div>
                 <div
-                    className="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-border rounded-3xl">
+                    className="px-4 py-2 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-border rounded-4xl">
                     <svg width="1em" height="1em" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M5.25004 0.583313L1.57504 4.25831C1.03589 4.94722 0.701228 5.77381 0.609245 6.64376C0.517262 7.51372 0.67166 8.39201 1.05482 9.17844C1.43799 9.96487 2.03449 10.6278 2.77627 11.0915C3.51805 11.5552 4.37524 11.8011 5.25004 11.8011C6.12485 11.8011 6.98204 11.5552 7.72382 11.0915C8.4656 10.6278 9.0621 9.96487 9.44526 9.17844C9.82843 8.39201 9.98282 7.51372 9.89084 6.64376C9.79886 5.77381 9.4642 4.94722 8.92504 4.25831L5.25004 0.583313Z"
@@ -187,7 +187,7 @@ export default function LiveFeedPage() {
                     Water & Sewage
                 </div>
                 <div
-                    className="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-border rounded-3xl">
+                    className="px-4 py-2 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-border rounded-4xl">
                     <svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_2_243)">
                             <path
@@ -221,7 +221,7 @@ export default function LiveFeedPage() {
                     Street Lighting
                 </div>
                 <div
-                    className="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-border rounded-3xl">
+                    className="px-4 py-2 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-border rounded-4xl">
                     <svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_2_255)">
                             <path d="M1.75 3.5H12.25" strokeWidth="1.16667" strokeLinecap="round"
@@ -250,7 +250,7 @@ export default function LiveFeedPage() {
                     Sanitation & Waste
                 </div>
                 <div
-                    className="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-border rounded-3xl">
+                    className="px-4 py-2 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-border rounded-4xl">
                     <svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_2_263)">
                             <path d="M7 1.16669L4.375 4.95835H9.625L7 1.16669Z" strokeWidth="1.16667"
@@ -271,7 +271,7 @@ export default function LiveFeedPage() {
                     Public Parks & Trees
                 </div>
                 <div
-                    className="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-border rounded-3xl">
+                    className="px-4 py-2 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-border rounded-4xl">
                     <svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.41675 2.91669L3.50008 5.25002H1.16675V8.75002H3.50008L6.41675 11.0834V2.91669Z"
                             strokeWidth="1.16667" strokeLinecap="round" strokeLinejoin="round"
@@ -290,7 +290,7 @@ export default function LiveFeedPage() {
                     Noise & Disturbance
                 </div>
                 <div
-                    className="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-border rounded-3xl">
+                    className="px-4 py-2 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-border rounded-4xl">
                     <svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1.75 12.25H12.25" strokeWidth="1.16667" strokeLinecap="round"
                             strokeLinejoin="round" stroke="currentColor" />
@@ -320,7 +320,7 @@ export default function LiveFeedPage() {
 
             <div className="flex max-lg:flex-col gap-4 justify-between items-center flex-row w-full">
                 <div
-                    className="w-fit max-[1499px]:p-4 flex justify-start items-center flex-wrap flex-row gap-2 bg-brand-third rounded-3xl border border-brand-border px-4">
+                    className="w-fit max-[1499px]:p-4 flex justify-start items-center flex-wrap flex-row gap-2 bg-brand-third rounded-4xl border border-brand-border px-4">
                     <span className="font-ibm-plex-mono text-base text-brand-default p-2">Status:</span>
                     <button
                         className="rounded-2xl text-base font-public-sans font-400 border-0 py-2 px-6 bg-brand-primary text-white">All</button>
