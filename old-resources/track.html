@@ -120,27 +120,27 @@
         }
     </script>
 
-    <main class="flex flex-column justify-center items-center w-full bg-brand-main-color py-12">
+    <main class="flex flex-col justify-center items-center w-full bg-brand-main-color py-12">
 
-        <div class="flex flex-column justify-start items-start w-[90%] gap-4">
+        <div class="flex flex-col justify-start items-start w-[90%] gap-4">
 
             <div class="w-full max-md:flex-col h-fit flex flex-row items-start justify-center">
 
                 <div
-                    class="w-1/2 max-md:w-full bg-brand-third border border-brand-default p-6 rounded-xl flex-column gap-4 items-start justify-center flex-column flex">
+                    class="w-1/2 max-md:w-full bg-brand-third border border-brand-default p-6 rounded-xl flex-col gap-4 items-start justify-center flex-col flex">
                     <span class="uppercase text-brand-default text-base">Citizen Portal</span>
                     <h1 class="font-fraunces text-[3.5rem]">Track your complaint</h1>
                     <p class="font-public-sans text-lg line-h-8 font-400 text-brand-default">
                         Enter your official case reference number to view real-time triage progress,<br />
                         inspector assignment, and official replies.
                     </p>
-                    <div class="flex justify-start items-center flex-column gap-4 w-full">
+                    <div class="flex justify-start items-center flex-col gap-4 w-full">
                         <label class="font-ibm-plex-mono w-full font-600 text-base" for="complain-id">Complaint
                             Reference ID *</label>
                         <input placeholder="e.g. CMP-2026-8841" id="complain-id" type="text"
                             class="bg-brand-third w-full border border-brand-default rounded-xl p-4 text-brand-default text-base font-public-sans font-400 outline-none">
                     </div>
-                    <div class="flex justify-start items-center flex-column gap-4 w-full">
+                    <div class="flex justify-start items-center flex-col gap-4 w-full">
                         <label class="font-ibm-plex-mono w-full font-600 text-base" for="complain-id">Email
                             address or phone (optional verification)</label>
                         <input placeholder="citizen@example.com" id="complain-id" type="text"
@@ -154,7 +154,7 @@
                 </div>
 
                 <div
-                    class="w-1/2 max-md:w-full flex items-start flex-column justify-start h-fit p-6">
+                    class="w-1/2 max-md:w-full flex items-start flex-col justify-start h-fit p-6">
                     <div
                         class="flex items-start justify-start w-full flex-row gap-2 p-6 border-b border-b-brand-default">
                         <svg class="text-xl text-brand-default" width="1em" height="1em" viewBox="0 0 20 20"
@@ -194,10 +194,10 @@
 
     </main>
 
-    <footer class="w-full flex justify-center items-center flex-column border-t border-t-brand-default">
+    <footer class="w-full flex justify-center items-center flex-col border-t border-t-brand-default">
         <div class="footer-items w-[90%] flex justify-center items-center flex-row py-8">
 
-            <div class="flex justify-center items-start flex-column w-1/2 gap-4fourth">
+            <div class="flex justify-center items-start flex-col w-1/2 gap-4fourth">
                 <span class="font-fraunces font-600 text-xl">WargaReport</span>
                 <p class="font-public-sans font-400 text-brand-default text-base leading-6">
                     WargaReport is an independent civic reporting platform for
@@ -212,9 +212,9 @@
             </div>
 
             <div class="flex justify-around items-start flex-row w-1/2 py-8 h-full">
-                <div class="w-1/3 flex justify-start items-center flex-column gap-2">
+                <div class="w-1/3 flex justify-start items-center flex-col gap-2">
                     <span class="font-ibm-plex-mono font-500 w-full uppercase">Citizens</span>
-                    <ul class="flex justify-center items-start flex-column gap-2 w-full">
+                    <ul class="flex justify-center items-start flex-col gap-2 w-full">
                         <li class="font-public-sans font-500 text-brand-default list-none text-base">File a
                             report</li>
                         <li class="font-public-sans font-500 text-brand-default list-none text-base">Track
@@ -225,9 +225,9 @@
                             history</li>
                     </ul>
                 </div>
-                <div class="w-1/3 flex justify-start items-center flex-column gap-2">
+                <div class="w-1/3 flex justify-start items-center flex-col gap-2">
                     <span class="font-ibm-plex-mono font-500 w-full uppercase">Agencies</span>
-                    <ul class="flex justify-center items-start flex-column gap-2 w-full">
+                    <ul class="flex justify-center items-start flex-col gap-2 w-full">
                         <li class="font-public-sans font-500 text-brand-default list-none text-base">
                             Participating bureaus</li>
                         <li class="font-public-sans font-500 text-brand-default list-none text-base">Officer
@@ -236,9 +236,9 @@
                             benchmarks</li>
                     </ul>
                 </div>
-                <div class="w-1/3 flex justify-start items-center flex-column gap-2">
+                <div class="w-1/3 flex justify-start items-center flex-col gap-2">
                     <span class="font-ibm-plex-mono font-500 w-full uppercase">Civic Trust</span>
-                    <ul class="flex justify-center items-start flex-column gap-2 w-full">
+                    <ul class="flex justify-center items-start flex-col gap-2 w-full">
                         <li class="font-public-sans font-500 text-brand-default list-none text-base">Help &
                             FAQs</li>
                         <li class="font-public-sans font-500 text-brand-default list-none text-base">Evidence

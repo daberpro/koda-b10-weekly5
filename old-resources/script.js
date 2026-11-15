@@ -223,14 +223,14 @@ function UserDropdownSubmenu({ fullname = "", email = "" } = {}) {
     return createElement(
         "div",
         {
-            class: "position-abs w-80 left-0 bg-brand-third border border-brand-default radius-1 h-fit nav-profile-submenu hidden gap-2 items-center justify-center flex-column",
+            class: "position-abs w-80 left-0 bg-brand-third border border-brand-default radius-1 h-fit nav-profile-submenu hidden gap-2 items-center justify-center flex-col",
         },
         "",
         [
             // Info user
             createElement(
                 "div",
-                { class: "w-full pad-1 flex items-start justify-between flex-column gap-2" },
+                { class: "w-full pad-1 flex items-start justify-between flex-col gap-2" },
                 "",
                 [
                     createElement("span", { class: "font-public-sans weight-600 font-size-1" }, fullname),
@@ -356,7 +356,7 @@ function UserDropdownMenuComponent({ fullname = "", email = "" } = {}) {
             // Nama & role
             createElement(
                 "div",
-                { class: "flex items-start justify-center flex-column" },
+                { class: "flex items-start justify-center flex-col" },
                 "",
                 [
                     createElement("span", { class: "font-public-sans weight-600 font-size-1" }, fullname),
@@ -367,7 +367,7 @@ function UserDropdownMenuComponent({ fullname = "", email = "" } = {}) {
             // Chevron
             createElement(
                 "div",
-                { class: "flex items-center h-full justify-center flex-column" },
+                { class: "flex items-center h-full justify-center flex-col" },
                 "",
                 [
                     svgIcon(
@@ -408,7 +408,7 @@ function FormSigninComponent() {
     return createElement(
         "form",
         {
-            class: "w-full flex items-center justify-center flex-column gap-4",
+            class: "w-full flex items-center justify-center flex-col gap-4",
             action: "",
         },
         "",
@@ -416,7 +416,7 @@ function FormSigninComponent() {
             // Email
             createElement(
                 "div",
-                { class: "flex justify-start items-center flex-column gap-4 w-full" },
+                { class: "flex justify-start items-center flex-col gap-4 w-full" },
                 "",
                 [
                     createElement(
@@ -463,7 +463,7 @@ function FormSigninComponent() {
             // Password
             createElement(
                 "div",
-                { class: "flex justify-start items-center flex-column gap-4 w-full" },
+                { class: "flex justify-start items-center flex-col gap-4 w-full" },
                 "",
                 [
                     createElement(
@@ -570,7 +570,7 @@ function FormRegisterComponent() {
     return createElement(
         "form",
         {
-            class: "w-full hidden items-center justify-center flex-column gap-4",
+            class: "w-full hidden items-center justify-center flex-col gap-4",
             action: "",
         },
         "",
@@ -578,7 +578,7 @@ function FormRegisterComponent() {
             // Full name
             createElement(
                 "div",
-                { class: "flex justify-start items-center flex-column gap-4 w-full" },
+                { class: "flex justify-start items-center flex-col gap-4 w-full" },
                 "",
                 [
                     createElement(
@@ -627,14 +627,14 @@ function FormRegisterComponent() {
             createElement(
                 "div",
                 {
-                    class: "flex md-flex-column items-center justify-between flex-row gap-4 w-full",
+                    class: "flex md-flex-col items-center justify-between flex-row gap-4 w-full",
                 },
                 "",
                 [
                     createElement(
                         "div",
                         {
-                            class: "flex justify-start items-center flex-column gap-4 w-full",
+                            class: "flex justify-start items-center flex-col gap-4 w-full",
                         },
                         "",
                         [
@@ -682,7 +682,7 @@ function FormRegisterComponent() {
                     createElement(
                         "div",
                         {
-                            class: "flex justify-start items-center flex-column gap-4 w-full",
+                            class: "flex justify-start items-center flex-col gap-4 w-full",
                         },
                         "",
                         [
@@ -719,7 +719,7 @@ function FormRegisterComponent() {
             // NIK
             createElement(
                 "div",
-                { class: "flex justify-start items-center flex-column gap-4 w-full" },
+                { class: "flex justify-start items-center flex-col gap-4 w-full" },
                 "",
                 [
                     createElement(
@@ -761,7 +761,7 @@ function FormRegisterComponent() {
             // Password
             createElement(
                 "div",
-                { class: "flex justify-start items-center flex-column gap-4 w-full" },
+                { class: "flex justify-start items-center flex-col gap-4 w-full" },
                 "",
                 [
                     createElement(
@@ -882,7 +882,7 @@ function ModalComponentLoginRegister() {
     const modalBody = createElement(
         "div",
         {
-            class: "bg-brand-third modal-body pad-1half w-full radius-bl-1 radius-br-1 flex items-center justify-center flex-column gap-4",
+            class: "bg-brand-third modal-body pad-1half w-full radius-bl-1 radius-br-1 flex items-center justify-center flex-col gap-4",
         },
         "",
         [
@@ -974,14 +974,14 @@ function ModalComponentLoginRegister() {
     return createElement(
         "div",
         {
-            class: "w-full h-full position-fix z-i20 bg-black/75 container-modal hidden items-center justify-center flex-column",
+            class: "w-full h-full position-fix z-i20 bg-black/75 container-modal hidden items-center justify-center flex-col",
         },
         "",
         [
             createElement(
                 "div",
                 {
-                    class: "radius-1 md-w-[90%] md-height-90percent md-overflow-y-scroll md-justify-start modal-form flex items-center justify-center flex-column",
+                    class: "radius-1 md-w-[90%] md-height-90percent md-overflow-y-scroll md-justify-start modal-form flex items-center justify-center flex-col",
                 },
                 "",
                 [
@@ -997,7 +997,7 @@ function ModalComponentLoginRegister() {
                             createElement(
                                 "div",
                                 {
-                                    class: "flex w-[70%] items-start justify-center flex-column gap-2",
+                                    class: "flex w-[70%] items-start justify-center flex-col gap-2",
                                 },
                                 "",
                                 [

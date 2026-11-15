@@ -13,7 +13,7 @@ function ComponentVariant({ totalProof = 0, date = "Uknown 0", variant }) {
                     <span className="font-ibm-plex-mono font-400 text-base">{ totalProof } proof</span>
                     <span className="font-ibm-plex-mono font-400 text-base text-brand-default">{ date }</span>
                     <button
-                        className="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-column text-base font-400 text-brand-primary">
+                        className="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-col text-base font-400 text-brand-primary">
                         <span className="font-600 text-base">Track &#8594;</span>
                     </button>
                 </>
