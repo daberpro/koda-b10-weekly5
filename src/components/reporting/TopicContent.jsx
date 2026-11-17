@@ -82,7 +82,7 @@ function TopicCard({
 export default function TopicContent(props) {
     const { children, nextStepConfirm } = props;
     const [report, setReport] = useContext(TempReportContext);
-    const [selectedTopic, setSelectedTopic] = useState(enumTopic.WARNING);
+    const [selectedTopic, setSelectedTopic] = useState(report.topic || enumTopic.WARNING);
 
     useEffect(() => {
         const copyReportData = { ...report };

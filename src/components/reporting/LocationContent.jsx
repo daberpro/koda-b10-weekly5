@@ -12,20 +12,21 @@ export default function LocationContent(props) {
 
     const { children, nextStepConfirm } = props;
 
+    const [report, setReport] = useContext(TempReportContext);
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm({
         defaultValues: {
-            area: "",
-            address: "",
-            coordinate: "6.2088° S, 106.8456° E (WIB)",
+            area: report.location?.area || "",
+            address: report.location?.address || "",
+            coordinate:
+                report.location?.coordinate || "6.2088° S, 106.8456° E (WIB)",
         },
         resolver: yupResolver(schemaValidate),
     });
 
-    const [report, setReport] = useContext(TempReportContext);
     function addLocationHandler(data) {
         const copyReportData = { ...report };
         copyReportData.location = data;

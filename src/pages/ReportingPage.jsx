@@ -165,6 +165,7 @@ export default function ReportingPage() {
     const [currentStep, setCurrentStep] = useState(enumStep.TOPIC);
     const [stepCounter, setStepCounter] = useState(0);
     const [report, setReport] = useState({
+        id: "",
         topic: "",
         location: {
             area: "",

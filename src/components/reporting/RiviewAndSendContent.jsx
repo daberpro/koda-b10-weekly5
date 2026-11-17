@@ -3,6 +3,9 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as YUP from "yup";
 import { TempReportContext } from "../../lib/contexts";
+import { useLocalStorage } from "../../lib/hooks/localStorageHook";
+import { storageKeys } from "../../lib/util";
+import { useNavigate } from "react-router";
 
 export default function RiviewAndSendContent(props) {
     const schemaValidate = YUP.object({
@@ -17,21 +20,44 @@ export default function RiviewAndSendContent(props) {
     });
 
     const { children, nextStepConfirm } = props;
+    const [report, setReport] = useContext(TempReportContext);
 
     const {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
     } = useForm({
+        defaultValues: {
+            title: report.title || "",
+            details: report.details || "",
+            anonymus: report.anonymus || "",
+            filerName: report.title || "",
+            email: report.email || "",
+            phone: report.phone || "",
+            confirm: report.confirm || "",
+            alertChannels: report.alertChannels || [],
+        },
         resolver: yupResolver(schemaValidate),
     });
 
-    const [report, setReport] = useContext(TempReportContext);
+    const [storage, setStorage] = useLocalStorage(storageKeys.REPORTS, []);
+    const navigate = useNavigate();
     function riviewAndSend(data) {
-        const copyReportData = { ...report, ...data };
-        setReport(copyReportData);
-        nextStepConfirm();
-        console.log(copyReportData);
+        const date = new Date();
+        const currentTotalStr = storage.length.toString();
+        let lengthStrId = 4 - currentTotalStr.length;
+        if (lengthStrId < 0) {
+            lengthStrId = 0;
+        }
+        const id = `CMP-${date.getFullYear()}-${"0".repeat(lengthStrId) + currentTotalStr}`;
+        const copyReportData = { ...report, ...data, id };
+        setStorage([...storage, copyReportData]);
+        reset();
+
+        const urlParams = new URLSearchParams();
+        urlParams.set("id", id);
+        navigate("/reporting/receipt?" + urlParams.toString());
     }
 
     return (
@@ -53,6 +79,7 @@ export default function RiviewAndSendContent(props) {
                         placeholder="Title"
                         id="title"
                         type="text"
+                        defaultValue={report.title}
                         className="bg-brand-third grow border-0 rounded-xl p-4 text-brand-default text-base font-public-sans font-400 outline-none"
                     />
                 </div>
