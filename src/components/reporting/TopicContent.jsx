@@ -6,6 +6,10 @@ import Trash from "../icon/Trash";
 import Tree from "../icon/Tree";
 import Warning from "../icon/Warning";
 import Water from "../icon/Water";
+import { useContext } from "react";
+import { TempReportContext } from "../../lib/contexts";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 
 const enumTopic = {
     BUILDING: "building",
@@ -14,56 +18,77 @@ const enumTopic = {
     TRASH: "trash",
     TREE: "tree",
     WARNING: "warning",
-    WATER: "water"
+    WATER: "water",
 };
 
 function Icon({ topic }) {
     switch (topic) {
         case enumTopic.BUILDING:
-            return <Building/>;
+            return <Building />;
         case enumTopic.LIGHTING:
-            return <Lighting/>;
+            return <Lighting />;
         case enumTopic.SOUND:
-            return <Sound/>;
+            return <Sound />;
         case enumTopic.TRASH:
-            return <Trash/>;
+            return <Trash />;
         case enumTopic.TREE:
-            return <Tree/>;
+            return <Tree />;
         case enumTopic.WARNING:
-            return <Warning/>;
+            return <Warning />;
         case enumTopic.WATER:
-            return <Water/>;
+            return <Water />;
     }
 }
 
-function TopicCard({ topic, title, subtitle, totalHours, description, selected, clickFn }) {
+function TopicCard({
+    topic,
+    title,
+    subtitle,
+    totalHours,
+    description,
+    selected,
+    clickFn,
+}) {
     return (
-        <div onClick={clickFn} className={"border p-6 cursor-pointer rounded-xl flex items-center justify-start gap-4 h-full flex-col " + (selected? "bg-brand-secondary border-brand-primary" : "bg-brand-third border-brand-border")}>
+        <div
+            onClick={clickFn}
+            className={
+                "border p-6 cursor-pointer rounded-xl flex items-center justify-start gap-4 h-full flex-col " +
+                (selected
+                    ? "bg-brand-secondary border-brand-primary"
+                    : "bg-brand-third border-brand-border")
+            }
+        >
             <div className="w-full flex items-center justify-center gap-4">
                 <Icon topic={topic} />
                 <span className="font-public-sans font-600 text-lg">
                     {title}
                 </span>
                 <div className="grow flex items-center justify-end flex-row">
-                    <span className="p-4 bg-brand-secondary text-brand-primary rounded-2xl">
+                    <span className="px-4 py-2 bg-brand-secondary text-brand-primary rounded-4xl">
                         {totalHours}h SLA
                     </span>
                 </div>
             </div>
 
-            <span className="w-full font-public-sans font-400">
-                {subtitle}
-            </span>
+            <span className="w-full font-public-sans font-400">{subtitle}</span>
             <p className="w-full font-public-sans font-400 text-brand-default">
-            {description}
+                {description}
             </p>
         </div>
     );
 }
 
-export default function TopicContent() {
-
+export default function TopicContent(props) {
+    const { children, nextStepConfirm } = props;
+    const [report, setReport] = useContext(TempReportContext);
     const [selectedTopic, setSelectedTopic] = useState(enumTopic.WARNING);
+
+    useEffect(() => {
+        const copyReportData = { ...report };
+        copyReportData.topic = selectedTopic;
+        setReport(copyReportData);
+    }, [selectedTopic]);
 
     const allTopics = [
         {
@@ -71,59 +96,80 @@ export default function TopicContent() {
             title: "Water & Sewage",
             totalHours: 24,
             subtitle: "Water Burst / Pipa Bocor",
-            description: "Pipeline bursts, flooding tap leaks, dry taps"
+            description: "Pipeline bursts, flooding tap leaks, dry taps",
         },
         {
             topic: enumTopic.WARNING,
             title: "Roads & Transit",
             totalHours: 48,
             subtitle: "Pothole / Sidewalk (Trotoar)",
-            description: "Potholes, broken sidewalk slabs, damaged drainage grates"
+            description:
+                "Potholes, broken sidewalk slabs, damaged drainage grates",
         },
         {
             topic: enumTopic.LIGHTING,
             title: " Street Lighting",
             totalHours: 72,
             subtitle: "Dark Street / PJU Padam",
-            description: "Dark street lamps (PJU), damaged base poles, broken traffic signals"
+            description:
+                "Dark street lamps (PJU), damaged base poles, broken traffic signals",
         },
         {
             topic: enumTopic.TRASH,
             title: "Sanitation & Waste",
             totalHours: 36,
             subtitle: "Trash Pile / Sampah Liar",
-            description: "Illegal dump spots in alleys, overflowing TPS bins, river refuse"
+            description:
+                "Illegal dump spots in alleys, overflowing TPS bins, river refuse",
         },
         {
             topic: enumTopic.TREE,
             title: "Public Parks & Trees",
             totalHours: 48,
             subtitle: "Hazardous Tree / Rawan Tumbang",
-            description: "Falling branches (pohon rawan tumbang), RPTRA playground hazards"
+            description:
+                "Falling branches (pohon rawan tumbang), RPTRA playground hazards",
         },
         {
             topic: enumTopic.SOUND,
             title: "Noise & Disturbance",
             totalHours: 48,
             subtitle: "Late-night Noise / Ketertiban",
-            description: "Nocturnal construction past 22:00 WIB, sidewalk encroachment"
+            description:
+                "Nocturnal construction past 22:00 WIB, sidewalk encroachment",
         },
         {
             topic: enumTopic.BUILDING,
             title: "Building & Zoning",
             totalHours: 72,
             subtitle: "Unsafe Construction / Bangunan",
-            description: "Unsafe scaffolding, structural hazards, building boundary violations"
-        }
+            description:
+                "Unsafe scaffolding, structural hazards, building boundary violations",
+        },
     ];
 
+    const { handleSubmit } = useForm();
+    function nextStep() {
+        nextStepConfirm();
+    }
+
     return (
-        <div className="grid gap-4 border-b border-b-brand-border pb-4 items-center justify-center w-full grid-cols-2 mt-8">
-            {
-                allTopics.map((data) => {
-                    return <TopicCard clickFn={()=> setSelectedTopic(data.topic)} selected={data.topic === selectedTopic}  {...data} key={data.topic} />
-                })
-            }
-        </div>
+        <form action={""} onSubmit={handleSubmit(nextStep)}>
+            <div className="grid gap-4 border-b border-b-brand-border pb-4 items-center justify-center w-full grid-cols-2 mt-8">
+                {allTopics.map((data) => {
+                    return (
+                        <TopicCard
+                            clickFn={() => {
+                                setSelectedTopic(data.topic);
+                            }}
+                            selected={data.topic === selectedTopic}
+                            {...data}
+                            key={data.topic}
+                        />
+                    );
+                })}
+            </div>
+            {children}
+        </form>
     );
 }

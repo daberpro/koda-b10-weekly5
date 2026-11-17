@@ -12,17 +12,17 @@
 <body>
 
     <nav id="navbar"
-        class="navbar flex navbar-overflow-y-hidden h-20 justify-center items-center flex-row w-full border-b border-b-brand-default">
-        <div class="w-[90%] flex justify-between items-center h-full">
-            <div class="w-fit brand-container h-20 flex justify-start items-center">
+        className="navbar flex navbar-overflow-y-hidden h-20 justify-center items-center flex-row w-full border-b border-b-brand-default">
+        <div className="w-[90%] flex justify-between items-center h-full">
+            <div className="w-fit brand-container h-20 flex justify-start items-center">
                 <a href="index.html"
-                    class="w-fit text-black no-underline h-full flex justify-start items-center flex-row gap-4">
+                    className="w-fit text-black no-underline h-full flex justify-start items-center flex-row gap-4">
                     <img src="assets/icons/logo.svg" alt="logo" />
-                    <span class="font-fraunces font-700 text-base">Warga Report</span>
+                    <span className="font-fraunces font-700 text-base">Warga Report</span>
                 </a>
 
-                <button id="nav-burger-btn" class="outline-none hidden burger-btn border-0 bg-transparent">
-                    <svg class="text-xl" width="1em" height="1em" viewBox="0 0 24 24" fill="none"
+                <button id="nav-burger-btn" className="outline-none hidden burger-btn border-0 bg-transparent">
+                    <svg className="text-xl" width="1em" height="1em" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 12H20" stroke="#000000" strokeWidth="2" strokeLinecap="round" />
                         <path d="M5 17H20" stroke="#000000" strokeWidth="2" strokeLinecap="round" />
@@ -30,20 +30,20 @@
                     </svg>
                 </button>
             </div>
-            <div class="navbar-menu w-fit h-full flex justify-center items-center flex-row">
-                <div class="flex justify-center items-center gap-4">
-                    <a class="no-underline text-brand-default text-base py-2 px-6"
+            <div className="navbar-menu w-fit h-full flex justify-center items-center flex-row">
+                <div className="flex justify-center items-center gap-4">
+                    <a className="no-underline text-brand-default text-base py-2 px-6"
                         href="live-feed.html">Live Feed</a>
-                    <a class="no-underline text-brand-default text-base py-2 px-6"
+                    <a className="no-underline text-brand-default text-base py-2 px-6"
                         href="track.html">Track</a>
-                    <a class="no-underline text-brand-default text-base py-2 px-6"
+                    <a className="no-underline text-brand-default text-base py-2 px-6"
                         href="how-it-works.html">How it works</a>
                 </div>
             </div>
             <div id="nav-btn-container"
-                class="w-fit h-full max-lg:py-4 gap-4 flex justify-end items-center flex-row">
+                className="w-fit h-full max-lg:py-4 gap-4 flex justify-end items-center flex-row">
                 <button id="signin"
-                    class="w-fit bg-transparent outline-none border-0 cursor-pointer h-fit text-brand-default no-underline py-2 px-6 gap-2 flex justify-center items-center"
+                    className="w-fit bg-transparent outline-none border-0 cursor-pointer h-fit text-brand-default no-underline py-2 px-6 gap-2 flex justify-center items-center"
                     href="signin.html">
                     <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_2_191)">
@@ -61,11 +61,11 @@
                         </defs>
                     </svg>
 
-                    <span class="font-public-sans text-base">Signin</span>
+                    <span className="font-public-sans text-base">Signin</span>
                 </button>
 
                 <button
-                    class="py-2 cursor-pointer outline-none border-0 px-6 gap-2 flex justify-center items-center bg-brand-primary rounded-xl">
+                    className="py-2 cursor-pointer outline-none border-0 px-6 gap-2 flex justify-center items-center bg-brand-primary rounded-xl">
                     <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_2_198)">
                             <path d="M6 2.5V9.5" strokeLinecap="round" strokeLinejoin="round" stroke="white" />
@@ -78,7 +78,7 @@
                         </defs>
                     </svg>
 
-                    <span class="font-public-sans text-white text-base">Report</span>
+                    <span className="font-public-sans text-white text-base">Report</span>
                 </button>
             </div>
         </div>
@@ -120,25 +120,25 @@
         }
     </script>
 
-    <main class="flex flex-col justify-center items-center w-full bg-brand-main-color py-12">
+    <main className="flex flex-col justify-center items-center w-full bg-brand-main-color py-12">
 
-        <div class="flex flex-col justify-start items-start w-[90%] gap-4">
+        <div className="flex flex-col justify-start items-start w-[90%] gap-4">
 
             <div
-                class="w-full max-lg:flex-col h-fit flex flex-row items-center justify-center max-lg:gap-4">
+                className="w-full max-lg:flex-col h-fit flex flex-row items-center justify-center max-lg:gap-4">
 
                 <div
-                    class="grow max-lg:w-full flex-col gap-4 items-start justify-center flex-col flex">
-                    <span class="uppercase text-brand-default text-base">Public Incident Registry</span>
-                    <h1 class="font-fraunces text-[3.5rem]">Community Reports & Fixes </h1>
-                    <p class="font-public-sans text-lg line-h-8 font-400 text-brand-default">
+                    className="grow max-lg:w-full flex-col gap-4 items-start justify-center flex-col flex">
+                    <span className="uppercase text-brand-default text-base">Public Incident Registry</span>
+                    <h1 className="font-fraunces text-[3.5rem]">Community Reports & Fixes </h1>
+                    <p className="font-public-sans text-lg line-h-8 font-400 text-brand-default">
                         Open incident feed in Jakarta and surrounding urban regions. Public visitors<br />
                         may browse; sign in to interact.
                     </p>
-                    <div class="flex justify-start items-center flex-row gap-4 w-full">
+                    <div className="flex justify-start items-center flex-row gap-4 w-full">
                         <div
-                            class="w-1/2 max-lg:w-full px-4 flex justify-center items-center flex-row gap-4 bg-brand-third border border-brand-default rounded-xl">
-                            <svg class="text-xl text-brand-default" width="1em" height="1em" viewBox="0 0 12 12"
+                            className="w-1/2 max-lg:w-full px-4 flex justify-center items-center flex-row gap-4 bg-brand-third border border-brand-default rounded-xl">
+                            <svg className="text-xl text-brand-default" width="1em" height="1em" viewBox="0 0 12 12"
                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M9 5.5C9 7.433 7.433 9 5.5 9C3.567 9 2 7.433 2 5.5C2 3.567 3.567 2 5.5 2C7.433 2 9 3.567 9 5.5Z"
@@ -147,14 +147,14 @@
                                     stroke="currentColor" />
                             </svg>
                             <input placeholder="Search by street name, complaint ID, or keyword..."
-                                class="grow text-base h-full p-4 outline-none border-0 bg-transparent"
+                                className="grow text-base h-full p-4 outline-none border-0 bg-transparent"
                                 type="text">
                         </div>
                     </div>
                 </div>
                 <div
-                    class="w-fit flex items-center justify-center flex-row bg-brand-third gap-4 rounded-2xl border border-brand-default">
-                    <button class="border-0 text-base bg-brand-primary p-4 rounded-2xl text-white">
+                    className="w-fit flex items-center justify-center flex-row bg-brand-third gap-4 rounded-2xl border border-brand-default">
+                    <button className="border-0 text-base bg-brand-primary p-4 rounded-2xl text-white">
                         <svg width="1em" height="1em" viewBox="0 0 13 13" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clipPath="url(#clip0_2_214)">
@@ -180,7 +180,7 @@
 
                         Feed
                     </button>
-                    <button class="border-0 text-base bg-brand-third p-4 rounded-2xl text-brand-default">
+                    <button className="border-0 text-base bg-brand-third p-4 rounded-2xl text-brand-default">
                         <svg width="1em" height="1em" viewBox="0 0 13 13" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clipPath="url(#clip0_2_225)">
@@ -206,12 +206,12 @@
                 </div>
             </div>
 
-            <div class="flex-wrap flex justify-start items-center flex-row mt-8 max-lg:w-full gap-2">
-                <div class="p-4 text-base bg-brand-third border border-brand-default text-brand-default rounded-3xl">
+            <div className="flex-wrap flex justify-start items-center flex-row mt-8 max-lg:w-full gap-2">
+                <div className="p-4 text-base bg-brand-third border border-brand-default text-brand-default rounded-3xl">
                     All issues (6)
                 </div>
                 <div
-                    class="p-4 flex items-center justify-center gap-2 text-base bg-brand-third border border-brand-default rounded-3xl text-brand-default">
+                    className="p-4 flex items-center justify-center gap-2 text-base bg-brand-third border border-brand-default rounded-3xl text-brand-default">
                     <svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_2_233)">
                             <path
@@ -233,7 +233,7 @@
                     Roads & Transit
                 </div>
                 <div
-                    class="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-default rounded-3xl">
+                    className="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-default rounded-3xl">
                     <svg width="1em" height="1em" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M5.25004 0.583313L1.57504 4.25831C1.03589 4.94722 0.701228 5.77381 0.609245 6.64376C0.517262 7.51372 0.67166 8.39201 1.05482 9.17844C1.43799 9.96487 2.03449 10.6278 2.77627 11.0915C3.51805 11.5552 4.37524 11.8011 5.25004 11.8011C6.12485 11.8011 6.98204 11.5552 7.72382 11.0915C8.4656 10.6278 9.0621 9.96487 9.44526 9.17844C9.82843 8.39201 9.98282 7.51372 9.89084 6.64376C9.79886 5.77381 9.4642 4.94722 8.92504 4.25831L5.25004 0.583313Z"
@@ -244,7 +244,7 @@
                     Water & Sewage
                 </div>
                 <div
-                    class="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-default rounded-3xl">
+                    className="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-default rounded-3xl">
                     <svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_2_243)">
                             <path
@@ -278,7 +278,7 @@
                     Street Lighting
                 </div>
                 <div
-                    class="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-default rounded-3xl">
+                    className="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-default rounded-3xl">
                     <svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_2_255)">
                             <path d="M1.75 3.5H12.25" strokeWidth="1.16667" strokeLinecap="round"
@@ -307,7 +307,7 @@
                     Sanitation & Waste
                 </div>
                 <div
-                    class="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-default rounded-3xl">
+                    className="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-default rounded-3xl">
                     <svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_2_263)">
                             <path d="M7 1.16669L4.375 4.95835H9.625L7 1.16669Z" strokeWidth="1.16667"
@@ -328,7 +328,7 @@
                     Public Parks & Trees
                 </div>
                 <div
-                    class="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-default rounded-3xl">
+                    className="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-default rounded-3xl">
                     <svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.41675 2.91669L3.50008 5.25002H1.16675V8.75002H3.50008L6.41675 11.0834V2.91669Z"
                             strokeWidth="1.16667" strokeLinecap="round" strokeLinejoin="round"
@@ -347,7 +347,7 @@
                     Noise & Disturbance
                 </div>
                 <div
-                    class="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-default rounded-3xl">
+                    className="p-4 text-base flex items-center justify-center gap-2 text-brand-default bg-brand-third border border-brand-default rounded-3xl">
                     <svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1.75 12.25H12.25" strokeWidth="1.16667" strokeLinecap="round"
                             strokeLinejoin="round" stroke="currentColor" />
@@ -373,54 +373,54 @@
             </div>
         </div>
 
-        <div class="flex justify-center items-center flex-col w-full pt-8 w-[90%]">
+        <div className="flex justify-center items-center flex-col w-full pt-8 w-[90%]">
 
-            <div class="flex max-lg:flex-col gap-4 justify-between items-center flex-row w-full">
+            <div className="flex max-lg:flex-col gap-4 justify-between items-center flex-row w-full">
                 <div
-                    class="w-fit max-[1499px]:p-4 flex justify-start items-center flex-wrap flex-row gap-2 bg-brand-third rounded-3xl border border-brand-default px-4">
-                    <span class="font-ibm-plex-mono text-base text-brand-default p-2">Status:</span>
+                    className="w-fit max-[1499px]:p-4 flex justify-start items-center flex-wrap flex-row gap-2 bg-brand-third rounded-3xl border border-brand-default px-4">
+                    <span className="font-ibm-plex-mono text-base text-brand-default p-2">Status:</span>
                     <button
-                        class="rounded-2xl text-base font-public-sans font-400 border-0 py-2 px-6 bg-brand-primary text-white">All</button>
+                        className="rounded-2xl text-base font-public-sans font-400 border-0 py-2 px-6 bg-brand-primary text-white">All</button>
                     <button
-                        class="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">Submitted</button>
+                        className="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">Submitted</button>
                     <button
-                        class="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">Received</button>
+                        className="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">Received</button>
                     <button
-                        class="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">In
+                        className="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">In
                         Riview</button>
                     <button
-                        class="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">Assigned</button>
+                        className="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">Assigned</button>
                     <button
-                        class="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">Awaiting
+                        className="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">Awaiting
                         your info</button>
                     <button
-                        class="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">Resolved</button>
+                        className="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">Resolved</button>
                     <button
-                        class="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">Closed</button>
+                        className="bg-transparent text-brand-default text-base font-public-sans font-400 border-0 py-2 px-6">Closed</button>
                 </div>
                 <div
-                    class="w-fit max-lg:w-full max-lg:justify-start justify-end flex-row flex bg-brand-third border border-brand-default p-4 rounded-2xl items-center justify-center gap-2 h-fit">
+                    className="w-fit max-lg:w-full max-lg:justify-start justify-end flex-row flex bg-brand-third border border-brand-default p-4 rounded-2xl items-center justify-center gap-2 h-fit">
                     <input id="with-foto-only" type="checkbox">
-                    <label class="text-base font-public-sans font-400 text-brand-default" for="with-foto-only">With
+                    <label className="text-base font-public-sans font-400 text-brand-default" htmlFor="with-foto-only">With
                         photos/proof only</label>
                 </div>
             </div>
 
-            <div class="grid justify-center items-center grid-cols-1 w-full mt-8">
+            <div className="grid justify-center items-center grid-cols-1 w-full mt-8">
 
                 <div
-                    class="h-40 max-[1399px]:flex-col max-[1399px]:items-start max-[1399px]:h-fit max-[1399px]:p-6 rounded-tl-xl rounded-tr-xl flex justify-start items-center bg-brand-third border border-brand-default px-6 flex-row gap-4">
-                    <div class="flex h-full justify-center items-center flex-col">
-                        <img class="rounded-xl" src="assets/images/Background+Border.png" alt="">
+                    className="h-40 max-[1399px]:flex-col max-[1399px]:items-start max-[1399px]:h-fit max-[1399px]:p-6 rounded-tl-xl rounded-tr-xl flex justify-start items-center bg-brand-third border border-brand-default px-6 flex-row gap-4">
+                    <div className="flex h-full justify-center items-center flex-col">
+                        <img className="rounded-xl" src="assets/images/Background+Border.png" alt="">
                     </div>
                     <div
-                        class="flex max-[1399px]:items-start max-[1399px]:gap-4 max-[1399px]:flex-col justify-start items-center w-full flex-row h-full grow">
+                        className="flex max-[1399px]:items-start max-[1399px]:gap-4 max-[1399px]:flex-col justify-start items-center w-full flex-row h-full grow">
 
                         <div
-                            class="w-[70%] max-[1399px]:w-full flex justify-center items-center flex-col gap-2">
-                            <div class="w-full flex justify-start items-center flex-row gap-2">
+                            className="w-[70%] max-[1399px]:w-full flex justify-center items-center flex-col gap-2">
+                            <div className="w-full flex justify-start items-center flex-row gap-2">
                                 <div
-                                    class="border border-brand-default flex items-center justify-center gap-2 rounded-2xl p-2 bg-brand-orange-secondary text-brand-orange border border-brand-orange">
+                                    className="border border-brand-default flex items-center justify-center gap-2 rounded-2xl p-2 bg-brand-orange-secondary text-brand-orange border border-brand-orange">
                                     <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clipPath="url(#clip0_2_854)">
@@ -447,21 +447,21 @@
                                         </defs>
                                     </svg>
 
-                                    <span class="font-public-sans font-600 text-base">
+                                    <span className="font-public-sans font-600 text-base">
                                         In review
                                     </span>
                                 </div>
-                                <span class="text-brand-default">CMP-2026-8841</span>
+                                <span className="text-brand-default">CMP-2026-8841</span>
                             </div>
 
-                            <div class="w-full">
-                                <span class="font-public-sans font-600 text-base">
+                            <div className="w-full">
+                                <span className="font-public-sans font-600 text-base">
                                     PAM clean drinking water pipeline burst
                                     flooding sidewalk in front of Cipete Raya MRT
                                 </span>
                             </div>
 
-                            <div class="w-full">
+                            <div className="w-full">
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2_64)">
@@ -484,16 +484,16 @@
                                     </defs>
                                 </svg>
 
-                                <span class="font-public-sans max-[1399px]:w-full text-brand-default text-base">
+                                <span className="font-public-sans max-[1399px]:w-full text-brand-default text-base">
                                     Jl. Fatmawati Raya No. 42 (depan Stasiun MRT Cipete Raya)
                                 </span>
                             </div>
                         </div>
 
                         <div
-                            class="w-1/3 max-[1399px]:justify-start max-[1399px]:gap-4 flex max-[1399px]:w-full justify-between items-center flex-row">
+                            className="w-1/3 max-[1399px]:justify-start max-[1399px]:gap-4 flex max-[1399px]:w-full justify-between items-center flex-row">
                             <button
-                                class="bg-brand-third cursor-pointer font-public-sans font-400 border border-brand-default outline-none text-brand-default p-2 rounded-2xl text-base flex gap-2 justify-center items-center">
+                                className="bg-brand-third cursor-pointer font-public-sans font-400 border border-brand-default outline-none text-brand-default p-2 rounded-2xl text-base flex gap-2 justify-center items-center">
                                 <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2_122)">
@@ -516,11 +516,11 @@
                                 </svg>
                                 <span>148</span>
                             </button>
-                            <span class="font-ibm-plex-mono font-400 text-base">2 proof</span>
-                            <span class="font-ibm-plex-mono font-400 text-base text-brand-default">Oct 29</span>
+                            <span className="font-ibm-plex-mono font-400 text-base">2 proof</span>
+                            <span className="font-ibm-plex-mono font-400 text-base text-brand-default">Oct 29</span>
                             <button
-                                class="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-col text-base font-400 text-brand-primary">
-                                <span class="font-600 text-base">Track &#8594;</span>
+                                className="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-col text-base font-400 text-brand-primary">
+                                <span className="font-600 text-base">Track &#8594;</span>
                             </button>
                         </div>
 
@@ -528,17 +528,17 @@
                 </div>
 
                 <div
-                    class="h-40 flex max-[1399px]:flex-col max-[1399px]:items-start max-[1399px]:h-fit max-[1399px]:p-6 justify-start items-center bg-brand-third border border-brand-default px-6 flex-row gap-4">
-                    <div class="flex h-full justify-center items-center flex-col">
-                        <img class="rounded-xl" src="assets/images/Background+Border (2).png" alt="">
+                    className="h-40 flex max-[1399px]:flex-col max-[1399px]:items-start max-[1399px]:h-fit max-[1399px]:p-6 justify-start items-center bg-brand-third border border-brand-default px-6 flex-row gap-4">
+                    <div className="flex h-full justify-center items-center flex-col">
+                        <img className="rounded-xl" src="assets/images/Background+Border (2).png" alt="">
                     </div>
                     <div
-                        class="flex max-[1399px]:items-start max-[1399px]:gap-4 max-[1399px]:flex-col justify-start items-center w-full flex-row h-full grow">
+                        className="flex max-[1399px]:items-start max-[1399px]:gap-4 max-[1399px]:flex-col justify-start items-center w-full flex-row h-full grow">
                         <div
-                            class="w-[70%] max-[1399px]:w-full flex justify-center items-center flex-col gap-2">
-                            <div class="w-full flex justify-start items-center flex-row gap-2">
+                            className="w-[70%] max-[1399px]:w-full flex justify-center items-center flex-col gap-2">
+                            <div className="w-full flex justify-start items-center flex-row gap-2">
                                 <div
-                                    class="border border-brand-default flex items-center justify-center gap-2 rounded-2xl p-2 bg-brand-blue-secondary text-brand-blue border border-brand-blue">
+                                    className="border border-brand-default flex items-center justify-center gap-2 rounded-2xl p-2 bg-brand-blue-secondary text-brand-blue border border-brand-blue">
                                     <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -547,17 +547,17 @@
                                         <path d="M10.5 10.5L8.35 8.34998" strokeLinecap="round" strokeLinejoin="round"
                                             stroke="currentColor" />
                                     </svg>
-                                    <span class="font-public-sans font-600 text-base">Assigned</span>
+                                    <span className="font-public-sans font-600 text-base">Assigned</span>
                                 </div>
-                                <span class="text-brand-default">CMP-2026-8819</span>
+                                <span className="text-brand-default">CMP-2026-8819</span>
                             </div>
-                            <div class="w-full">
-                                <span class="font-public-sans font-600 text-base">
+                            <div className="w-full">
+                                <span className="font-public-sans font-600 text-base">
                                     Severe 15cm asphalt cavity in TransJakarta
                                     corridor causing motorbike rim damage
                                 </span>
                             </div>
-                            <div class="w-full">
+                            <div className="w-full">
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2_64)">
@@ -579,15 +579,15 @@
                                         </clipPath>
                                     </defs>
                                 </svg>
-                                <span class="font-public-sans text-brand-default text-base">
+                                <span className="font-public-sans text-brand-default text-base">
                                     Jl. Gatot Subroto Kav. 38 (depan Menara Mulia, Jalur TransJakarta)
                                 </span>
                             </div>
                         </div>
                         <div
-                            class="w-1/3 max-[1399px]:justify-start max-[1399px]:gap-4 flex max-[1399px]:w-full justify-between items-center flex-row">
+                            className="w-1/3 max-[1399px]:justify-start max-[1399px]:gap-4 flex max-[1399px]:w-full justify-between items-center flex-row">
                             <button
-                                class="bg-brand-third cursor-pointer font-public-sans font-400 border border-brand-default outline-none text-brand-default p-2 rounded-2xl text-base flex gap-2 justify-center items-center">
+                                className="bg-brand-third cursor-pointer font-public-sans font-400 border border-brand-default outline-none text-brand-default p-2 rounded-2xl text-base flex gap-2 justify-center items-center">
                                 <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2_122)">
@@ -610,28 +610,28 @@
                                 </svg>
                                 <span>92</span>
                             </button>
-                            <span class="font-ibm-plex-mono font-400 text-base">1 proof</span>
-                            <span class="font-ibm-plex-mono font-400 text-base text-brand-default">Oct 28</span>
+                            <span className="font-ibm-plex-mono font-400 text-base">1 proof</span>
+                            <span className="font-ibm-plex-mono font-400 text-base text-brand-default">Oct 28</span>
                             <button
-                                class="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-col text-base text-brand-primary">
-                                <span class="font-600 text-base">Track &#8594;</span>
+                                className="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-col text-base text-brand-primary">
+                                <span className="font-600 text-base">Track &#8594;</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <div
-                    class="h-40 flex max-[1399px]:flex-col max-[1399px]:items-start max-[1399px]:h-fit max-[1399px]:p-6 justify-start items-center bg-brand-third border border-brand-default px-6 flex-row gap-4">
-                    <div class="flex h-full justify-center items-center flex-col">
-                        <img class="rounded-xl" src="assets/images/Background+Border (1).png" alt="">
+                    className="h-40 flex max-[1399px]:flex-col max-[1399px]:items-start max-[1399px]:h-fit max-[1399px]:p-6 justify-start items-center bg-brand-third border border-brand-default px-6 flex-row gap-4">
+                    <div className="flex h-full justify-center items-center flex-col">
+                        <img className="rounded-xl" src="assets/images/Background+Border (1).png" alt="">
                     </div>
                     <div
-                        class="flex max-[1399px]:items-start max-[1399px]:gap-4 max-[1399px]:flex-col justify-start items-center w-full flex-row h-full grow">
+                        className="flex max-[1399px]:items-start max-[1399px]:gap-4 max-[1399px]:flex-col justify-start items-center w-full flex-row h-full grow">
                         <div
-                            class="w-[70%] max-[1399px]:w-full flex justify-center items-center flex-col gap-2">
-                            <div class="w-full flex justify-start items-center flex-row gap-2">
+                            className="w-[70%] max-[1399px]:w-full flex justify-center items-center flex-col gap-2">
+                            <div className="w-full flex justify-start items-center flex-row gap-2">
                                 <div
-                                    class="border border-brand-default rounded-2xl p-2 bg-brand-secondary text-brand-primary border border-brand-primary flex items-center justify-center gap-2">
+                                    className="border border-brand-default rounded-2xl p-2 bg-brand-secondary text-brand-primary border border-brand-primary flex items-center justify-center gap-2">
                                     <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clipPath="url(#clip0_2_870)">
@@ -653,17 +653,17 @@
                                             </clipPath>
                                         </defs>
                                     </svg>
-                                    <span class="font-public-sans font-600 text-base">Resolved</span>
+                                    <span className="font-public-sans font-600 text-base">Resolved</span>
                                 </div>
-                                <span class="text-brand-default">CMP-2026-8794</span>
+                                <span className="text-brand-default">CMP-2026-8794</span>
                             </div>
-                            <div class="w-full">
-                                <span class="font-public-sans font-600 text-base">
+                            <div className="w-full">
+                                <span className="font-public-sans font-600 text-base">
                                     Complete PJU streetlight outage spanning
                                     300 meters along residential corridor
                                 </span>
                             </div>
-                            <div class="w-full">
+                            <div className="w-full">
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2_64)">
@@ -685,15 +685,15 @@
                                         </clipPath>
                                     </defs>
                                 </svg>
-                                <span class="font-public-sans text-brand-default text-base">
+                                <span className="font-public-sans text-brand-default text-base">
                                     Jl. Tebet Barat Dalam Raya No. 24, RT 08 / RW 03
                                 </span>
                             </div>
                         </div>
                         <div
-                            class="w-1/3 max-[1399px]:justify-start max-[1399px]:gap-4 flex max-[1399px]:w-full justify-between items-center flex-row">
+                            className="w-1/3 max-[1399px]:justify-start max-[1399px]:gap-4 flex max-[1399px]:w-full justify-between items-center flex-row">
                             <button
-                                class="bg-brand-third cursor-pointer font-public-sans font-400 border border-brand-default outline-none text-brand-default p-2 rounded-2xl text-base flex gap-2 justify-center items-center">
+                                className="bg-brand-third cursor-pointer font-public-sans font-400 border border-brand-default outline-none text-brand-default p-2 rounded-2xl text-base flex gap-2 justify-center items-center">
                                 <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2_122)">
@@ -716,28 +716,28 @@
                                 </svg>
                                 <span>64</span>
                             </button>
-                            <span class="font-ibm-plex-mono font-400 text-base">1 proof</span>
-                            <span class="font-ibm-plex-mono font-400 text-base text-brand-default">Oct 28</span>
+                            <span className="font-ibm-plex-mono font-400 text-base">1 proof</span>
+                            <span className="font-ibm-plex-mono font-400 text-base text-brand-default">Oct 28</span>
                             <button
-                                class="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-col text-base text-brand-primary">
-                                <span class="font-600 text-base">Track &#8594;</span>
+                                className="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-col text-base text-brand-primary">
+                                <span className="font-600 text-base">Track &#8594;</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <div
-                    class="h-40 flex max-[1399px]:flex-col max-[1399px]:items-start max-[1399px]:h-fit max-[1399px]:p-6 justify-start items-center bg-brand-third border border-brand-default px-6 flex-row gap-4">
-                    <div class="flex h-full justify-center items-center flex-col">
-                        <img class="rounded-xl" src="assets/images/Background+Border (3).png" alt="">
+                    className="h-40 flex max-[1399px]:flex-col max-[1399px]:items-start max-[1399px]:h-fit max-[1399px]:p-6 justify-start items-center bg-brand-third border border-brand-default px-6 flex-row gap-4">
+                    <div className="flex h-full justify-center items-center flex-col">
+                        <img className="rounded-xl" src="assets/images/Background+Border (3).png" alt="">
                     </div>
                     <div
-                        class="flex max-[1399px]:items-start max-[1399px]:gap-4 max-[1399px]:flex-col justify-start items-center w-full flex-row h-full grow">
+                        className="flex max-[1399px]:items-start max-[1399px]:gap-4 max-[1399px]:flex-col justify-start items-center w-full flex-row h-full grow">
                         <div
-                            class="w-[70%] max-[1399px]:w-full flex justify-center items-center flex-col gap-2">
-                            <div class="w-full flex justify-start items-center flex-row gap-2">
+                            className="w-[70%] max-[1399px]:w-full flex justify-center items-center flex-col gap-2">
+                            <div className="w-full flex justify-start items-center flex-row gap-2">
                                 <div
-                                    class="border border-brand-default flex items-center justify-center gap-2 rounded-2xl p-2 bg-brand-orange-secondary text-brand-orange border border-brand-orange">
+                                    className="border border-brand-default flex items-center justify-center gap-2 rounded-2xl p-2 bg-brand-orange-secondary text-brand-orange border border-brand-orange">
                                     <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clipPath="url(#clip0_2_854)">
@@ -763,17 +763,17 @@
                                             </clipPath>
                                         </defs>
                                     </svg>
-                                    <span class="font-public-sans font-600 text-base">In review</span>
+                                    <span className="font-public-sans font-600 text-base">In review</span>
                                 </div>
-                                <span class="text-brand-default">CMP-2026-8720</span>
+                                <span className="text-brand-default">CMP-2026-8720</span>
                             </div>
-                            <div class="w-full">
-                                <span class="font-public-sans font-600 text-base">
+                            <div className="w-full">
+                                <span className="font-public-sans font-600 text-base">
                                     Illegal household trash accumulation
                                     obstructing drainage at Kali Krukut Kemang
                                 </span>
                             </div>
-                            <div class="w-full">
+                            <div className="w-full">
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2_64)">
@@ -795,15 +795,15 @@
                                         </clipPath>
                                     </defs>
                                 </svg>
-                                <span class="font-public-sans text-brand-default text-base">
+                                <span className="font-public-sans text-brand-default text-base">
                                     Kampung Kemang, RT 02 / RW 01 (bantara Kali Krukut)
                                 </span>
                             </div>
                         </div>
                         <div
-                            class="w-1/3 max-[1399px]:justify-start max-[1399px]:gap-4 flex max-[1399px]:w-full justify-between items-center flex-row">
+                            className="w-1/3 max-[1399px]:justify-start max-[1399px]:gap-4 flex max-[1399px]:w-full justify-between items-center flex-row">
                             <button
-                                class="bg-brand-third cursor-pointer font-public-sans font-400 border border-brand-default outline-none text-brand-default p-2 rounded-2xl text-base flex gap-2 justify-center items-center">
+                                className="bg-brand-third cursor-pointer font-public-sans font-400 border border-brand-default outline-none text-brand-default p-2 rounded-2xl text-base flex gap-2 justify-center items-center">
                                 <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2_122)">
@@ -826,28 +826,28 @@
                                 </svg>
                                 <span>78</span>
                             </button>
-                            <span class="font-ibm-plex-mono font-400 text-base">1 proof</span>
-                            <span class="font-ibm-plex-mono font-400 text-base text-brand-default">Oct 29</span>
+                            <span className="font-ibm-plex-mono font-400 text-base">1 proof</span>
+                            <span className="font-ibm-plex-mono font-400 text-base text-brand-default">Oct 29</span>
                             <button
-                                class="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-col text-base text-brand-primary">
-                                <span class="font-600 text-base">Track &#8594;</span>
+                                className="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-col text-base text-brand-primary">
+                                <span className="font-600 text-base">Track &#8594;</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <div
-                    class="h-40 flex max-[1399px]:flex-col max-[1399px]:items-start max-[1399px]:h-fit max-[1399px]:p-6 justify-start items-center bg-brand-third border border-brand-default px-6 flex-row gap-4">
-                    <div class="flex h-full justify-center items-center flex-col">
-                        <img class="rounded-xl" src="assets/images/Background+Border (4).png" alt="">
+                    className="h-40 flex max-[1399px]:flex-col max-[1399px]:items-start max-[1399px]:h-fit max-[1399px]:p-6 justify-start items-center bg-brand-third border border-brand-default px-6 flex-row gap-4">
+                    <div className="flex h-full justify-center items-center flex-col">
+                        <img className="rounded-xl" src="assets/images/Background+Border (4).png" alt="">
                     </div>
                     <div
-                        class="flex max-[1399px]:items-start max-[1399px]:gap-4 max-[1399px]:flex-col justify-start items-center w-full flex-row h-full grow">
+                        className="flex max-[1399px]:items-start max-[1399px]:gap-4 max-[1399px]:flex-col justify-start items-center w-full flex-row h-full grow">
                         <div
-                            class="w-[70%] max-[1399px]:w-full flex justify-center items-center flex-col gap-2">
-                            <div class="w-full flex justify-start items-center flex-row gap-2">
+                            className="w-[70%] max-[1399px]:w-full flex justify-center items-center flex-col gap-2">
+                            <div className="w-full flex justify-start items-center flex-row gap-2">
                                 <div
-                                    class="border border-brand-default flex items-center justify-center gap-2 rounded-2xl p-2 bg-brand-blue-secondary text-brand-blue border border-brand-blue">
+                                    className="border border-brand-default flex items-center justify-center gap-2 rounded-2xl p-2 bg-brand-blue-secondary text-brand-blue border border-brand-blue">
                                     <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -856,17 +856,17 @@
                                         <path d="M10.5 10.5L8.35 8.34998" strokeLinecap="round" strokeLinejoin="round"
                                             stroke="currentColor" />
                                     </svg>
-                                    <span class="font-public-sans font-600 text-base">Assigned</span>
+                                    <span className="font-public-sans font-600 text-base">Assigned</span>
                                 </div>
-                                <span class="text-brand-default">CMP-2026-8650</span>
+                                <span className="text-brand-default">CMP-2026-8650</span>
                             </div>
-                            <div class="w-full">
-                                <span class="font-public-sans font-600 text-base">
+                            <div className="w-full">
+                                <span className="font-public-sans font-600 text-base">
                                     Hazardous decayed Trembesi tree limb
                                     at risk of collapse over walking path
                                 </span>
                             </div>
-                            <div class="w-full">
+                            <div className="w-full">
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2_64)">
@@ -888,15 +888,15 @@
                                         </clipPath>
                                     </defs>
                                 </svg>
-                                <span class="font-public-sans text-brand-default text-base">
+                                <span className="font-public-sans text-brand-default text-base">
                                     Taman Suropati (sisi timur, dekat patung ASEAN)
                                 </span>
                             </div>
                         </div>
                         <div
-                            class="w-1/3 max-[1399px]:justify-start max-[1399px]:gap-4 flex max-[1399px]:w-full justify-between items-center flex-row">
+                            className="w-1/3 max-[1399px]:justify-start max-[1399px]:gap-4 flex max-[1399px]:w-full justify-between items-center flex-row">
                             <button
-                                class="bg-brand-third cursor-pointer font-public-sans font-400 border border-brand-default outline-none text-brand-default p-2 rounded-2xl text-base flex gap-2 justify-center items-center">
+                                className="bg-brand-third cursor-pointer font-public-sans font-400 border border-brand-default outline-none text-brand-default p-2 rounded-2xl text-base flex gap-2 justify-center items-center">
                                 <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2_122)">
@@ -919,25 +919,25 @@
                                 </svg>
                                 <span>45</span>
                             </button>
-                            <span class="font-ibm-plex-mono font-400 text-base">1 proof</span>
-                            <span class="font-ibm-plex-mono font-400 text-base text-brand-default">Oct 28</span>
+                            <span className="font-ibm-plex-mono font-400 text-base">1 proof</span>
+                            <span className="font-ibm-plex-mono font-400 text-base text-brand-default">Oct 28</span>
                             <button
-                                class="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-col text-base text-brand-primary">
-                                <span class="font-600 text-base">Track &#8594;</span>
+                                className="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-col text-base text-brand-primary">
+                                <span className="font-600 text-base">Track &#8594;</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <div
-                    class="h-40 rounded-bl-xl rounded-br-xl flex max-[1399px]:flex-col max-[1399px]:items-start max-[1399px]:h-fit max-[1399px]:p-6 justify-start items-center bg-brand-third border border-brand-default px-6 flex-row gap-4">
+                    className="h-40 rounded-bl-xl rounded-br-xl flex max-[1399px]:flex-col max-[1399px]:items-start max-[1399px]:h-fit max-[1399px]:p-6 justify-start items-center bg-brand-third border border-brand-default px-6 flex-row gap-4">
                     <div
-                        class="flex max-[1399px]:items-start max-[1399px]:gap-4 max-[1399px]:flex-col justify-start items-center w-full flex-row h-full grow">
+                        className="flex max-[1399px]:items-start max-[1399px]:gap-4 max-[1399px]:flex-col justify-start items-center w-full flex-row h-full grow">
                         <div
-                            class="w-[70%] max-[1399px]:w-full flex justify-center items-center flex-col gap-2">
-                            <div class="w-full flex justify-start items-center flex-row gap-2">
+                            className="w-[70%] max-[1399px]:w-full flex justify-center items-center flex-col gap-2">
+                            <div className="w-full flex justify-start items-center flex-row gap-2">
                                 <div
-                                    class="border border-brand-default flex items-center justify-center gap-2 rounded-2xl p-2 bg-brand-light-orange-secondary text-brand-default border border-brand-orange">
+                                    className="border border-brand-default flex items-center justify-center gap-2 rounded-2xl p-2 bg-brand-light-orange-secondary text-brand-default border border-brand-orange">
                                     <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clipPath="url(#clip0_2_833)">
@@ -953,17 +953,17 @@
                                             </clipPath>
                                         </defs>
                                     </svg>
-                                    <span class="font-public-sans font-600 text-base">Submitted</span>
+                                    <span className="font-public-sans font-600 text-base">Submitted</span>
                                 </div>
-                                <span class="text-brand-default">CMP-2026-8601</span>
+                                <span className="text-brand-default">CMP-2026-8601</span>
                             </div>
-                            <div class="w-full">
-                                <span class="font-public-sans font-600 text-base">
+                            <div className="w-full">
+                                <span className="font-public-sans font-600 text-base">
                                     Heavy excavation equipment operating
                                     past 22:00 WIB in residential alley
                                 </span>
                             </div>
-                            <div class="w-full">
+                            <div className="w-full">
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2_64)">
@@ -985,15 +985,15 @@
                                         </clipPath>
                                     </defs>
                                 </svg>
-                                <span class="font-public-sans text-brand-default text-base">
+                                <span className="font-public-sans text-brand-default text-base">
                                     Jl. Senopati No. 18, RT 06 / RW 02
                                 </span>
                             </div>
                         </div>
                         <div
-                            class="w-1/3 max-[1399px]:justify-start max-[1399px]:gap-4 flex max-[1399px]:w-full justify-between items-center flex-row">
+                            className="w-1/3 max-[1399px]:justify-start max-[1399px]:gap-4 flex max-[1399px]:w-full justify-between items-center flex-row">
                             <button
-                                class="bg-brand-third cursor-pointer font-public-sans font-400 border border-brand-default outline-none text-brand-default p-2 rounded-2xl text-base flex gap-2 justify-center items-center">
+                                className="bg-brand-third cursor-pointer font-public-sans font-400 border border-brand-default outline-none text-brand-default p-2 rounded-2xl text-base flex gap-2 justify-center items-center">
                                 <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2_122)">
@@ -1016,11 +1016,11 @@
                                 </svg>
                                 <span>39</span>
                             </button>
-                            <span class="font-ibm-plex-mono font-400 text-base">1 proof</span>
-                            <span class="font-ibm-plex-mono font-400 text-base text-brand-default">Oct 29</span>
+                            <span className="font-ibm-plex-mono font-400 text-base">1 proof</span>
+                            <span className="font-ibm-plex-mono font-400 text-base text-brand-default">Oct 29</span>
                             <button
-                                class="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-col text-base text-brand-primary">
-                                <span class="font-600 text-base">Track &#8594;</span>
+                                className="bg-transparent cursor-pointer font-public-sans font-400 outline-none border-0 flex justify-center items-start flex-col text-base text-brand-primary">
+                                <span className="font-600 text-base">Track &#8594;</span>
                             </button>
                         </div>
                     </div>
@@ -1032,63 +1032,63 @@
 
     </main>
 
-    <footer class="w-full flex justify-center items-center flex-col border-t border-t-brand-default">
-        <div class="footer-items w-[90%] flex justify-center items-center flex-row py-8">
+    <footer className="w-full flex justify-center items-center flex-col border-t border-t-brand-default">
+        <div className="footer-items w-[90%] flex justify-center items-center flex-row py-8">
 
-            <div class="flex justify-center items-start flex-col w-1/2 gap-4fourth">
-                <span class="font-fraunces font-600 text-xl">WargaReport</span>
-                <p class="font-public-sans font-400 text-brand-default text-base leading-6">
+            <div className="flex justify-center items-start flex-col w-1/2 gap-4fourth">
+                <span className="font-fraunces font-600 text-xl">WargaReport</span>
+                <p className="font-public-sans font-400 text-brand-default text-base leading-6">
                     WargaReport is an independent civic reporting platform for
                     municipal infrastructure issues across Indonesia. Residents
                     submit evidence, follow SLA countdowns, and track resolution
                     updates from the responsible agencies.
                 </p>
-                <p class="font-public-sans font-400 text-base leading-6 text-brand-red">
+                <p className="font-public-sans font-400 text-base leading-6 text-brand-red">
                     Not for life-threatening emergencies — call 112 (National
                     Emergency Call Center) or BPBD DKI directly.
                 </p>
             </div>
 
-            <div class="flex justify-around items-start flex-row w-1/2 py-8 h-full">
-                <div class="w-1/3 flex justify-start items-center flex-col gap-2">
-                    <span class="font-ibm-plex-mono font-500 w-full uppercase">Citizens</span>
-                    <ul class="flex justify-center items-start flex-col gap-2 w-full">
-                        <li class="font-public-sans font-500 text-brand-default list-none text-base">File a
+            <div className="flex justify-around items-start flex-row w-1/2 py-8 h-full">
+                <div className="w-1/3 flex justify-start items-center flex-col gap-2">
+                    <span className="font-ibm-plex-mono font-500 w-full uppercase">Citizens</span>
+                    <ul className="flex justify-center items-start flex-col gap-2 w-full">
+                        <li className="font-public-sans font-500 text-brand-default list-none text-base">File a
                             report</li>
-                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Track
+                        <li className="font-public-sans font-500 text-brand-default list-none text-base">Track
                             complaint</li>
-                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Public
+                        <li className="font-public-sans font-500 text-brand-default list-none text-base">Public
                             reports registry</li>
-                        <li class="font-public-sans font-500 text-brand-default list-none text-base">My filing
+                        <li className="font-public-sans font-500 text-brand-default list-none text-base">My filing
                             history</li>
                     </ul>
                 </div>
-                <div class="w-1/3 flex justify-start items-center flex-col gap-2">
-                    <span class="font-ibm-plex-mono font-500 w-full uppercase">Agencies</span>
-                    <ul class="flex justify-center items-start flex-col gap-2 w-full">
-                        <li class="font-public-sans font-500 text-brand-default list-none text-base">
+                <div className="w-1/3 flex justify-start items-center flex-col gap-2">
+                    <span className="font-ibm-plex-mono font-500 w-full uppercase">Agencies</span>
+                    <ul className="flex justify-center items-start flex-col gap-2 w-full">
+                        <li className="font-public-sans font-500 text-brand-default list-none text-base">
                             Participating bureaus</li>
-                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Officer
+                        <li className="font-public-sans font-500 text-brand-default list-none text-base">Officer
                             triage queue</li>
-                        <li class="font-public-sans font-500 text-brand-default list-none text-base">SLA
+                        <li className="font-public-sans font-500 text-brand-default list-none text-base">SLA
                             benchmarks</li>
                     </ul>
                 </div>
-                <div class="w-1/3 flex justify-start items-center flex-col gap-2">
-                    <span class="font-ibm-plex-mono font-500 w-full uppercase">Civic Trust</span>
-                    <ul class="flex justify-center items-start flex-col gap-2 w-full">
-                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Help &
+                <div className="w-1/3 flex justify-start items-center flex-col gap-2">
+                    <span className="font-ibm-plex-mono font-500 w-full uppercase">Civic Trust</span>
+                    <ul className="flex justify-center items-start flex-col gap-2 w-full">
+                        <li className="font-public-sans font-500 text-brand-default list-none text-base">Help &
                             FAQs</li>
-                        <li class="font-public-sans font-500 text-brand-default list-none text-base">Evidence
+                        <li className="font-public-sans font-500 text-brand-default list-none text-base">Evidence
                             guidelines</li>
-                        <li class="font-public-sans font-500 text-brand-default list-none text-base">PII &
+                        <li className="font-public-sans font-500 text-brand-default list-none text-base">PII &
                             redaction policy</li>
                     </ul>
                 </div>
             </div>
         </div>
         <div
-            class="w-[90%] font-public-sans font-400 text-brand-default text-base border-t border-t-brand-default py-8 flex justify-between items-center flex-row">
+            className="w-[90%] font-public-sans font-400 text-brand-default text-base border-t border-t-brand-default py-8 flex justify-between items-center flex-row">
             <span>&copy; 2026 WargaReport. All rights reserved.</span>
             <span>UU No. 25/2009 Compliant</span>
         </div>

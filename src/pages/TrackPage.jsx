@@ -14,13 +14,13 @@ export default function TrackPage(){
                         inspector assignment, and official replies.
                     </p>
                     <div className="flex justify-start items-center flex-col gap-4 w-full">
-                        <label className="font-ibm-plex-mono w-full font-600 text-base" for="complain-id">Complaint
+                        <label className="font-ibm-plex-mono w-full font-600 text-base" htmlFor="complain-id">Complaint
                             Reference ID *</label>
                         <input placeholder="e.g. CMP-2026-8841" id="complain-id" type="text"
                         className="bg-brand-third w-full border border-brand-border rounded-xl p-4 text-brand-default text-base font-public-sans font-400 outline-none"/>
                     </div>
                     <div className="flex justify-start items-center flex-col gap-4 w-full">
-                        <label className="font-ibm-plex-mono w-full font-600 text-base" for="complain-id">Email
+                        <label className="font-ibm-plex-mono w-full font-600 text-base" htmlFor="complain-id">Email
                             address or phone (optional verification)</label>
                         <input placeholder="citizen@example.com" id="complain-id" type="text"
                         className="bg-brand-third w-full border border-brand-border rounded-xl p-4 text-brand-default text-base font-public-sans font-400 outline-none"/>

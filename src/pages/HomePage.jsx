@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import ReportCards from "../components/ReportCards";
 
 function HomePageInfoCard({ number, title, description }) {
@@ -43,7 +44,7 @@ export default function HomePage() {
           title: "PAM clean drinking water pipeline burst flooding sidewalk in front of Cipete Raya MRT",
           address: "Jl. Fatmawati Raya No. 42 (depan Stasiun MRT Cipete Raya)",
           likes: 148,
-          status: "in review"
+          status: "in riview"
         },
         {
           id: "CMP-2026-8794",
@@ -67,7 +68,7 @@ export default function HomePage() {
           title: "Illegal household trash accumulation obstructing drainage at Kali Krukut Kemang",
           address: "Kampung Kemang, RT 02 / RW 01 (bantara Kali Krukut)",
           likes: 78,
-          status: "in review"
+          status: "in riview"
         }
     ];
 
@@ -78,7 +79,7 @@ export default function HomePage() {
             <p className="font-public-sans text-lg leading-8 font-normal text-brand-default">Potholes, dark streetlights, PAM water leaks, or trash piles. Drop photos,<br /> track fixes like a food delivery order, and keep authorities accountable.</p>
 
             <div className="flex justify-start items-center gap-4">
-                <button className="flex justify-center items-center gap-4 p-4 text-base rounded-4xl outline-none border-0 bg-brand-primary text-white font-semibold">
+                <Link to={"/reporting"} className="flex justify-center items-center gap-4 p-4 text-base rounded-4xl outline-none border-0 bg-brand-primary text-white font-semibold">
                     <svg width="1em" height="1em" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_2_8)">
                             <path d="M9.0625 2.5H5.9375L4.375 4.375H2.5C2.16848 4.375 1.85054 4.5067 1.61612 4.74112C1.3817 4.97554 1.25 5.29348 1.25 5.625V11.25C1.25 11.5815 1.3817 11.8995 1.61612 12.1339C1.85054 12.3683 2.16848 12.5 2.5 12.5H12.5C12.8315 12.5 13.1495 12.3683 13.3839 12.1339C13.6183 11.8995 13.75 11.5815 13.75 11.25V5.625C13.75 5.29348 13.6183 4.97554 13.3839 4.74112C13.1495 4.5067 12.8315 4.375 12.5 4.375H10.625L9.0625 2.5Z" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" stroke="white" />
@@ -92,7 +93,7 @@ export default function HomePage() {
                             <path d="M7.5 3.125L11.875 7.5L7.5 11.875" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" stroke="white" />
                         </g>
                     </svg>
-                </button>
+                </Link>
                 <button className="font-public-sans flex items-center justify-center p-4 text-base rounded-4xl outline-none bg-brand-third border border-brand-border font-semibold">
                     Track a case
                 </button>

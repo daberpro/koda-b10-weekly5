@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, createContext, redirect, RouterProvider } from "react-router";
 import DefaultLayout from "./components/DefaultLayout";
 import HomePage from "./pages/HomePage";
 import LiveFeedPage from "./pages/LiveFeedPage";
@@ -9,6 +9,17 @@ import ReportingReceiptPage from "./pages/ReportingReceiptPage";
 import UserNotificationPage from "./pages/UserNotificationPage";
 import UserFlowPage from "./pages/UserFlowPage";
 import DetailReportPage from "./pages/DetailReportPage";
+import { getUserData, verifyUserCredential } from "./lib/util";
+import { UserContext } from "./lib/contexts";
+import { useState } from "react";
+import { useEffect } from "react";
+
+async function authMiddleware({context},next) {
+    if (!verifyUserCredential()) {
+        throw redirect("/");
+    }
+    return await next();
+}
 
 const router = createBrowserRouter([
     {
@@ -16,7 +27,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <HomePage />,
+                element: <HomePage />
             },
             {
                 path: "/live-feed",
@@ -32,19 +43,23 @@ const router = createBrowserRouter([
             },
             {
                 path: "/reporting",
-                element: <ReportingPage />
+                element: <ReportingPage />,
+                middleware: [authMiddleware]
             },
             {
                 path: "/reporting/receipt",
-                element: <ReportingReceiptPage/>
+                element: <ReportingReceiptPage />,
+                middleware: [authMiddleware]
             },
             {
-                path: "/user/notification",
-                element: <UserNotificationPage/>
+                path: "/notification",
+                element: <UserNotificationPage />,
+                middleware: [authMiddleware]
             },
             {
                 path: "/user",
-                element: <UserFlowPage/>
+                element: <UserFlowPage />,
+                middleware: [authMiddleware]
             },
             {
                 path: "/track/detail",
@@ -55,5 +70,15 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-    return <RouterProvider router={router} />;
+    const [userData, setUserData] = useState({});
+    useEffect(() => {
+        if (verifyUserCredential()) {
+            setUserData(getUserData());
+        }
+    },[]);
+    return (
+        <UserContext.Provider value={[userData, setUserData]}>
+            <RouterProvider router={router} />
+        </UserContext.Provider>
+    );
 }
