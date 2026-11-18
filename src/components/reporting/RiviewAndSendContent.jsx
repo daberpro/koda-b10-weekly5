@@ -11,7 +11,7 @@ export default function RiviewAndSendContent(props) {
     const schemaValidate = YUP.object({
         title: YUP.string().required(),
         details: YUP.string().required(),
-        anonymus: YUP.string().required(),
+        anonymus: YUP.string(),
         fillerName: YUP.string().required(),
         email: YUP.string().email().required(),
         phone: YUP.string().required(),
@@ -43,6 +43,20 @@ export default function RiviewAndSendContent(props) {
 
     const [storage, setStorage] = useLocalStorage(storageKeys.REPORTS, []);
     const navigate = useNavigate();
+    const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
     function riviewAndSend(data) {
         const date = new Date();
         const currentTotalStr = storage.length.toString();
@@ -51,7 +65,21 @@ export default function RiviewAndSendContent(props) {
             lengthStrId = 0;
         }
         const id = `CMP-${date.getFullYear()}-${"0".repeat(lengthStrId) + currentTotalStr}`;
-        const copyReportData = { ...report, ...data, id };
+        const copyReportData = {
+            ...report,
+            ...data,
+            id,
+            dateCreation: {
+                month: months[date.getMonth()],
+                date: date.getDate(),
+                year: date.getFullYear()
+            },
+            lastUpdate: {
+                month: months[date.getMonth()],
+                date: date.getDate(),
+                year: date.getFullYear()
+            }
+        };
         setStorage([...storage, copyReportData]);
         reset();
 

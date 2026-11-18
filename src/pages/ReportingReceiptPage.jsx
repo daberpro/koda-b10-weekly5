@@ -105,14 +105,14 @@ export default function ReportingReceiptPage() {
                                 <ol className="flex items-start justify-center gap-4 flex-col">
                                     <li className="text-brand-default font-public-sans text-base">
                                         Your report is awaiting evidence
-                                        verification. Proposed bureau:{" "}
+                                        verification. Proposed bureau:
                                         <span className="font-600">
                                             Dinas Pertamanan dan Hutan Kota
                                         </span>
                                     </li>
                                     <li className="text-brand-default font-public-sans text-base">
                                         A duty inspector will assess site
-                                        urgency within the target{" "}
+                                        urgency within the target
                                         <span className="font-600">
                                             48-hour SLA window once routed
                                         </span>

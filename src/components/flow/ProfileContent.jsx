@@ -1,9 +1,53 @@
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import * as YUP from "yup";
+import { getUserCredentialWithId, storageKeys } from "../../lib/util";
+import { useLocalStorage } from "../../lib/hooks/localStorageHook";
+import { useState } from "react";
+import { useEffect } from "react";
 export default function ProfileContent() {
+    const schemaValidate = YUP.object({
+        fullname: YUP.string().min(4).required(),
+        email: YUP.string().email().required(),
+        phone: YUP.string().required(),
+        nik: YUP.string().min(16).required(),
+    });
+
+    const [storage, setStorage] = useLocalStorage(storageKeys.PROFILE, []);
+    const { email } = getUserCredentialWithId();
+    const profile = storage?.[email] || {};
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        defaultValues: {
+            fullname: profile.fullname || "",
+            email: profile.email || "",
+            phone: profile.phone || "",
+            nik: profile.nik || "",
+        },
+        resolver: yupResolver(schemaValidate),
+    });
+
+    function updateUserData(data) {
+        setStorage({
+            ...storage,
+            [email]: {
+                ...storage[email],
+                ...data
+            }
+        });
+    }
+
     return (
         <div className="flex className justify-start items-start w-[90%] gap-4">
             <div className="w-full gap-4 items-start justify-center className flex">
                 <div className="flex py-6 items-start className justify-center w-full gap-4">
                     <form
+                        onSubmit={handleSubmit(updateUserData)}
                         className="w-full bg-brand-third p-8 rounded-xl border border-brand-border flex flex-col items-start justify-center className gap-2"
                         action=""
                     >
@@ -46,14 +90,18 @@ export default function ProfileContent() {
                             </label>
                             <div className="w-full flex items-center justify-between flex-row bg-brand-third border border-brand-border rounded-xl">
                                 <input
-                                    render="fullname"
+                                    {...register("fullname")}
                                     placeholder="e.g. Budi Santoso"
                                     id="fullname"
-                                    value="Ari Susanto"
                                     type="text"
                                     className="bg-brand-third grow border-0 rounded-xl p-4 text-brand-default text-base font-public-sans font-400 outline-none"
                                 />
                             </div>
+                            {errors.fullname && (
+                                <span className="text-red-500 w-full text-sm">
+                                    {errors.fullname.message}
+                                </span>
+                            )}
                         </div>
 
                         <div className="flex flex-col justify-start items-center className gap-4 w-full">
@@ -65,14 +113,18 @@ export default function ProfileContent() {
                             </label>
                             <div className="w-full flex items-center justify-between flex-row bg-brand-third border border-brand-border rounded-xl">
                                 <input
-                                    render="email"
+                                    {...register("email")}
                                     placeholder="Email"
                                     id="email"
-                                    value="ari@wargareport.id"
                                     type="text"
                                     className="bg-brand-third grow border-0 rounded-xl p-4 text-brand-default text-base font-public-sans font-400 outline-none"
                                 />
                             </div>
+                            {errors.email && (
+                                <span className="text-red-500 w-full text-sm">
+                                    {errors.email.message}
+                                </span>
+                            )}
                         </div>
 
                         <div className="flex flex-col justify-start items-center className gap-4 w-full">
@@ -84,14 +136,18 @@ export default function ProfileContent() {
                             </label>
                             <div className="w-full flex items-center justify-between flex-row bg-brand-third border border-brand-border rounded-xl">
                                 <input
-                                    render="phone"
+                                    {...register("phone")}
                                     placeholder="Phone Number"
                                     id="phone"
-                                    value="+62 888-8888-8888"
                                     type="text"
                                     className="bg-brand-third grow border-0 rounded-xl p-4 text-brand-default text-base font-public-sans font-400 outline-none"
                                 />
                             </div>
+                            {errors.phone && (
+                                <span className="text-red-500 w-full text-sm">
+                                    {errors.phone.message}
+                                </span>
+                            )}
                         </div>
 
                         <div className="flex flex-col justify-start items-center className gap-4 w-full">
@@ -103,15 +159,19 @@ export default function ProfileContent() {
                             </label>
                             <div className="w-full flex items-center justify-between flex-row bg-brand-third border border-brand-border rounded-xl">
                                 <input
-                                    render="nik"
+                                    {...register("nik")}
                                     placeholder="16 digits for verified resident badge (e.g. 3174...)"
                                     id="nik"
                                     type="text"
-                                    value="3174051809900004"
                                     required
                                     className="bg-brand-third grow border-0 rounded-xl p-4 text-brand-default font-ibm-plex-mono text-base font-public-sans font-400 outline-none"
                                 />
                             </div>
+                            {errors.nik && (
+                                <span className="text-red-500 w-full text-sm">
+                                    {errors.nik.message}
+                                </span>
+                            )}
                         </div>
 
                         <button

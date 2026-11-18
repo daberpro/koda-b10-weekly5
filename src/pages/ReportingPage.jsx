@@ -183,6 +183,10 @@ export default function ReportingPage() {
         phone: "",
         confirm: "",
         alertChannels: [],
+        date: "",
+        status: "submitted",
+        upvote: 0,
+
     });
 
     function nextStepConfirm() {

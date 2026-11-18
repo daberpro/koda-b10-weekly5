@@ -4,6 +4,7 @@ import NotificationsContent from "../components/flow/NotificationsContent";
 import ProfileContent from "../components/flow/ProfileContent";
 import PrivacyAndDataContent from "../components/flow/PrivacyAndDataContent";
 import SecurityContent from "../components/flow/SecurityContent";
+import { useSearchParams } from "react-router";
 
 const enumStep = {
     COMPLAINTS: "complaints",
@@ -29,7 +30,10 @@ function UserFlow({ flow }) {
 }
 
 export default function UserFlowPage() {
-    const [currentStep, setCurrentStep] = useState(enumStep.COMPLAINTS);
+    const [params, setParams] = useSearchParams();
+    const [currentStep, setCurrentStep] = useState(
+        params.get("target") || enumStep.COMPLAINTS,
+    );
 
     return (
         <div className="flex flex-col justify-start items-start w-[90%] gap-4">
@@ -46,7 +50,10 @@ export default function UserFlowPage() {
 
                     <div className="w-full border-b border-b-brand-border pb-4 flex items-center justify-start gap-2">
                         <button
-                            onClick={() => setCurrentStep(enumStep.COMPLAINTS)}
+                            onClick={() => {
+                                setCurrentStep(enumStep.COMPLAINTS);
+                                setParams({ target: enumStep.COMPLAINTS });
+                            }}
                             className={
                                 "border-0 px-4 py-2 cursor-pointer rounded-4xl font-public-sans font-400 text-base " +
                                 (currentStep === enumStep.COMPLAINTS
@@ -57,7 +64,10 @@ export default function UserFlowPage() {
                             My complaints
                         </button>
                         <button
-                            onClick={() => setCurrentStep(enumStep.PROFILE)}
+                            onClick={() => {
+                                setCurrentStep(enumStep.PROFILE);
+                                setParams({ target: enumStep.PROFILE });
+                            }}
                             className={
                                 "border-0 px-4 py-2 cursor-pointer rounded-4xl font-public-sans font-400 text-base " +
                                 (currentStep === enumStep.PROFILE
@@ -68,9 +78,10 @@ export default function UserFlowPage() {
                             Profile
                         </button>
                         <button
-                            onClick={() =>
-                                setCurrentStep(enumStep.NOTIFICATIONS)
-                            }
+                            onClick={() => {
+                                setCurrentStep(enumStep.NOTIFICATIONS);
+                                setParams({ target: enumStep.NOTIFICATIONS });
+                            }}
                             className={
                                 "border-0 px-4 py-2 cursor-pointer rounded-4xl font-public-sans font-400 text-base " +
                                 (currentStep === enumStep.NOTIFICATIONS
@@ -81,9 +92,12 @@ export default function UserFlowPage() {
                             Notifications
                         </button>
                         <button
-                            onClick={() =>
-                                setCurrentStep(enumStep.PRIVACY_AND_DATA)
-                            }
+                            onClick={() => {
+                                setCurrentStep(enumStep.PRIVACY_AND_DATA);
+                                setParams({
+                                    target: enumStep.PRIVACY_AND_DATA,
+                                });
+                            }}
                             className={
                                 "border-0 px-4 py-2 cursor-pointer rounded-4xl font-public-sans font-400 text-base " +
                                 (currentStep === enumStep.PRIVACY_AND_DATA
@@ -94,7 +108,10 @@ export default function UserFlowPage() {
                             Privacy & data
                         </button>
                         <button
-                            onClick={() => setCurrentStep(enumStep.SECURITY)}
+                            onClick={() => {
+                                setCurrentStep(enumStep.SECURITY);
+                                setParams({ target: enumStep.SECURITY });
+                            }}
                             className={
                                 "border-0 px-4 py-2 cursor-pointer rounded-4xl font-public-sans font-400 text-base " +
                                 (currentStep === enumStep.SECURITY

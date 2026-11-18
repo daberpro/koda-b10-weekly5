@@ -46,7 +46,7 @@ function SignInForm(props) {
                 if (statusSignin) {
                     setUserData(getUserData());
                     parentCallback(false);
-                    navigate("/user");
+                    navigate("/user?target=profile");
                 }
             })}
             className="flex flex-col justify-center items-center w-full gap-4"
