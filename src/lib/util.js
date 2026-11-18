@@ -131,6 +131,7 @@ export function signinUser({ password, email }) {
  */
 export function registerUser({ fullname, email, phone, nik, password }) {
     const allUsers = getData(storageKeys.PROFILE);
+    console.log(allUsers)
     console.log({
         fullname,
         email,
@@ -143,9 +144,9 @@ export function registerUser({ fullname, email, phone, nik, password }) {
     if (
         allUsers === null ||
         (allUsers &&
-            !allUsers.find(
-                ({ user }) =>
-                    user.email.trim().toLowerCase() ===
+            !Object.values(allUsers).find(
+                ({ email: usrMail }) =>
+                    usrMail.trim().toLowerCase() ===
                     email.trim().toLowerCase(),
             ))
     ) {

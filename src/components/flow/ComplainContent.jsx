@@ -1,5 +1,5 @@
 import { useLocalStorage } from "../../lib/hooks/localStorageHook";
-import { storageKeys } from "../../lib/util";
+import { getUserCredentialWithId, storageKeys } from "../../lib/util";
 import StatusBadge from "../StatusBadge";
 
 function ComplainCard(props) {
@@ -34,6 +34,7 @@ function ComplainCard(props) {
 
 export default function ComplainContent() {
     const [storage, setStorage] = useLocalStorage(storageKeys.REPORTS, []);
+    const user = getUserCredentialWithId();
 
     return (
         <div className="flex py-6 items-start flex-col justify-center w-full gap-4">
@@ -70,7 +71,7 @@ export default function ComplainContent() {
                     </tr>
                 </thead>
                 <tbody className="flex w-full [&>tr:last-child]:rounded-b-xl items-center justify-center flex-col">
-                    {storage.map((data) => {
+                    {storage.filter(({email}) => email === user.email).map((data) => {
                         return <ComplainCard key={data.id} {...data} />
                     })}
                 </tbody>

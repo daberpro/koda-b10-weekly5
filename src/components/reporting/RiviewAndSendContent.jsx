@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import * as YUP from "yup";
 import { TempReportContext } from "../../lib/contexts";
 import { useLocalStorage } from "../../lib/hooks/localStorageHook";
-import { storageKeys } from "../../lib/util";
+import { getUserCredentialWithId, storageKeys } from "../../lib/util";
 import { useNavigate } from "react-router";
 
 export default function RiviewAndSendContent(props) {
@@ -59,6 +59,7 @@ export default function RiviewAndSendContent(props) {
     ];
     function riviewAndSend(data) {
         const date = new Date();
+        const { email } = getUserCredentialWithId();
         const currentTotalStr = storage.length.toString();
         let lengthStrId = 4 - currentTotalStr.length;
         if (lengthStrId < 0) {
@@ -69,6 +70,7 @@ export default function RiviewAndSendContent(props) {
             ...report,
             ...data,
             id,
+            email,
             dateCreation: {
                 month: months[date.getMonth()],
                 date: date.getDate(),
