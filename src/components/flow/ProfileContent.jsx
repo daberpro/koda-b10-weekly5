@@ -37,8 +37,8 @@ export default function ProfileContent() {
             ...storage,
             [email]: {
                 ...storage[email],
-                ...data
-            }
+                ...data,
+            },
         });
     }
 
@@ -113,6 +113,8 @@ export default function ProfileContent() {
                             </label>
                             <div className="w-full flex items-center justify-between flex-row bg-brand-third border border-brand-border rounded-xl">
                                 <input
+                                    readOnly={true}
+                                    disabled={true}
                                     {...register("email")}
                                     placeholder="Email"
                                     id="email"

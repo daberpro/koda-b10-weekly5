@@ -1,12 +1,13 @@
-import { useSearchParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useLocalStorage } from "../lib/hooks/localStorageHook";
 import { storageKeys } from "../lib/util";
 import MediaCard from "../components/MediaCard";
+import { useEffect } from "react";
 
 export default function DetailReportPage() {
-    const [searchParams] = useSearchParams();
+    const { id } = useParams();
+    const navigate = useNavigate();
     const [reports] = useLocalStorage(storageKeys.REPORTS, []);
-    const id = searchParams.get("id");
     const report = reports.find(({ id: reportId }) => reportId === id) || {};
     const reportStatus = report.status;
     const reportedBy =
@@ -17,7 +18,9 @@ export default function DetailReportPage() {
     return (
         <>
             <div className="flex mb-6 w-[90%] items-center justify-between">
-                <button className="bg-transparent text-brand-primary gap-2 font-public-sans outline-none border-0 px-4 py-2 text-base flex items-center justify-center flex-row">
+                <button onClick={() => {
+                    navigate(-1);
+                }} className="bg-transparent cursor-pointer text-brand-primary gap-2 font-public-sans outline-none border-0 px-4 py-2 text-base flex items-center justify-center flex-row">
                     <svg
                         className="text-lg"
                         width="1em"
@@ -218,12 +221,10 @@ export default function DetailReportPage() {
                         </div>
                         <div className="flex w-full flex-col items-center justify-center gap-4 pb-4 border-b border-b-brand-border">
                             <span className="font-fraunces w-full font-600 text-[2rem]">
-                                {report.title ||
-                                    "PAM clean drinking water pipeline burst flooding sidewalk in front of Cipete Raya MRT"}
+                                {report.title || ""}
                             </span>
                             <p className="font-public-sans w-full text-brand-default text-base leading-6">
-                                {report.details ||
-                                    "Clean drinking water is bursting through the sidewalk pavement outside Jl. Fatmawati Raya No. 42 (RT 04 / RW 07, Cilandak Barat) right in front of Cipete Raya MRT. Clean water has been flooding the roadway for 4 hours, causing motorbikes to slip."}
+                                {report.details || ""}
                             </p>
                         </div>
                         <div className="w-full items-center justify-center flex-col gap-4 flex">
@@ -641,7 +642,7 @@ export default function DetailReportPage() {
                                 Tracking Code
                             </span>
                             <span className="font-public-sans text-lg text-brand-primary font-600 text-[2rem]">
-                                {report.id || "CMP-2026-8841"}
+                                {report.id || ""}
                             </span>
                         </div>
 
@@ -650,7 +651,7 @@ export default function DetailReportPage() {
                                 Assigned Authority
                             </span>
                             <span className="font-public-sans font-600 text-base">
-                                Perumda PAM JAYA (Clean Drinking Water)
+                                No authority been assidgned
                             </span>
                         </div>
 
@@ -708,11 +709,11 @@ export default function DetailReportPage() {
                                 <div className="flex grow items-start justify-center flex-col gap-2">
                                     <span className="font-public-sans font-600 text-base">
                                         {report.location?.address ||
-                                            "Jl. Fatmawati Raya No. 42 (depan Stasiun MRT Cipete Raya)"}
+                                            ""}
                                     </span>
                                     <span className="font-public-sans font-500 text-brand-default text-base">
                                         {report.location?.area ||
-                                            "Cilandak Barat, Jakarta Selatan"}
+                                            ""}
                                     </span>
                                 </div>
                             </div>

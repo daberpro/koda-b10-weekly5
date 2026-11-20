@@ -7,7 +7,7 @@ export default function TrackPage() {
         e.preventDefault();
         const formData = new FormData(e.target);
         const id = formData.get("id");
-        navigate("/track/detail?id=" + id);
+        navigate("/track/detail/" + id);
         e.target.reset();
     }
 

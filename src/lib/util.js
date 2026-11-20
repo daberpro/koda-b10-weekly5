@@ -120,7 +120,8 @@ export function signinUser({ password, email }) {
         saveData(storageKeys.ID, JSON.stringify({ email: email }));
         return true;
     } else {
-        removeData(storageKeys.CREDENTIAL);
+        // BUGS
+        // removeData(storageKeys.CREDENTIAL);
         return false;
     }
 }
