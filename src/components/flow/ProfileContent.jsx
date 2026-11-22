@@ -6,6 +6,7 @@ import { getUserCredentialWithId, storageKeys } from "../../lib/util";
 import { useLocalStorage } from "../../lib/hooks/localStorageHook";
 import { useState } from "react";
 import { useEffect } from "react";
+import { UserContext } from "../../lib/contexts";
 export default function ProfileContent() {
     const schemaValidate = YUP.object({
         fullname: YUP.string().min(4).required(),
@@ -14,9 +15,10 @@ export default function ProfileContent() {
         nik: YUP.string().min(16).required(),
     });
 
+    const [userData, setUserData] = useContext(UserContext);
     const [storage, setStorage] = useLocalStorage(storageKeys.PROFILE, []);
-    const { email } = getUserCredentialWithId();
-    const profile = storage?.[email] || {};
+    const { id } = getUserCredentialWithId();
+    const profile = storage?.[id] || {};
 
     const {
         register,
@@ -33,10 +35,14 @@ export default function ProfileContent() {
     });
 
     function updateUserData(data) {
+        setUserData({
+            ...storage[id],
+            ...data,
+        });
         setStorage({
             ...storage,
-            [email]: {
-                ...storage[email],
+            [id]: {
+                ...storage[id],
                 ...data,
             },
         });

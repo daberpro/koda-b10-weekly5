@@ -49,7 +49,7 @@ export function removeData(storageKey) {
 export function getUserCredentialWithId() {
     return {
         token: getData(storageKeys.CREDENTIAL)?.token,
-        email: getData(storageKeys.ID)?.email,
+        id: getData(storageKeys.ID)?.id,
     };
 }
 
@@ -57,13 +57,8 @@ export function getUserCredentialWithId() {
  *
  * @param {String} password
  */
-export function createUserCredential(password) {
-    let restLength = 30 - password.length;
-    if (restLength < 0) {
-        restLength = 0;
-    }
-    const data = password + "#".repeat(restLength);
-    return btoa(data.substring(0, 30));
+export function createUserCredential(email) {
+    return btoa(email);
 }
 
 /**
@@ -72,8 +67,8 @@ export function createUserCredential(password) {
  */
 export function getUserData() {
     if (verifyUserCredential()) {
-        const { email } = getData(storageKeys.ID);
-        return getData(storageKeys.PROFILE)[email];
+        const { id } = getData(storageKeys.ID);
+        return getData(storageKeys.PROFILE)[id];
     }
     return {};
 }
@@ -83,25 +78,41 @@ export function getUserData() {
  * @param {String} token
  * @returns {Boolean}
  */
-export function verifyUserCredential(userData = { token: "", inputMail: "" }) {
-    const { token, inputMail } = userData;
-    const decrypt = atob(token || getData(storageKeys.CREDENTIAL)?.token || "");
-    const { email } = getData(storageKeys.ID) || { email: "" };
-    const userProfile = getData(storageKeys.PROFILE);
-    if ((email && userProfile) || (inputMail && userProfile)) {
-        const { password, email: profileMail } =
-            userProfile[email || inputMail];
-        let restLength = 30 - password.length;
-        if (restLength < 0) {
-            restLength = 0;
-        }
-        const data = password + "#".repeat(restLength);
-        return (
-            data === decrypt &&
-            (email === profileMail || inputMail === profileMail)
-        );
+export function verifyUserCredential() {
+
+    // token was generate using user email
+    // const email = atob(userData.token);
+    const { id } = getData(storageKeys.ID) || {id: ""};
+    const users = getData(storageKeys.PROFILE) || {};
+    const { token } = getData(storageKeys.CREDENTIAL) || {token: ""};
+
+    if (users && id && token) {
+        const user = users[id];
+        const email = atob(token);
+        return email == user.email;
     }
+
     return false;
+
+    //     const { token, inputMail } = userData;
+    //     const decrypt = atob(token || getData(storageKeys.CREDENTIAL)?.token || "");
+    //     const { id } = getData(storageKeys.ID) || { id: "" };
+    //     const userProfile = getData(storageKeys.PROFILE);
+    //
+    //     if ((id && userProfile) || (inputMail && userProfile)) {
+    //         const { password, email: profileMail } =
+    //             userProfile[email || inputMail];
+    //         let restLength = 60 - atob(password).length;
+    //         if (restLength < 0) {
+    //             restLength = 0;
+    //         }
+    //         const data = atob(password) + "#".repeat(restLength);
+    //         return (
+    //             data === decrypt &&
+    //             (email === profileMail || inputMail === profileMail)
+    //         );
+    //     }
+    //     return false;
 }
 
 /**
@@ -109,19 +120,17 @@ export function verifyUserCredential(userData = { token: "", inputMail: "" }) {
  * @param {SubmitEvent} e
  */
 export function signinUser({ password, email }) {
-    const token = createUserCredential(password);
 
-    if (!getData(storageKeys.CREDENTIAL)) {
-        removeData(storageKeys.ID);
-    }
-
-    if (verifyUserCredential({ token, inputMail: email })) {
+    const users = getData(storageKeys.PROFILE) || {};
+    const user = Object.values(users).find((profile) => {
+        return profile.password == btoa(password);
+    });
+    if (user) {
+        const token = createUserCredential(email);
         saveData(storageKeys.CREDENTIAL, JSON.stringify({ token }));
-        saveData(storageKeys.ID, JSON.stringify({ email: email }));
+        saveData(storageKeys.ID, JSON.stringify({ id: user.id }));
         return true;
     } else {
-        // BUGS
-        // removeData(storageKeys.CREDENTIAL);
         return false;
     }
 }
@@ -137,8 +146,7 @@ export function registerUser({ fullname, email, phone, nik, password }) {
         (allUsers &&
             !Object.values(allUsers).find(
                 ({ email: usrMail }) =>
-                    usrMail.trim().toLowerCase() ===
-                    email.trim().toLowerCase(),
+                    usrMail.trim().toLowerCase() === email.trim().toLowerCase(),
             ))
     ) {
         const userId = Date.now();
@@ -147,13 +155,13 @@ export function registerUser({ fullname, email, phone, nik, password }) {
             email,
             phone,
             nik,
-            password,
+            password: btoa(password),
             id: userId,
         };
-        saveData(storageKeys.ID, JSON.stringify({ email: registerInfo.email }));
+        saveData(storageKeys.ID, JSON.stringify({ id: registerInfo.id }));
         saveData(
             storageKeys.PROFILE,
-            JSON.stringify({ ...allUsers, [registerInfo.email]: registerInfo }),
+            JSON.stringify({ ...allUsers, [registerInfo.id]: registerInfo }),
         );
         return true;
     }

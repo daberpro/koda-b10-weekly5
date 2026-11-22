@@ -190,7 +190,7 @@ export default function TopicContent(props) {
                     })}
                 </div>
                 <FormNavigation
-                    backBtnContent="cancel"
+                    backBtnContent="Cancel"
                     nextBtnContent="Continue"
                 />
             </form>

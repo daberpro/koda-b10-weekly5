@@ -3,7 +3,7 @@ export default function SecurityContent() {
         <div className="flex flex-col justify-start items-start w-[90%] gap-4">
             <div className="flex py-6 items-start flex-col justify-center w-full gap-4">
                 <form
-                    className="w-1/2 bg-brand-third p-8 rounded-xl border border-brand-border flex-col flex items-start justify-center flex-col gap-4"
+                    className="w-1/2 bg-brand-third p-8 rounded-xl border border-brand-border flex-col flex items-start justify-center gap-4"
                     action=""
                 >
                     <span className="font-fraunces font-600 text-lg">Security</span>
@@ -12,7 +12,7 @@ export default function SecurityContent() {
                         account.
                     </span>
 
-                    <div className="flex flex-col justify-start items-center flex-col gap-4 w-full">
+                    <div className="flex flex-col justify-start items-center gap-4 w-full">
                         <label
                             className="font-ibm-plex-mono text-brand-default w-full font-400 uppercase text-base"
                             htmlFor="current-password"
@@ -56,7 +56,7 @@ export default function SecurityContent() {
                         </span>
                     </div>
 
-                    <div className="flex flex-col justify-start items-center flex-col gap-4 w-full">
+                    <div className="flex flex-col justify-start items-center gap-4 w-full">
                         <label
                             className="font-ibm-plex-mono text-brand-default w-full font-400 uppercase text-base"
                             htmlFor="new-password"
@@ -101,7 +101,7 @@ export default function SecurityContent() {
                         </span>
                     </div>
 
-                    <div className="flex flex-col justify-start items-center flex-col gap-4 w-full">
+                    <div className="flex flex-col justify-start items-center gap-4 w-full">
                         <label
                             className="font-ibm-plex-mono text-brand-default w-full font-400 uppercase text-base"
                             htmlFor="confirm-new-password"

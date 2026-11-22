@@ -554,7 +554,7 @@ export default function LiveFeedPage() {
                         department: "Perumda PAM JAYA (Clean Drinking Water)" //[cite: 1]
                     }*/}
                     {storage.map((data) => {
-                        return <ReportCards {...data} key={data.id} />;
+                        return <ReportCards variant={"variant-2"} {...data} key={data.id} />;
                     })}
                 </div>
             </div>

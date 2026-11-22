@@ -25,6 +25,11 @@ import TopicContent from "./components/reporting/TopicContent";
 import LocationContent from "./components/reporting/LocationContent";
 import ProofContent from "./components/reporting/ProofContent";
 import RiviewAndSendContent from "./components/reporting/RiviewAndSendContent";
+import ComplainContent from "./components/flow/ComplainContent";
+import NotificationsContent from "./components/flow/NotificationsContent";
+import PrivacyAndDataContent from "./components/flow/PrivacyAndDataContent";
+import ProfileContent from "./components/flow/ProfileContent";
+import SecurityContent from "./components/flow/SecurityContent";
 
 async function authMiddleware({ context }, next) {
     if (!verifyUserCredential()) {
@@ -78,22 +83,26 @@ const router = createBrowserRouter([
                 middleware: [authMiddleware],
                 children: [
                     {
+                        index: true,
+                        element: <TopicContent />,
+                    },
+                    {
                         path: "topic",
-                        element: <TopicContent/>
+                        element: <TopicContent />,
                     },
                     {
                         path: "location",
-                        element: <LocationContent/>
+                        element: <LocationContent />,
                     },
                     {
                         path: "proof",
-                        element: <ProofContent/>
+                        element: <ProofContent />,
                     },
                     {
                         path: "riview-and-send",
-                        element: <RiviewAndSendContent/>
-                    }
-                ]
+                        element: <RiviewAndSendContent />,
+                    },
+                ],
             },
             {
                 path: "/reporting/receipt",
@@ -109,6 +118,32 @@ const router = createBrowserRouter([
                 path: "/user",
                 element: <UserFlowPage />,
                 middleware: [authMiddleware],
+                children: [
+                    {
+                        index: true,
+                        element: <ComplainContent />,
+                    },
+                    {
+                        path: "complaints",
+                        element: <ComplainContent />,
+                    },
+                    {
+                        path: "notifications",
+                        element: <NotificationsContent />,
+                    },
+                    {
+                        path: "privacy-data",
+                        element: <PrivacyAndDataContent />,
+                    },
+                    {
+                        path: "profile",
+                        element: <ProfileContent />,
+                    },
+                    {
+                        path: "security",
+                        element: <SecurityContent />,
+                    },
+                ],
             },
             {
                 path: "/track/detail/:id",
@@ -128,11 +163,12 @@ export default function App() {
     });
 
     useEffect(() => {
+        console.log(verifyUserCredential());
         if (verifyUserCredential()) {
             const { password, ...rest } = getUserData();
-            setUserData({...rest});
+            setUserData({ ...rest });
         }
-    },[]);
+    }, []);
     return (
         <UserContext.Provider value={[userData, setUserData]}>
             <RouterProvider router={router} />

@@ -32,18 +32,18 @@ function ComponentVariant({ totalProof = 0, date = "Uknown 0", variant, url }) {
     }
 }
 
-export default function ReportCards({ image, title, location, evidence, upvote, status, id, variant, department = "No department" }) {
+export default function ReportCards({ title, location, evidence, dateCreation, upvote, status, id, variant, department = "No department" }) {
 
     return (
         <div className="min-h-40 max-[1499px]:h-fit flex justify-start items-start flex-col lg:flex-row bg-brand-third border border-brand-border rounded-xl p-6 gap-4">
-            {image && (
+            {evidence.files.length > 0 && (
                 <div className="flex h-full justify-start items-center flex-col">
-                    <img className="rounded-xl w-32 h-32 object-cover" src={image} alt="Report Image" />
+                    <img className="rounded-xl w-32 h-32 object-cover" src={"placeholder.svg"} alt="Report Image" />
                 </div>
             )}
-            <div className={"flex justify-start h-full w-full gap-2 " + (variant === "variant-1"? "flex-col items-start" : "flex-col lg:flex-row items-start lg:items-center")}>
+            <div className={"flex justify-start h-[stretch] w-full gap-2 " + (variant === "variant-1"? "flex-col items-start" : "flex-col lg:flex-row items-start lg:items-center")}>
 
-                <div className={"items-center justify-start flex-col gap-2 " + (variant === "variant-1"? "w-full" : "grow")}>
+                <div className={"items-center flex justify-between h-full flex-col gap-2 " + (variant === "variant-1"? "w-full" : "grow")}>
                     <div className="w-full flex mb-2 justify-start flex-col lg:flex-row items-start lg:items-center gap-2">
                         <div className="w-fit items-center justify-start flex gap-2">
                             <StatusBadge status={status} />
@@ -58,15 +58,18 @@ export default function ReportCards({ image, title, location, evidence, upvote, 
                             )}
                         </div>
                     </div>
-                    <div className="w-full">
-                        <span className="font-public-sans font-semibold text-base">{title}</span>
-                    </div>
-                    <div className="w-full flex items-center gap-2">
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.5 5C10.5 8.5 6 11.5 6 11.5C6 11.5 1.5 8.5 1.5 5C1.5 3.80653 1.97411 2.66193 2.81802 1.81802C3.66193 0.974106 4.80653 0.5 6 0.5C7.19347 0.5 8.33807 0.974106 9.18198 1.81802C10.0259 2.66193 10.5 3.80653 10.5 5Z" strokeLinecap="round" strokeLinejoin="round" stroke="#0F6B4F" />
-                            <path d="M7.5 5C7.5 5.82843 6.82843 6.5 6 6.5C5.17157 6.5 4.5 5.82843 4.5 5C4.5 4.17157 5.17157 3.5 6 3.5C6.82843 3.5 7.5 4.17157 7.5 5Z" strokeLinecap="round" strokeLinejoin="round" stroke="#0F6B4F" />
-                        </svg>
-                        <span className="font-public-sans text-brand-default text-base">{location?.address}</span>
+
+                    <div className="w-full flex flex-col">
+                        <div className="w-full">
+                            <span className="font-public-sans font-semibold text-base">{title}</span>
+                        </div>
+                        <div className="w-full flex items-center gap-2">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.5 5C10.5 8.5 6 11.5 6 11.5C6 11.5 1.5 8.5 1.5 5C1.5 3.80653 1.97411 2.66193 2.81802 1.81802C3.66193 0.974106 4.80653 0.5 6 0.5C7.19347 0.5 8.33807 0.974106 9.18198 1.81802C10.0259 2.66193 10.5 3.80653 10.5 5Z" strokeLinecap="round" strokeLinejoin="round" stroke="#0F6B4F" />
+                                <path d="M7.5 5C7.5 5.82843 6.82843 6.5 6 6.5C5.17157 6.5 4.5 5.82843 4.5 5C4.5 4.17157 5.17157 3.5 6 3.5C6.82843 3.5 7.5 4.17157 7.5 5Z" strokeLinecap="round" strokeLinejoin="round" stroke="#0F6B4F" />
+                            </svg>
+                            <span className="font-public-sans text-brand-default text-base">{location?.address}</span>
+                        </div>
                     </div>
                 </div>
 
@@ -78,7 +81,7 @@ export default function ReportCards({ image, title, location, evidence, upvote, 
                         </svg>
                         <span>{upvote}</span>
                     </button>
-                    <ComponentVariant url={"/track/detail/"+id} totalProof={evidence?.length} variant={variant}  />
+                    <ComponentVariant url={"/track/detail/"+id} date={ (dateCreation?.month?.substring(0,3) || "Uknown") + " " + (dateCreation?.date || "")} totalProof={evidence?.files?.length} variant={variant}  />
                 </div>
             </div>
         </div>

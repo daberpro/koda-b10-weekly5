@@ -105,6 +105,7 @@ export default function ReportingPage(props) {
         if (currentPath.pathname) {
 
             switch (currentPath.pathname) {
+                case "/reporting/":
                 case "/reporting/topic": {
                     return navigate("/reporting/location");
                 }
