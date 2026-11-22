@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import StatusBadge from "./StatusBadge";
+import { useEffect } from "react";
 
 /**
  *
@@ -65,7 +66,7 @@ export default function ReportCards({ image, title, location, evidence, upvote, 
                             <path d="M10.5 5C10.5 8.5 6 11.5 6 11.5C6 11.5 1.5 8.5 1.5 5C1.5 3.80653 1.97411 2.66193 2.81802 1.81802C3.66193 0.974106 4.80653 0.5 6 0.5C7.19347 0.5 8.33807 0.974106 9.18198 1.81802C10.0259 2.66193 10.5 3.80653 10.5 5Z" strokeLinecap="round" strokeLinejoin="round" stroke="#0F6B4F" />
                             <path d="M7.5 5C7.5 5.82843 6.82843 6.5 6 6.5C5.17157 6.5 4.5 5.82843 4.5 5C4.5 4.17157 5.17157 3.5 6 3.5C6.82843 3.5 7.5 4.17157 7.5 5Z" strokeLinecap="round" strokeLinejoin="round" stroke="#0F6B4F" />
                         </svg>
-                        <span className="font-public-sans text-brand-default text-base">{location.address}</span>
+                        <span className="font-public-sans text-brand-default text-base">{location?.address}</span>
                     </div>
                 </div>
 
@@ -77,7 +78,7 @@ export default function ReportCards({ image, title, location, evidence, upvote, 
                         </svg>
                         <span>{upvote}</span>
                     </button>
-                    <ComponentVariant url={"/track/detail/"+id} totalProof={evidence.length} variant={variant}  />
+                    <ComponentVariant url={"/track/detail/"+id} totalProof={evidence?.length} variant={variant}  />
                 </div>
             </div>
         </div>

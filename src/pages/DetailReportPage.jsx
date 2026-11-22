@@ -3,6 +3,7 @@ import { useLocalStorage } from "../lib/hooks/localStorageHook";
 import { storageKeys } from "../lib/util";
 import MediaCard from "../components/MediaCard";
 import { useEffect } from "react";
+import StatusBadge from "../components/StatusBadge";
 
 export default function DetailReportPage() {
     const { id } = useParams();
@@ -110,31 +111,7 @@ export default function DetailReportPage() {
                 <div className="w-[70%] h-fit flex items-center justify-start flex-col gap-4">
                     <div className="bg-brand-third w-full border border-brand-border p-8 rounded-xl flex items-center justify-center flex-col gap-4">
                         <div className="flex w-full items-center justify-between flex-row gap-4">
-                            <div className="flex items-center justify-center gap-2 rounded-4xl p-2 bg-brand-orange-secondary text-brand-orange border border-brand-orange">
-                                <svg
-                                    width="1em"
-                                    height="1em"
-                                    viewBox="0 0 12 12"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M9 5.5C9 7.433 7.433 9 5.5 9C3.567 9 2 7.433 2 5.5C2 3.567 3.567 2 5.5 2C7.433 2 9 3.567 9 5.5Z"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        stroke="currentColor"
-                                    />
-                                    <path
-                                        d="M10.5 10.5L8.35 8.34998"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        stroke="currentColor"
-                                    />
-                                </svg>
-                                <span className="font-public-sans font-600 text-base">
-                                    {reportStatus}
-                                </span>
-                            </div>
+                            <StatusBadge status={reportStatus} />
                             <div className="w-fit flex items-center justify-center gap-2">
                                 <svg
                                     className="text-lg text-brand-default"
@@ -273,14 +250,14 @@ export default function DetailReportPage() {
                             Evidence on File
                         </span>
                         <span className="text-brand-default font-public-sans text-base">
-                            {report.evidence?.length || 0} attachments (tap to
+                            {report.evidence?.files?.length || 0} attachments (tap to
                             expand)
                         </span>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4 w-full py-4 pr-4">
-                        {report.evidence?.map((data, i) => {
-                            return <MediaCard {...data} key={"media-" + i} />;
+                        {report.evidence?.files?.map((data, i) => {
+                            return <MediaCard showDeleteIcon={false} {...data} key={"media-" + i} />;
                         })}
                     </div>
 

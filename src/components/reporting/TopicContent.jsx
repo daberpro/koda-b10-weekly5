@@ -10,6 +10,8 @@ import { useContext } from "react";
 import { TempReportContext } from "../../lib/contexts";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { ScrollRestoration, useOutletContext } from "react-router";
+import { FormNavigation } from "./FormNavigation";
 
 const enumTopic = {
     BUILDING: "building",
@@ -80,15 +82,19 @@ function TopicCard({
 }
 
 export default function TopicContent(props) {
-    const { children, nextStepConfirm } = props;
+    const { nextStepConfirm } = useOutletContext();
     const [report, setReport] = useContext(TempReportContext);
-    const [selectedTopic, setSelectedTopic] = useState(report.topic || enumTopic.WARNING);
+    const [selectedTopic, setSelectedTopic] = useState(
+        report.topic || enumTopic.WARNING,
+    );
 
-    useEffect(() => {
+    function updateTopic() {
         const copyReportData = { ...report };
         copyReportData.topic = selectedTopic;
         setReport(copyReportData);
-    }, [selectedTopic]);
+    }
+
+    useEffect(() => updateTopic(), [selectedTopic]);
 
     const allTopics = [
         {
@@ -154,22 +160,40 @@ export default function TopicContent(props) {
     }
 
     return (
-        <form action={""} onSubmit={handleSubmit(nextStep)}>
-            <div className="grid gap-4 border-b border-b-brand-border pb-4 items-center justify-center w-full grid-cols-2 mt-8">
-                {allTopics.map((data) => {
-                    return (
-                        <TopicCard
-                            clickFn={() => {
-                                setSelectedTopic(data.topic);
-                            }}
-                            selected={data.topic === selectedTopic}
-                            {...data}
-                            key={data.topic}
-                        />
-                    );
-                })}
+        <>
+            <ScrollRestoration />
+            <div className="flex mb-4 w-full items-start justify-start flex-col gap-2">
+                <span className="font-ibm-plex-mono font-400 text-brand-default text-lg">
+                    Step 01 of 04
+                </span>
+                <span className="font-fraunces font-600 text-[2rem] font-bold">
+                    What needs fixing?
+                </span>
+                <span className="font-public-sans font-400 text-brand-default">
+                    Select the municipal service category that best matches the
+                    issue observed.
+                </span>
             </div>
-            {children}
-        </form>
+            <form action={""} onSubmit={handleSubmit(nextStep)}>
+                <div className="grid gap-4 border-b border-b-brand-border pb-4 items-center justify-center w-full grid-cols-2 mt-8">
+                    {allTopics.map((data) => {
+                        return (
+                            <TopicCard
+                                clickFn={() => {
+                                    setSelectedTopic(data.topic);
+                                }}
+                                selected={data.topic === selectedTopic}
+                                {...data}
+                                key={data.topic}
+                            />
+                        );
+                    })}
+                </div>
+                <FormNavigation
+                    backBtnContent="cancel"
+                    nextBtnContent="Continue"
+                />
+            </form>
+        </>
     );
 }

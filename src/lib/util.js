@@ -132,16 +132,6 @@ export function signinUser({ password, email }) {
  */
 export function registerUser({ fullname, email, phone, nik, password }) {
     const allUsers = getData(storageKeys.PROFILE);
-    console.log(allUsers)
-    console.log({
-        fullname,
-        email,
-        phone,
-        nik,
-        password,
-        id: 0,
-    });
-
     if (
         allUsers === null ||
         (allUsers &&

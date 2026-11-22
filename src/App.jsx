@@ -21,6 +21,10 @@ import { UserContext } from "./lib/contexts";
 import { useState } from "react";
 import { useEffect } from "react";
 import ErrorPage from "./pages/ErrorPage";
+import TopicContent from "./components/reporting/TopicContent";
+import LocationContent from "./components/reporting/LocationContent";
+import ProofContent from "./components/reporting/ProofContent";
+import RiviewAndSendContent from "./components/reporting/RiviewAndSendContent";
 
 async function authMiddleware({ context }, next) {
     if (!verifyUserCredential()) {
@@ -72,6 +76,24 @@ const router = createBrowserRouter([
                 path: "/reporting",
                 element: <ReportingPage />,
                 middleware: [authMiddleware],
+                children: [
+                    {
+                        path: "topic",
+                        element: <TopicContent/>
+                    },
+                    {
+                        path: "location",
+                        element: <LocationContent/>
+                    },
+                    {
+                        path: "proof",
+                        element: <ProofContent/>
+                    },
+                    {
+                        path: "riview-and-send",
+                        element: <RiviewAndSendContent/>
+                    }
+                ]
             },
             {
                 path: "/reporting/receipt",
@@ -97,12 +119,20 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-    const [userData, setUserData] = useState({});
+    const [userData, setUserData] = useState({
+        fullname: "",
+        email: "",
+        phone: "",
+        nik: "",
+        id: "",
+    });
+
     useEffect(() => {
         if (verifyUserCredential()) {
-            setUserData(getUserData());
+            const { password, ...rest } = getUserData();
+            setUserData({...rest});
         }
-    }, []);
+    },[]);
     return (
         <UserContext.Provider value={[userData, setUserData]}>
             <RouterProvider router={router} />

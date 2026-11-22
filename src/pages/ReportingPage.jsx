@@ -5,95 +5,45 @@ import ProofContent from "../components/reporting/ProofContent";
 import RiviewAndSendContent from "../components/reporting/RiviewAndSendContent";
 import { useEffect } from "react";
 import { verifyUserCredential } from "../lib/util";
-import { redirect } from "react-router";
+import { NavLink, Outlet, redirect, useMatches, useNavigate } from "react-router";
 import { TempReportContext } from "../lib/contexts";
 import { useRef } from "react";
 import { Form } from "react-hook-form";
 
-function FormNavigateContent(props) {
-    const { currentStep } = props;
-    return (
-        <div className="w-full items-center justify-between flex-row flex py-8">
-            <button className="bg-transparent border-0 outline-none text-brand-primary text-base font-public-sans font-600">
-                {currentStep === "topic"
-                    ? "Cancel"
-                    : "Back"}
-            </button>
-            <button
-                type="submit"
-                className="bg-brand-primary no-underline text-white font-public-sans font-600 text-base rounded-4xl px-4 py-2 border-0 outline-none cursor-pointer flex items-center justify-center gap-2"
-            >
-                {currentStep === "riview-and-send"
-                    ? "Dispatch Report"
-                    : "Continue"}
-                <svg
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 13 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <g clipPath="url(#clip0_214_614)">
-                        <path
-                            d="M2.70831 6.5H10.2916"
-                            strokeWidth="1.08333"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            stroke="currentColor"
-                        />
-                        <path
-                            d="M6.5 2.70825L10.2917 6.49992L6.5 10.2916"
-                            strokeWidth="1.08333"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            stroke="currentColor"
-                        />
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_214_614">
-                            <rect width="13" height="13" fill="currentColor" />
-                        </clipPath>
-                    </defs>
-                </svg>
-            </button>
-        </div>
-    );
-}
-
-/**
- *
- * @param {{step: "location"|"proof"|"riview-and-send"|"topic"}} param0
- * @returns
- */
-function Content({ step, nextStepConfirm}) {
-    switch (step) {
-        case "location":
-            return (
-                <LocationContent nextStepConfirm={nextStepConfirm}>
-                    <FormNavigateContent currentStep={step} />
-                </LocationContent>
-            );
-        case "proof":
-            return (
-                <ProofContent nextStepConfirm={nextStepConfirm}>
-                    <FormNavigateContent currentStep={step} />
-                </ProofContent>
-            );
-        case "riview-and-send":
-            return (
-                <RiviewAndSendContent nextStepConfirm={nextStepConfirm}>
-                    <FormNavigateContent currentStep={step} />
-                </RiviewAndSendContent>
-            );
-        case "topic":
-        default:
-            return (
-                <TopicContent nextStepConfirm={nextStepConfirm}>
-                    <FormNavigateContent currentStep={step} />
-                </TopicContent>
-            );
-    }
-}
+// /**
+//  *
+//  * @param {{step: "location"|"proof"|"riview-and-send"|"topic"}} param0
+//  * @returns
+//  */
+// function Content({ step, nextStepConfirm}) {
+//     switch (step) {
+//         case "location":
+//             return (
+//                 <LocationContent nextStepConfirm={nextStepConfirm}>
+//                     <FormNavigateContent currentStep={step} />
+//                 </LocationContent>
+//             );
+//         case "proof":
+//             return (
+//                 <ProofContent nextStepConfirm={nextStepConfirm}>
+//                     <FormNavigateContent currentStep={step} />
+//                 </ProofContent>
+//             );
+//         case "riview-and-send":
+//             return (
+//                 <RiviewAndSendContent nextStepConfirm={nextStepConfirm}>
+//                     <FormNavigateContent currentStep={step} />
+//                 </RiviewAndSendContent>
+//             );
+//         case "topic":
+//         default:
+//             return (
+//                 <TopicContent nextStepConfirm={nextStepConfirm}>
+//                     <FormNavigateContent currentStep={step} />
+//                 </TopicContent>
+//             );
+//     }
+// }
 
 function CheckIcon() {
     return (
@@ -123,47 +73,7 @@ function CheckIcon() {
     );
 }
 
-export default function ReportingPage() {
-    const enumStep = {
-        TOPIC: "topic",
-        LOCATION: "location",
-        PROOF: "proof",
-        RIVIEW_AND_SEND: "riview-and-send",
-    };
-    const [stepState, setStepState] = useState({
-        [enumStep.TOPIC]: {
-            id: 1,
-            ready: false,
-            titleForm: "What needs fixing?",
-            description:
-                "Select the municipal service category that best matches the issue observed.",
-        },
-        [enumStep.LOCATION]: {
-            id: 2,
-            ready: false,
-            titleForm: "Where is it located?",
-            description:
-                "Provide street address, RT/RW, or notable landmark for inspection crews.",
-        },
-        [enumStep.PROOF]: {
-            id: 3,
-            ready: false,
-            titleForm: "Attach evidence",
-            description:
-                "Reports with photographic proof or audio notes are prioritized by field dispatchers.",
-        },
-        [enumStep.RIVIEW_AND_SEND]: {
-            id: 4,
-            ready: false,
-            titleForm: "Report summary & declaration",
-            description:
-                "Review the report and choose notifications before final submission.",
-        },
-    });
-    const steps = Object.keys(enumStep);
-    const stepsValue = Object.values(enumStep);
-    const [currentStep, setCurrentStep] = useState(enumStep.TOPIC);
-    const [stepCounter, setStepCounter] = useState(0);
+export default function ReportingPage(props) {
     const [report, setReport] = useState({
         id: "",
         topic: "",
@@ -186,17 +96,25 @@ export default function ReportingPage() {
         date: "",
         status: "submitted",
         upvote: 0,
-
     });
 
+    const matches = useMatches();
+    const navigate = useNavigate();
     function nextStepConfirm() {
-        if (stepCounter < steps.length - 1) {
-            setStepState({
-                ...stepState,
-                [currentStep]: { ...stepState[currentStep], ready: true },
-            });
-            setStepCounter(stepCounter + 1);
-            setCurrentStep(enumStep[steps[stepCounter + 1]]);
+        const currentPath = matches[matches.length - 1];
+        if (currentPath.pathname) {
+
+            switch (currentPath.pathname) {
+                case "/reporting/topic": {
+                    return navigate("/reporting/location");
+                }
+                case "/reporting/location": {
+                    return navigate("/reporting/proof");
+                }
+                case "/reporting/proof": {
+                    return navigate("/reporting/riview-and-send");
+                }
+            }
         }
     }
 
@@ -217,19 +135,16 @@ export default function ReportingPage() {
                         </p>
 
                         <div className="flex flex-col py-6 items-start justify-center gap-4 w-full">
-                            <button
-                                onClick={() => {
-                                    setCurrentStep(enumStep.TOPIC);
-                                    setStepCounter(
-                                        stepsValue.lastIndexOf(enumStep.TOPIC),
+                            <NavLink
+                                to="/reporting/topic"
+                                className={({ isActive }) => {
+                                    return (
+                                        "no-underline w-full flex justify-between cursor-pointer items-center p-4 font-public-sans font-400 text-base " +
+                                        (isActive
+                                            ? "bg-brand-primary text-white rounded-4xl"
+                                            : "bg-transparent text-brand-default")
                                     );
                                 }}
-                                className={
-                                    "no-underline w-full flex justify-between cursor-pointer items-center p-4 font-public-sans font-400 text-base " +
-                                    (currentStep === enumStep.TOPIC
-                                        ? "bg-brand-primary text-white rounded-4xl"
-                                        : "bg-transparent text-brand-default")
-                                }
                             >
                                 <div className="w-fit items-center flex-row justify-center">
                                     <span className="font-ibm-plex-mono text-lg font-400 mr-4">
@@ -239,27 +154,17 @@ export default function ReportingPage() {
                                         Topic
                                     </span>
                                 </div>
-                                {stepState[enumStep.TOPIC].ready && (
-                                    <div className="grow flex items-center justify-end">
-                                        <CheckIcon />
-                                    </div>
-                                )}
-                            </button>
-                            <button
-                                onClick={() => {
-                                    setCurrentStep(enumStep.LOCATION);
-                                    setStepCounter(
-                                        stepsValue.lastIndexOf(
-                                            enumStep.LOCATION,
-                                        ),
+                            </NavLink>
+                            <NavLink
+                                to="/reporting/location"
+                                className={({ isActive }) => {
+                                    return (
+                                        "no-underline w-full flex justify-between cursor-pointer items-center p-4 font-public-sans font-400 text-base " +
+                                        (isActive
+                                            ? "bg-brand-primary text-white rounded-4xl"
+                                            : "bg-transparent text-brand-default")
                                     );
                                 }}
-                                className={
-                                    "no-underline w-full flex justify-between cursor-pointer items-center p-4 font-public-sans font-400 text-base " +
-                                    (currentStep === enumStep.LOCATION
-                                        ? "bg-brand-primary text-white rounded-4xl"
-                                        : "bg-transparent text-brand-default")
-                                }
                             >
                                 <div className="w-fit items-center flex-row justify-center">
                                     <span className="font-ibm-plex-mono text-lg font-400 mr-4">
@@ -269,25 +174,17 @@ export default function ReportingPage() {
                                         Location
                                     </span>
                                 </div>
-                                {stepState[enumStep.LOCATION].ready && (
-                                    <div className="grow flex items-center justify-end">
-                                        <CheckIcon />
-                                    </div>
-                                )}
-                            </button>
-                            <button
-                                onClick={() => {
-                                    setCurrentStep(enumStep.PROOF);
-                                    setStepCounter(
-                                        stepsValue.lastIndexOf(enumStep.PROOF),
+                            </NavLink>
+                            <NavLink
+                                to="/reporting/proof"
+                                className={({ isActive }) => {
+                                    return (
+                                        "no-underline w-full flex justify-between cursor-pointer items-center p-4 font-public-sans font-400 text-base " +
+                                        (isActive
+                                            ? "bg-brand-primary text-white rounded-4xl"
+                                            : "bg-transparent text-brand-default")
                                     );
                                 }}
-                                className={
-                                    "no-underline w-full flex justify-between cursor-pointer items-center p-4 font-public-sans font-400 text-base " +
-                                    (currentStep === enumStep.PROOF
-                                        ? "bg-brand-primary text-white rounded-4xl"
-                                        : "bg-transparent text-brand-default")
-                                }
                             >
                                 <div className="w-fit items-center flex-row justify-center">
                                     <span className="font-ibm-plex-mono text-lg font-400 mr-4">
@@ -297,27 +194,17 @@ export default function ReportingPage() {
                                         Proof
                                     </span>
                                 </div>
-                                {stepState[enumStep.PROOF].ready && (
-                                    <div className="grow flex items-center justify-end">
-                                        <CheckIcon />
-                                    </div>
-                                )}
-                            </button>
-                            <button
-                                onClick={() => {
-                                    setCurrentStep(enumStep.RIVIEW_AND_SEND);
-                                    setStepCounter(
-                                        stepsValue.lastIndexOf(
-                                            enumStep.RIVIEW_AND_SEND,
-                                        ),
+                            </NavLink>
+                            <NavLink
+                                to="/reporting/riview-and-send"
+                                className={({ isActive }) => {
+                                    return (
+                                        "no-underline w-full flex justify-between cursor-pointer items-center p-4 font-public-sans font-400 text-base " +
+                                        (isActive
+                                            ? "bg-brand-primary text-white rounded-4xl"
+                                            : "bg-transparent text-brand-default")
                                     );
                                 }}
-                                className={
-                                    "no-underline w-full flex justify-between cursor-pointer items-center p-4 font-public-sans font-400 text-base " +
-                                    (currentStep === enumStep.RIVIEW_AND_SEND
-                                        ? "bg-brand-primary text-white rounded-4xl"
-                                        : "bg-transparent text-brand-default")
-                                }
                             >
                                 <div className="w-fit items-center flex-row justify-center">
                                     <span className="font-ibm-plex-mono text-lg font-400 mr-4">
@@ -327,12 +214,7 @@ export default function ReportingPage() {
                                         Riview & Send
                                     </span>
                                 </div>
-                                {stepState[enumStep.RIVIEW_AND_SEND].ready && (
-                                    <div className="grow flex items-center justify-end">
-                                        <CheckIcon />
-                                    </div>
-                                )}
-                            </button>
+                            </NavLink>
                         </div>
 
                         <div className="w-full bg-brand-third border-2 border-dashed border-brand-border rounded-xl p-6 flex items-center flex-col justify-center">
@@ -396,25 +278,14 @@ export default function ReportingPage() {
 
                     <div className="w-[70%] max-lg:w-full flex items-start flex-col justify-start h-fit gap-4">
                         <div className="w-full flex items-start justify-center flex-col bg-brand-third p-6 rounded-xl border border-brand-border">
-                            <div className="flex mb-4 w-full items-start justify-start flex-col gap-2">
-                                <span className="font-ibm-plex-mono font-400 text-brand-default text-lg">
-                                    Step {stepState[currentStep].id} of 04
-                                </span>
-                                <span className="font-fraunces font-600 text-[2rem] font-bold">
-                                    {stepState[currentStep].titleForm}
-                                </span>
-                                <span className="font-public-sans font-400 text-brand-default">
-                                    {stepState[currentStep].description}
-                                </span>
-                            </div>
-
                             <TempReportContext.Provider
                                 value={[report, setReport]}
                             >
-                                <Content
+                                <Outlet context={{ nextStepConfirm }} />
+                                {/* <Content
                                     nextStepConfirm={nextStepConfirm}
                                     step={currentStep}
-                                />
+                                />*/}
                             </TempReportContext.Provider>
                         </div>
                     </div>

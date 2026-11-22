@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import StatusBadge from "../components/StatusBadge";
 import { useLocalStorage } from "../lib/hooks/localStorageHook";
 import { storageKeys } from "../lib/util";
@@ -126,8 +126,8 @@ export default function ReportingReceiptPage() {
                             </div>
 
                             <div className="w-full items-center justify-start gap-4 flex-row flex py-8">
-                                <a
-                                    href="#"
+                                <Link
+                                    to={"/track/detail/"+data.id}
                                     className="bg-brand-primary no-underline text-white font-public-sans font-600 text-base rounded-2xl p-4 border-0 outline-none cursor-pointer flex items-center justify-center gap-2"
                                 >
                                     Track report status
@@ -164,7 +164,7 @@ export default function ReportingReceiptPage() {
                                             </clipPath>
                                         </defs>
                                     </svg>
-                                </a>
+                                </Link>
                                 <button className="flex text-base items-center justify-center gap-4 p-4 rounded-2xl border border-brand-border bg-brand-third">
                                     <svg
                                         width="1em"
