@@ -1,11 +1,64 @@
+import { useForm } from "react-hook-form";
+import { storageKeys } from "../../lib/util";
+import { useLocalStorage } from "../../lib/hooks/localStorageHook";
+import * as YUP from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
+
 export default function SecurityContent() {
+
+    const [failed, setFailed] = useState("");
+    const [storage, setStorage] = useLocalStorage(storageKeys.PROFILE, {});
+
+    const schemaValidation = YUP.object({
+        "current-password": YUP.string().min(8).required(),
+        "new-password": YUP.string()
+            .min(8)
+            .matches(/[A-Z]/, "password atleast have one capital letter")
+            .matches(/[a-z]/, "password atleast have one letter")
+            .matches(/[0-9]/, "password atleast have one number")
+            .matches(/[@%!%*?&]/, "password atleast have one symbol @%!%*?&")
+            .required(),
+        "confirm-new-password": YUP.string().min(8)
+    });
+    const { handleSubmit, register, reset, formState: { errors } } = useForm({
+        resolver: yupResolver(schemaValidation)
+    });
+
+    function resetPassword(data) {
+        const user = Object.values(storage).find((profile) => {
+            return profile.password == btoa(data["current-password"]);
+        });
+        if (user && data["new-password"] === data["confirm-new-password"]) {
+            setStorage({
+                ...storage,
+                [user.id]: {
+                    ...storage[user.id],
+                    password: btoa(data["new-password"])
+                }
+            });
+            setFailed("");
+            reset();
+            return;
+        }
+        setFailed("Password salah atau password baru tidak cocok denngan konfirmasi");
+    }
+
     return (
         <div className="flex flex-col justify-start items-start w-[90%] gap-4">
             <div className="flex py-6 items-start flex-col justify-center w-full gap-4">
                 <form
-                    className="w-1/2 bg-brand-third p-8 rounded-xl border border-brand-border flex-col flex items-start justify-center gap-4"
+                    onSubmit={handleSubmit(resetPassword)}
+                    className="w-full bg-brand-third p-8 rounded-xl border border-brand-border flex-col flex items-start justify-center gap-4"
                     action=""
                 >
+
+                    {failed.length > 0 && (
+                        <div className="p-4 rounded-lg border border-red-600 bg-red-100 text-red-600">
+                            {failed}
+                        </div>
+                    )}
+
                     <span className="font-fraunces font-600 text-lg">Security</span>
                     <span className="font-public-sans text-brand-default text-base">
                         Change the password used to sign in to your WargaReport
@@ -24,6 +77,7 @@ export default function SecurityContent() {
                                 placeholder="Enter current password"
                                 id="current-password"
                                 type="text"
+                                {...register("current-password")}
                                 className="bg-brand-third grow border-0 rounded-xl p-4 text-brand-default text-base font-public-sans font-400 outline-none"
                             />
 
@@ -51,6 +105,11 @@ export default function SecurityContent() {
                                 />
                             </svg>
                         </div>
+                        {errors["current-password"] && (
+                            <span className="text-red-500 w-full text-sm">
+                                {errors["current-password"].message}
+                            </span>
+                        )}
                         <span className="w-full text-brand-default text-xs">
                             Required to confirm any password change.
                         </span>
@@ -68,6 +127,7 @@ export default function SecurityContent() {
                                 placeholder="At least 8 characters"
                                 id="new-password"
                                 type="text"
+                                {...register("new-password")}
                                 className="bg-brand-third grow border-0 rounded-xl p-4 text-brand-default text-base font-public-sans font-400 outline-none"
                             />
 
@@ -95,6 +155,11 @@ export default function SecurityContent() {
                                 />
                             </svg>
                         </div>
+                        {errors["new-password"] && (
+                            <span className="text-red-500 w-full text-sm">
+                                {errors["new-password"].message}
+                            </span>
+                        )}
                         <span className="w-full text-brand-default text-xs">
                             Use at least 8 characters, including a letter and a
                             number.
@@ -113,6 +178,7 @@ export default function SecurityContent() {
                                 placeholder="Re-enter new password"
                                 id="confirm-new-password"
                                 type="text"
+                                {...register("confirm-new-password")}
                                 className="bg-brand-third grow border-0 rounded-xl p-4 text-brand-default text-base font-public-sans font-400 outline-none"
                             />
 
@@ -140,6 +206,11 @@ export default function SecurityContent() {
                                 />
                             </svg>
                         </div>
+                        {errors["confirm-new-password"] && (
+                            <span className="text-red-500 w-full text-sm">
+                                {errors["confirm-new-password"].message}
+                            </span>
+                        )}
                     </div>
 
                     <button

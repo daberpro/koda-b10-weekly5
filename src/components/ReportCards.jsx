@@ -36,7 +36,7 @@ export default function ReportCards({ title, location, evidence, dateCreation, u
 
     return (
         <div className="min-h-40 max-[1499px]:h-fit flex justify-start items-start flex-col lg:flex-row bg-brand-third border border-brand-border rounded-xl p-6 gap-4">
-            {evidence.files.length > 0 && (
+            {evidence?.files?.length > 0 && (
                 <div className="flex h-full justify-start items-center flex-col">
                     <img className="rounded-xl w-32 h-32 object-cover" src={"placeholder.svg"} alt="Report Image" />
                 </div>

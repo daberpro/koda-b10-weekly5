@@ -17,7 +17,7 @@ export default function MediaCard(props) {
                     </span>
                 </div>
                 {props.showDeleteIcon && (
-                    <button className="bg-transparent border-0 outline-none">
+                    <button type="button" className="bg-transparent border-0 outline-none">
                         <svg
                             className="text-lg"
                             width="1em"

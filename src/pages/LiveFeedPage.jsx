@@ -166,7 +166,7 @@ export default function LiveFeedPage() {
 
                 <div className="flex-wrap flex justify-start items-center flex-row mt-8 max-lg:w-full gap-2">
                     <div className="px-4 py-2 text-base bg-brand-third border border-brand-border text-brand-default rounded-3xl">
-                        All issues (6)
+                        All issues ({storage?.length || 0})
                     </div>
                     <div className="px-4 py-2 flex items-center justify-center gap-2 text-base bg-brand-third border border-brand-border rounded-4xl text-brand-default">
                         <svg
@@ -543,16 +543,6 @@ export default function LiveFeedPage() {
                 </div>
 
                 <div className="grid *:rounded-none [&>*:first-child]:rounded-t-xl [&>*:last-child]:rounded-b-xl justify-center items-center grid-cols-1 w-full mt-8">
-                    {/* {
-                        id: "CMP-2026-8841",
-                        image: "/images/img (1).png",
-                        title: "PAM clean drinking water pipeline burst flooding sidewalk in front of Cipete Raya MRT",
-                        address: "Jl. Fatmawati Raya No. 42 (depan Stasiun MRT Cipete Raya)",
-                        likes: 148,
-                        status: "in review",
-                        variant: "variant-2",
-                        department: "Perumda PAM JAYA (Clean Drinking Water)" //[cite: 1]
-                    }*/}
                     {storage.map((data) => {
                         return <ReportCards variant={"variant-2"} {...data} key={data.id} />;
                     })}

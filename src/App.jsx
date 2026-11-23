@@ -30,6 +30,13 @@ import NotificationsContent from "./components/flow/NotificationsContent";
 import PrivacyAndDataContent from "./components/flow/PrivacyAndDataContent";
 import ProfileContent from "./components/flow/ProfileContent";
 import SecurityContent from "./components/flow/SecurityContent";
+import AdminLayout from "./pages/admin/AdminLayout";
+import EscalationDesk from "./pages/admin/components/EscalationDesk";
+import SLABenchmark from "./pages/admin/components/SLABenchmark";
+import Categories from "./pages/admin/components/Categories";
+import Agencies from "./pages/admin/components/Agencies";
+import OfficerAccounts from "./pages/admin/components/OfficerAccounts";
+import ModerationBanner from "./pages/admin/components/ModerationBanner";
 
 async function authMiddleware({ context }, next) {
     if (!verifyUserCredential()) {
@@ -113,6 +120,41 @@ const router = createBrowserRouter([
                 path: "/notification",
                 element: <UserNotificationPage />,
                 middleware: [authMiddleware],
+            },
+            {
+                path: "/admin",
+                element: <AdminLayout />,
+                middleware: [authMiddleware],
+                children: [
+                    {
+                        index: true,
+                        element: <EscalationDesk/>
+                    },
+                    {
+                        path: "escalation",
+                        element: <EscalationDesk/>
+                    },
+                    {
+                        path: "sla",
+                        element: <SLABenchmark/>
+                    },
+                    {
+                        path: "categories",
+                        element: <Categories/>
+                    },
+                    {
+                        path: "agencies",
+                        element: <Agencies/>
+                    },
+                    {
+                        path: "officer-accounts",
+                        element: <OfficerAccounts/>
+                    },
+                    {
+                        path: "moderation",
+                        element: <ModerationBanner/>
+                    }
+                ]
             },
             {
                 path: "/user",
