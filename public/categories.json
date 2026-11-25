@@ -1,0 +1,65 @@
+[
+    {
+        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "name": "Roads & Transit",
+        "icon": "warning",
+        "citizenFacingLabel": "Pothole / Sidewalk (Trotoar)",
+        "citizenHint": "Laporkan jalan berlubang, trotoar rusak, atau fasilitas transit yang terganggu.",
+        "agencyId": "",
+        "SLAId": ""
+    },
+    {
+        "id": "c9bf9e57-1685-4c89-bafb-ff5af830be8a",
+        "name": "Water & Sewage",
+        "icon": "water",
+        "citizenFacingLabel": "Water Burst / Pipa Bocor",
+        "citizenHint": "Laporkan kebocoran pipa air bersih, saluran tersumbat, atau genangan air.",
+        "agencyId": "",
+        "SLAId": ""
+    },
+    {
+        "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+        "name": "Street Lighting",
+        "icon": "lighting",
+        "citizenFacingLabel": "Dark Street / PJU Padam",
+        "citizenHint": "Laporkan lampu penerangan jalan umum (PJU) yang mati atau berkedip.",
+        "agencyId": "",
+        "SLAId": ""
+    },
+    {
+        "id": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+        "name": "Sanitation & Waste",
+        "icon": "trash",
+        "citizenFacingLabel": "Trash Pile / Sampah Liar",
+        "citizenHint": "Laporkan tumpukan sampah liar, tempat sampah penuh, atau sampah di aliran sungai.",
+        "agencyId": "",
+        "SLAId": ""
+    },
+    {
+        "id": "6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b",
+        "name": "Public Parks & Trees",
+        "icon": "tree",
+        "citizenFacingLabel": "Hazardous Tree / Rawan Tumbang",
+        "citizenHint": "Laporkan pohon tumbang, dahan rawan patah, atau kerusakan fasilitas taman kota.",
+        "agencyId": "",
+        "SLAId": ""
+    },
+    {
+        "id": "710b962e-041c-11e1-9234-0123456789ab",
+        "name": "Noise & Disturbance",
+        "icon": "sound",
+        "citizenFacingLabel": "Late-night Noise / Ketertiban",
+        "citizenHint": "Laporkan kebisingan larut malam atau gangguan ketertiban umum di lingkungan sekitar.",
+        "agencyId": "",
+        "SLAId": ""
+    },
+    {
+        "id": "3d813cbb-47fb-32ba-91df-831e1593ac29",
+        "name": "Building & Zoning",
+        "icon": "building",
+        "citizenFacingLabel": "Unsafe Construction / Bangunan",
+        "citizenHint": "Laporkan konstruksi bangunan yang membahayakan atau pelanggaran tata ruang.",
+        "agencyId": "",
+        "SLAId": ""
+    }
+]

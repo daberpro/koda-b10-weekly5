@@ -2,14 +2,18 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as YUP from "yup";
-import { TempReportContext, UserContext } from "../../lib/contexts";
-import { useLocalStorage } from "../../lib/hooks/localStorageHook";
-import { getUserCredentialWithId, storageKeys } from "../../lib/util";
-import { ScrollRestoration, useNavigate, useOutletContext } from "react-router";
+import { TempReportContext, UserContext } from "../../../lib/contexts";
+import { useLocalStorage } from "../../../lib/hooks/localStorageHook";
+import { getUserCredentialWithId, storageKeys } from "../../../lib/util";
+import { ScrollRestoration, useNavigate } from "react-router";
 import { FormNavigation } from "./FormNavigation";
-import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { reportsActions } from "../../../redux/slices/reports.slice";
+import { useSelector } from "react-redux";
 
-export default function RiviewAndSendContent(props) {
+export default function RiviewAndSendContent() {
+    const reduxDispatch = useDispatch();
+    const data = useSelector((state) => state);
     const schemaValidate = YUP.object({
         title: YUP.string().required(),
         details: YUP.string().required(),
@@ -26,9 +30,8 @@ export default function RiviewAndSendContent(props) {
         alertChannels: YUP.array().required(),
     });
 
-    const { nextStepConfirm } = useOutletContext();
-    const [userData, setUserData] = useContext(UserContext);
     const [report, setReport] = useContext(TempReportContext);
+    const { user, reports } = data;
 
     const {
         register,
@@ -40,16 +43,15 @@ export default function RiviewAndSendContent(props) {
             title: report.title || "",
             details: report.details || "",
             anonymus: report.anonymus || "",
-            fillerName: report.title || userData.fullname,
-            email: report.email || userData.email,
-            phone: report.phone || userData.phone,
+            fillerName: report.title || user.currentLoginUser.fullname,
+            email: report.email || user.currentLoginUser.email,
+            phone: report.phone || user.currentLoginUser.phone,
             confirm: report.confirm || "",
             alertChannels: report.alertChannels || [],
         },
         resolver: yupResolver(schemaValidate),
     });
 
-    const [storage, setStorage] = useLocalStorage(storageKeys.REPORTS, []);
     const navigate = useNavigate();
     const months = [
         "January",
@@ -68,7 +70,7 @@ export default function RiviewAndSendContent(props) {
     function riviewAndSend(data) {
         const date = new Date();
         const { email } = getUserCredentialWithId();
-        const currentTotalStr = storage.length.toString();
+        const currentTotalStr = reports?.reports?.length?.toString();
         let lengthStrId = 4 - currentTotalStr.length;
         if (lengthStrId < 0) {
             lengthStrId = 0;
@@ -83,14 +85,16 @@ export default function RiviewAndSendContent(props) {
                 month: months[date.getMonth()],
                 date: date.getDate(),
                 year: date.getFullYear(),
+                time: date.toLocaleTimeString()
             },
             lastUpdate: {
                 month: months[date.getMonth()],
                 date: date.getDate(),
                 year: date.getFullYear(),
+                time: date.toLocaleTimeString()
             },
         };
-        setStorage([...storage, copyReportData]);
+        reduxDispatch(reportsActions.addReport(copyReportData));
         reset();
 
         const urlParams = new URLSearchParams();

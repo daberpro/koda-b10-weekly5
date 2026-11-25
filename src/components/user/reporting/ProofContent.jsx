@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { TempReportContext } from "../../lib/contexts";
+import { TempReportContext } from "../../../lib/contexts";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import MediaCard from "../MediaCard";
+import MediaCard from "../../MediaCard";
 import { ScrollRestoration, useOutletContext } from "react-router";
 import { FormNavigation } from "./FormNavigation";
 

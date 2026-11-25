@@ -1,8 +1,8 @@
 import { useState } from "react";
-import TopicContent from "../components/reporting/TopicContent";
-import LocationContent from "../components/reporting/LocationContent";
-import ProofContent from "../components/reporting/ProofContent";
-import RiviewAndSendContent from "../components/reporting/RiviewAndSendContent";
+import TopicContent from "../components/user/reporting/TopicContent";
+import LocationContent from "../components/user/reporting/LocationContent";
+import ProofContent from "../components/user/reporting/ProofContent";
+import RiviewAndSendContent from "../components/user/reporting/RiviewAndSendContent";
 import { useEffect } from "react";
 import { verifyUserCredential } from "../lib/util";
 import { NavLink, Outlet, redirect, useMatches, useNavigate } from "react-router";
@@ -88,12 +88,11 @@ export default function ReportingPage(props) {
         title: "",
         details: "",
         anonymus: "",
-        filerName: "",
+        fillerName: "",
         email: "",
         phone: "",
         confirm: "",
         alertChannels: [],
-        date: "",
         status: "submitted",
         upvote: 0,
     });

@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { getUserData, registerUser, signinUser } from "../lib/util";
+import { registerUser, signinUser } from "../lib/util";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as YUP from "yup";
 import { useNavigate } from "react-router";
-import { useContext } from "react";
-import { UserContext } from "../lib/contexts";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { usersActions } from "../redux/slices/users.slice.js";
 
 function SignInForm(props) {
+    const { users } = useSelector((state) => state.users);
+    const reduxDispatch = useDispatch();
     const { parentCallback } = props;
     const [pwType, setPwType] = useState(false);
     const [failed, setFailed] = useState(false);
 
     const navigate = useNavigate();
-    const [userData, setUserData] = useContext(UserContext);
 
     const schemaValidate = YUP.object({
         email: YUP.string().email().required(),
@@ -41,12 +43,20 @@ function SignInForm(props) {
     return (
         <form
             onSubmit={handleSubmit((data) => {
-                const statusSignin = signinUser(data);
-                setFailed(!statusSignin);
-                if (statusSignin) {
-                    setUserData(getUserData());
+                const readyToUseUserData = signinUser({...data, allUsers: users});
+                setFailed(!readyToUseUserData);
+                if (readyToUseUserData) {
+                    reduxDispatch(usersActions.loginUser(readyToUseUserData));
                     parentCallback(false);
-                    navigate("/user/profile");
+                    switch (readyToUseUserData.role) {
+                        case "admin": {
+                            return navigate("/admin");
+                        }
+                        case "officer":
+                        case "user":
+                        default:
+                            return navigate("/user/profile");
+                    }
                 }
             })}
             className="flex flex-col justify-center items-center w-full gap-4"
@@ -221,6 +231,8 @@ function SignInForm(props) {
 function RegisterForm() {
     const [pwType, setPwType] = useState(false);
     const [failed, setFailed] = useState(false);
+    const { users } = useSelector((state) => state.users);
+    const reduxDispatch = useDispatch();
 
     const schemaValidate = YUP.object({
         email: YUP.string().email().required(),
@@ -257,8 +269,16 @@ function RegisterForm() {
     });
 
     function handleRegister(data) {
-        setFailed(!registerUser(data));
-        reset();
+        const readyToDataData = registerUser({
+            ...data,
+            allUsers: users,
+        });
+        if (readyToDataData) {
+            reduxDispatch(usersActions.registerUser(readyToDataData));
+            reset();
+            return;
+        }
+        setFailed(!readyToDataData);
     }
 
     return (
@@ -612,7 +632,11 @@ export default function ModalSigninRegister({ showModalFn }) {
                     </div>
 
                     <div className="flex flex-col justify-start items-center w-full overflow-y-auto max-h-120">
-                        {selectedKind === "signin" && <SignInForm parentCallback={(value)=> showModalFn(value)} />}
+                        {selectedKind === "signin" && (
+                            <SignInForm
+                                parentCallback={(value) => showModalFn(value)}
+                            />
+                        )}
                         {selectedKind === "register" && <RegisterForm />}
                     </div>
                 </div>

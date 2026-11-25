@@ -1,12 +1,11 @@
 import {
     createBrowserRouter,
-    createContext,
     isRouteErrorResponse,
     redirect,
     RouterProvider,
     useRouteError,
 } from "react-router";
-import DefaultLayout from "./components/DefaultLayout";
+
 import HomePage from "./pages/HomePage";
 import LiveFeedPage from "./pages/LiveFeedPage";
 import TrackPage from "./pages/TrackPage";
@@ -16,30 +15,58 @@ import ReportingReceiptPage from "./pages/ReportingReceiptPage";
 import UserNotificationPage from "./pages/UserNotificationPage";
 import UserFlowPage from "./pages/UserFlowPage";
 import DetailReportPage from "./pages/DetailReportPage";
-import { getUserData, verifyUserCredential } from "./lib/util";
-import { UserContext } from "./lib/contexts";
-import { useState } from "react";
-import { useEffect } from "react";
 import ErrorPage from "./pages/ErrorPage";
-import TopicContent from "./components/reporting/TopicContent";
-import LocationContent from "./components/reporting/LocationContent";
-import ProofContent from "./components/reporting/ProofContent";
-import RiviewAndSendContent from "./components/reporting/RiviewAndSendContent";
-import ComplainContent from "./components/flow/ComplainContent";
-import NotificationsContent from "./components/flow/NotificationsContent";
-import PrivacyAndDataContent from "./components/flow/PrivacyAndDataContent";
-import ProfileContent from "./components/flow/ProfileContent";
-import SecurityContent from "./components/flow/SecurityContent";
 import AdminLayout from "./pages/admin/AdminLayout";
-import EscalationDesk from "./pages/admin/components/EscalationDesk";
-import SLABenchmark from "./pages/admin/components/SLABenchmark";
-import Categories from "./pages/admin/components/Categories";
-import Agencies from "./pages/admin/components/Agencies";
-import OfficerAccounts from "./pages/admin/components/OfficerAccounts";
-import ModerationBanner from "./pages/admin/components/ModerationBanner";
 
-async function authMiddleware({ context }, next) {
-    if (!verifyUserCredential()) {
+import { verifyUserCredential } from "./lib/util";
+
+import DefaultLayout from "./components/DefaultLayout";
+
+import TopicContent from "./components/user/reporting/TopicContent";
+import LocationContent from "./components/user/reporting/LocationContent";
+import ProofContent from "./components/user/reporting/ProofContent";
+import RiviewAndSendContent from "./components/user/reporting/RiviewAndSendContent";
+import ComplainContent from "./components/user/flow/ComplainContent";
+import NotificationsContent from "./components/user/flow/NotificationsContent";
+import PrivacyAndDataContent from "./components/user/flow/PrivacyAndDataContent";
+import ProfileContent from "./components/user/flow/ProfileContent";
+import SecurityContent from "./components/user/flow/SecurityContent";
+import EscalationDesk from "./components/admin/EscalationDesk";
+import SLABenchmark from "./components/admin/SLABenchmark";
+import Categories from "./components/admin/Categories";
+import Agencies from "./components/admin/Agencies";
+import ModerationBanner from "./components/admin/ModerationBanner";
+import OfficerAccounts from "./components/admin/OfficerAccounts";
+import store, { persistor } from "./redux/store";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { usersActions } from "./redux/slices/users.slice";
+import { categoriesActions } from "./redux/slices/categories.slice";
+
+function rehydrateStore() {
+    return new Promise((res) => {
+        const ps = persistor.getState();
+        if (ps?.bootstrapped) res();
+        const unsubscribe = persistor.subscribe(() => {
+            if (persistor.getState().bootstrapped) {
+                unsubscribe();
+                res();
+            }
+        });
+    });
+}
+
+async function authMiddleware(arg, next) {
+    await rehydrateStore();
+    if (!verifyUserCredential(store.getState().users.users)) {
+        throw redirect("/");
+    }
+    return await next();
+}
+
+async function authAdminMiddleware(arg, next) {
+    await rehydrateStore();
+    if (!(store.getState().user.currentLoginUser.role == "admin")) {
         throw redirect("/");
     }
     return await next();
@@ -124,37 +151,37 @@ const router = createBrowserRouter([
             {
                 path: "/admin",
                 element: <AdminLayout />,
-                middleware: [authMiddleware],
+                middleware: [authMiddleware,authAdminMiddleware],
                 children: [
                     {
                         index: true,
-                        element: <EscalationDesk/>
+                        element: <EscalationDesk />,
                     },
                     {
                         path: "escalation",
-                        element: <EscalationDesk/>
+                        element: <EscalationDesk />,
                     },
                     {
                         path: "sla",
-                        element: <SLABenchmark/>
+                        element: <SLABenchmark />,
                     },
                     {
                         path: "categories",
-                        element: <Categories/>
+                        element: <Categories />,
                     },
                     {
                         path: "agencies",
-                        element: <Agencies/>
+                        element: <Agencies />,
                     },
                     {
                         path: "officer-accounts",
-                        element: <OfficerAccounts/>
+                        element: <OfficerAccounts />,
                     },
                     {
                         path: "moderation",
-                        element: <ModerationBanner/>
-                    }
-                ]
+                        element: <ModerationBanner />,
+                    },
+                ],
             },
             {
                 path: "/user",
@@ -196,24 +223,13 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-    const [userData, setUserData] = useState({
-        fullname: "",
-        email: "",
-        phone: "",
-        nik: "",
-        id: "",
-    });
+
+    const reduxDispatch = useDispatch();
 
     useEffect(() => {
-        console.log(verifyUserCredential());
-        if (verifyUserCredential()) {
-            const { password, ...rest } = getUserData();
-            setUserData({ ...rest });
-        }
-    }, []);
-    return (
-        <UserContext.Provider value={[userData, setUserData]}>
-            <RouterProvider router={router} />
-        </UserContext.Provider>
-    );
+        reduxDispatch(usersActions.fetchUserThunk(store.getState().users));
+        reduxDispatch(categoriesActions.fetchCategoriesThunk());
+    },[reduxDispatch]);
+
+    return <RouterProvider router={router} />;
 }

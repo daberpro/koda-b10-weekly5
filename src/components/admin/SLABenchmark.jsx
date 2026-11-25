@@ -1,6 +1,8 @@
 import { ScrollRestoration } from "react-router";
+import ModalContainer from "./ModalContainer";
+import { useState } from "react";
 
-const WINDOWS = [
+const dummyData = [
     {
         domain: "Roads & Transit",
         bureau: "Dinas Bina Marga DKI Jakarta (Roads & Sidewalks)",
@@ -52,9 +54,8 @@ const WINDOWS = [
     },
 ];
 
-const GRID = "grid grid-cols-[18%_1fr_12%_18%_12%] items-center gap-4 px-6";
-
 export default function SLABenchmark() {
+
     return (
         <>
             <ScrollRestoration />
@@ -70,7 +71,7 @@ export default function SLABenchmark() {
 
                 <div className="overflow-hidden rounded-2xl border border-brand-border bg-brand-third">
                     <div
-                        className={`${GRID} py-3 border-b border-brand-border bg-black/[0.03] font-ibm-plex-mono uppercase tracking-wider text-gray-500`}
+                        className="grid grid-cols-[18%_1fr_12%_18%_12%] items-center gap-4 px-6 py-3 border-b border-brand-border bg-black/[0.03] font-ibm-plex-mono uppercase tracking-wider text-gray-500"
                     >
                         <span>Service domain</span>
                         <span>Responsible bureau</span>
@@ -79,10 +80,10 @@ export default function SLABenchmark() {
                         <span className="text-right">Status</span>
                     </div>
 
-                    {WINDOWS.map((w) => (
+                    {dummyData.map((w) => (
                         <div
                             key={w.domain}
-                            className={`${GRID} py-4 border-b border-brand-border last:border-b-0 font-public-sans text-brand-default`}
+                            className="grid grid-cols-[18%_1fr_12%_18%_12%] items-center gap-4 px-6 py-4 border-b border-brand-border last:border-b-0 font-public-sans text-brand-default"
                         >
                             <span className="font-semibold">{w.domain}</span>
                             <span className="text-gray-700">{w.bureau}</span>
@@ -107,6 +108,7 @@ export default function SLABenchmark() {
                     ))}
                 </div>
             </section>
+
         </>
     );
 }

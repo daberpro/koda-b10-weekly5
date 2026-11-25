@@ -1,14 +1,17 @@
 import { useForm } from "react-hook-form";
-import { storageKeys } from "../../lib/util";
-import { useLocalStorage } from "../../lib/hooks/localStorageHook";
+import { storageKeys } from "../../../lib/util";
+import { useLocalStorage } from "../../../lib/hooks/localStorageHook";
 import * as YUP from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { usersActions } from "../../../redux/slices/users.slice";
+import { useSelector } from "react-redux";
 
 export default function SecurityContent() {
-
+    const reduxDispatch = useDispatch();
+    const {users} = useSelector((state) => state.users);
     const [failed, setFailed] = useState("");
-    const [storage, setStorage] = useLocalStorage(storageKeys.PROFILE, {});
 
     const schemaValidation = YUP.object({
         "current-password": YUP.string().min(8).required(),
@@ -19,29 +22,36 @@ export default function SecurityContent() {
             .matches(/[0-9]/, "password atleast have one number")
             .matches(/[@%!%*?&]/, "password atleast have one symbol @%!%*?&")
             .required(),
-        "confirm-new-password": YUP.string().min(8)
+        "confirm-new-password": YUP.string().min(8),
     });
-    const { handleSubmit, register, reset, formState: { errors } } = useForm({
-        resolver: yupResolver(schemaValidation)
+    const {
+        handleSubmit,
+        register,
+        reset,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(schemaValidation),
     });
 
     function resetPassword(data) {
-        const user = Object.values(storage).find((profile) => {
+        const userData = users?.find((profile) => {
             return profile.password == btoa(data["current-password"]);
         });
-        if (user && data["new-password"] === data["confirm-new-password"]) {
-            setStorage({
-                ...storage,
-                [user.id]: {
-                    ...storage[user.id],
-                    password: btoa(data["new-password"])
-                }
-            });
+        console.log(userData);
+        if (userData && data["new-password"] === data["confirm-new-password"]) {
+            reduxDispatch(
+                usersActions.updateUser({
+                    ...userData,
+                    password: btoa(data["new-password"]),
+                }),
+            );
             setFailed("");
             reset();
             return;
         }
-        setFailed("Password salah atau password baru tidak cocok denngan konfirmasi");
+        setFailed(
+            "Password salah atau password baru tidak cocok denngan konfirmasi",
+        );
     }
 
     return (
@@ -52,14 +62,15 @@ export default function SecurityContent() {
                     className="w-full bg-brand-third p-8 rounded-xl border border-brand-border flex-col flex items-start justify-center gap-4"
                     action=""
                 >
-
                     {failed.length > 0 && (
                         <div className="p-4 rounded-lg border border-red-600 bg-red-100 text-red-600">
                             {failed}
                         </div>
                     )}
 
-                    <span className="font-fraunces font-600 text-lg">Security</span>
+                    <span className="font-fraunces font-600 text-lg">
+                        Security
+                    </span>
                     <span className="font-public-sans text-brand-default text-base">
                         Change the password used to sign in to your WargaReport
                         account.

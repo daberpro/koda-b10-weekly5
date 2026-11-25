@@ -1,10 +1,8 @@
+import { useSelector } from "react-redux";
 import ReportCards from "../components/ReportCards";
-import { useLocalStorage } from "../lib/hooks/localStorageHook";
-import { storageKeys } from "../lib/util";
 
 export default function LiveFeedPage() {
-    const [ storage ] = useLocalStorage(storageKeys.REPORTS, []);
-
+    const { reports } = useSelector((state) => state.reports);
     return (
         <>
             <div className="flex flex-col justify-start items-start w-[90%] gap-4">
@@ -166,7 +164,7 @@ export default function LiveFeedPage() {
 
                 <div className="flex-wrap flex justify-start items-center flex-row mt-8 max-lg:w-full gap-2">
                     <div className="px-4 py-2 text-base bg-brand-third border border-brand-border text-brand-default rounded-3xl">
-                        All issues ({storage?.length || 0})
+                        All issues ({reports?.length || 0})
                     </div>
                     <div className="px-4 py-2 flex items-center justify-center gap-2 text-base bg-brand-third border border-brand-border rounded-4xl text-brand-default">
                         <svg
@@ -543,7 +541,7 @@ export default function LiveFeedPage() {
                 </div>
 
                 <div className="grid *:rounded-none [&>*:first-child]:rounded-t-xl [&>*:last-child]:rounded-b-xl justify-center items-center grid-cols-1 w-full mt-8">
-                    {storage.map((data) => {
+                    {reports.map((data) => {
                         return <ReportCards variant={"variant-2"} {...data} key={data.id} />;
                     })}
                 </div>

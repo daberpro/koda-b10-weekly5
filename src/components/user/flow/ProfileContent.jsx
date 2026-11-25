@@ -1,13 +1,12 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as YUP from "yup";
-import { getUserCredentialWithId, storageKeys } from "../../lib/util";
-import { useLocalStorage } from "../../lib/hooks/localStorageHook";
-import { useState } from "react";
-import { useEffect } from "react";
-import { UserContext } from "../../lib/contexts";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { usersActions } from "../../../redux/slices/users.slice";
+
 export default function ProfileContent() {
+    const reduxDispatch = useDispatch();
     const schemaValidate = YUP.object({
         fullname: YUP.string().min(4).required(),
         email: YUP.string().email().required(),
@@ -15,10 +14,7 @@ export default function ProfileContent() {
         nik: YUP.string().min(16).required(),
     });
 
-    const [userData, setUserData] = useContext(UserContext);
-    const [storage, setStorage] = useLocalStorage(storageKeys.PROFILE, []);
-    const { id } = getUserCredentialWithId();
-    const profile = storage?.[id] || {};
+    const user = useSelector((state) => state.user);
 
     const {
         register,
@@ -26,26 +22,16 @@ export default function ProfileContent() {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            fullname: profile.fullname || "",
-            email: profile.email || "",
-            phone: profile.phone || "",
-            nik: profile.nik || "",
+            fullname: user?.currentLoginUser?.fullname || "",
+            email: user?.currentLoginUser?.email || "",
+            phone: user?.currentLoginUser?.phone || "",
+            nik: user?.currentLoginUser?.nik || "",
         },
         resolver: yupResolver(schemaValidate),
     });
 
     function updateUserData(data) {
-        setUserData({
-            ...storage[id],
-            ...data,
-        });
-        setStorage({
-            ...storage,
-            [id]: {
-                ...storage[id],
-                ...data,
-            },
-        });
+        reduxDispatch(usersActions.updateUser(data));
     }
 
     return (

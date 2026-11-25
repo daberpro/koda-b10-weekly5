@@ -1,15 +1,21 @@
 import { useNavigate, useParams } from "react-router";
-import { useLocalStorage } from "../lib/hooks/localStorageHook";
-import { storageKeys } from "../lib/util";
 import MediaCard from "../components/MediaCard";
-import { useEffect } from "react";
 import StatusBadge from "../components/StatusBadge";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export default function DetailReportPage() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [reports] = useLocalStorage(storageKeys.REPORTS, []);
+    const { reports } = useSelector((state) => state.reports);
     const report = reports.find(({ id: reportId }) => reportId === id) || {};
+
+    useEffect(() => {
+        if (Object.keys(report).length == 0) {
+            navigate("/404");
+        }
+    },[]);
+
     const reportStatus = report.status;
     const reportedBy =
         report.anonymus === "anonymus"

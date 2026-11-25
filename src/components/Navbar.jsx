@@ -1,22 +1,25 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router";
 import ModalSigninRegister from "./ModalSigninRegister";
-import { useEffect } from "react";
-import { getUserData, verifyUserCredential } from "../lib/util";
+// import { useEffect } from "react";
+// import { getUserData, verifyUserCredential } from "../lib/util";
 import UserDropdownMenu from "./UserDropdown";
-import { useContext } from "react";
-import { UserContext } from "../lib/contexts";
+// import { useContext } from "react";
+// import { UserContext } from "../lib/contexts";
 import BellIcon from "./icon/BellIcon";
+import { useSelector } from "react-redux";
+// import { useEffect } from "react";
 
 export default function Navbar() {
+    const user = useSelector((state) => state.user);
     const [collapse, setCollapse] = useState(true);
     const [modalSigninRegister, setSigninRegisterShow] = useState(false);
-    const [alreadyLogin, setLoginStatus] = useState(false);
-    const [userData, setUserData] = useContext(UserContext);
+    // const [alreadyLogin, setLoginStatus] = useState(false);
+    // const [userData, setUserData] = useContext(UserContext);
 
-    useEffect(() => {
-        setLoginStatus(verifyUserCredential());
-    }, [userData]);
+    // useEffect(() => {
+    //     setLoginStatus(verifyUserCredential());
+    // }, [userData]);
 
     return (
         <>
@@ -98,60 +101,94 @@ export default function Navbar() {
                     </div>
                     <div className="w-full lg:w-fit lg:h-full h-fit flex justify-center items-center">
                         <div className="flex lg:flex-row lg:border-0 flex-col lg:flex-wrap border-y border-y-brand-default w-full justify-center items-start py-4 gap-4">
-                            <NavLink
-                                className={({ isActive }) => {
-                                    return (
-                                        "no-underline text-brand-default text-base py-2 px-6 rounded-4xl " +
-                                        (isActive
-                                            ? "bg-brand-primary text-white font-bold"
-                                            : "")
-                                    );
-                                }}
-                                to="/live-feed"
-                            >
-                                Live Feed
-                            </NavLink>
-                            <NavLink
-                                className={({ isActive }) => {
-                                    return (
-                                        "no-underline text-brand-default text-base py-2 px-6 rounded-4xl " +
-                                        (isActive
-                                            ? "bg-brand-primary text-white font-bold"
-                                            : "")
-                                    );
-                                }}
-                                to="/track"
-                            >
-                                Track
-                            </NavLink>
-                            <NavLink
-                                className={({ isActive }) => {
-                                    return (
-                                        "no-underline text-brand-default text-base py-2 px-6 rounded-4xl " +
-                                        (isActive
-                                            ? "bg-brand-primary text-white font-bold"
-                                            : "")
-                                    );
-                                }}
-                                to="/how-it-works"
-                            >
-                                How it works
-                            </NavLink>
+                            {user?.currentLoginUser?.role != "admin" ? (
+                                <>
+                                    <NavLink
+                                        className={({ isActive }) => {
+                                            return (
+                                                "no-underline text-brand-default text-base py-2 px-6 rounded-4xl " +
+                                                (isActive
+                                                    ? "bg-brand-primary text-white font-bold"
+                                                    : "")
+                                            );
+                                        }}
+                                        to="/live-feed"
+                                    >
+                                        Live Feed
+                                    </NavLink>
+                                    <NavLink
+                                        className={({ isActive }) => {
+                                            return (
+                                                "no-underline text-brand-default text-base py-2 px-6 rounded-4xl " +
+                                                (isActive
+                                                    ? "bg-brand-primary text-white font-bold"
+                                                    : "")
+                                            );
+                                        }}
+                                        to="/track"
+                                    >
+                                        Track
+                                    </NavLink>
+                                    <NavLink
+                                        className={({ isActive }) => {
+                                            return (
+                                                "no-underline text-brand-default text-base py-2 px-6 rounded-4xl " +
+                                                (isActive
+                                                    ? "bg-brand-primary text-white font-bold"
+                                                    : "")
+                                            );
+                                        }}
+                                        to="/how-it-works"
+                                    >
+                                        How it works
+                                    </NavLink>
 
-                            {alreadyLogin && (
-                                <NavLink
-                                    className={({ isActive }) => {
-                                        return (
-                                            "no-underline text-brand-default text-base py-2 px-6 rounded-4xl " +
-                                            (isActive
-                                                ? "bg-brand-primary text-white font-bold"
-                                                : "")
-                                        );
-                                    }}
-                                    to="/user"
-                                >
-                                    My Reports
-                                </NavLink>
+                                    {user && (
+                                        <NavLink
+                                            className={({ isActive }) => {
+                                                return (
+                                                    "no-underline text-brand-default text-base py-2 px-6 rounded-4xl " +
+                                                    (isActive
+                                                        ? "bg-brand-primary text-white font-bold"
+                                                        : "")
+                                                );
+                                            }}
+                                            to="/user"
+                                        >
+                                            My Reports
+                                        </NavLink>
+                                    )}
+                                </>
+                            ) : (
+                                <Link to="/admin" className="px-4 py-2 items-center cursor-pointer rounded-4xl bg-brand-primary text-white flex gap-4">
+                                    <svg
+                                        width="1em"
+                                        height="1em"
+                                        viewBox="0 0 14 14"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <g clipPath="url(#clip0_2634_98)">
+                                            <path
+                                                d="M6.99999 12.8332C6.99999 12.8332 11.6667 10.4998 11.6667 6.99984V2.9165L6.99999 1.1665L2.33333 2.9165V6.99984C2.33333 10.4998 6.99999 12.8332 6.99999 12.8332Z"
+                                                strokeWidth="1.16667"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                stroke="white"
+                                            />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_2634_98">
+                                                <rect
+                                                    width="14"
+                                                    height="14"
+                                                    fill="white"
+                                                />
+                                            </clipPath>
+                                        </defs>
+                                        </svg>
+                                        <span className="font-public-sans font-semibold">Admin Console</span>
+                                </Link>
                             )}
                         </div>
                     </div>
@@ -159,20 +196,20 @@ export default function Navbar() {
                         id="nav-btn-container"
                         className="w-fit h-full max-lg:py-4 gap-4 flex justify-end items-center"
                     >
-                        {alreadyLogin && (
+                        {user?.currentLoginUser && (
                             <Link to={"/notification"}>
                                 <BellIcon className="text-2xl" />
                             </Link>
                         )}
-                        {alreadyLogin && (
+                        {user?.currentLoginUser && (
                             <UserDropdownMenu
                                 parentCallback={(status) =>
                                     setCollapse(!status)
                                 }
-                                {...userData}
+                                {...(user?.currentLoginUser || {})}
                             />
                         )}
-                        {!alreadyLogin && (
+                        {!user?.currentLoginUser && (
                             <button
                                 onClick={() => setSigninRegisterShow(true)}
                                 id="signin"

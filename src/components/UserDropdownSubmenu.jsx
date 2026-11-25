@@ -1,7 +1,7 @@
-import { redirect, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { removeData, storageKeys } from "../lib/util";
-import { useContext } from "react";
-import { UserContext } from "../lib/contexts";
+import { useDispatch } from "react-redux";
+import { usersActions } from "../redux/slices/users.slice";
 
 export default function UserDropdownSubmenu({
     fullname = "User Name",
@@ -9,12 +9,12 @@ export default function UserDropdownSubmenu({
     isOpen = false,
 }) {
 
-    const [userData, setUserData] = useContext(UserContext);
+    const reduxDispatch = useDispatch();
     const navigate = useNavigate();
     const handleSignOut = () => {
         removeData(storageKeys.ID);
         removeData(storageKeys.CREDENTIAL);
-        setUserData({});
+        reduxDispatch(usersActions.logoutUser());
         navigate("/");
     };
 

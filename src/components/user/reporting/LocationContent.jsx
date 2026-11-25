@@ -2,7 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as YUP from "yup";
-import { TempReportContext } from "../../lib/contexts";
+import { TempReportContext } from "../../../lib/contexts";
 import { ScrollRestoration, useOutletContext } from "react-router";
 import { FormNavigation } from "./FormNavigation";
 

@@ -1,25 +1,24 @@
 import { Link, useSearchParams } from "react-router";
 import StatusBadge from "../components/StatusBadge";
-import { useLocalStorage } from "../lib/hooks/localStorageHook";
-import { storageKeys } from "../lib/util";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function ReportingReceiptPage() {
     const [params, setParams] = useSearchParams();
-    const [storage, setStorage] = useLocalStorage(storageKeys.REPORTS, []);
     const [data, setData] = useState({});
+    const { reports } = useSelector((state) => state.reports);
 
     useEffect(() => {
         const id = params.get("id");
-        if (storage) {
+        if (reports) {
             setData(
-                storage.find((d) => {
+                reports.find((d) => {
                     return d.id === id;
                 }),
             );
         }
-    }, []);
+    }, [params,reports]);
 
     return (
         <div className="w-full h-fit flex flex-row items-start justify-center">

@@ -1,6 +1,7 @@
-import { useLocalStorage } from "../../lib/hooks/localStorageHook";
-import { getUserCredentialWithId, storageKeys } from "../../lib/util";
-import StatusBadge from "../StatusBadge";
+import { useSelector } from "react-redux";
+import { useLocalStorage } from "../../../lib/hooks/localStorageHook";
+import { getUserCredentialWithId, storageKeys } from "../../../lib/util";
+import StatusBadge from "../../StatusBadge";
 
 function ComplainCard(props) {
     return (
@@ -33,7 +34,7 @@ function ComplainCard(props) {
 }
 
 export default function ComplainContent() {
-    const [storage, setStorage] = useLocalStorage(storageKeys.REPORTS, []);
+    const { reports } = useSelector((state) => state.reports);
     const user = getUserCredentialWithId();
 
     return (
@@ -71,7 +72,7 @@ export default function ComplainContent() {
                     </tr>
                 </thead>
                 <tbody className="flex w-full [&>tr:last-child]:rounded-b-xl items-center justify-center flex-col">
-                    {storage.filter(({email}) => email === user.email).map((data) => {
+                    {reports.filter(({email}) => email === user.email).map((data) => {
                         return <ComplainCard key={data.id} {...data} />
                     })}
                 </tbody>
